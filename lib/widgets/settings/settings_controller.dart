@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'settings_service.dart';
 
@@ -8,7 +11,7 @@ import 'settings_service.dart';
 ///
 /// Controllers glue Data Services to Flutter Widgets. The SettingsController
 /// uses the SettingsService to store and retrieve user settings.
-class SettingsController with ChangeNotifier {
+class SettingsController extends GetxController {
   SettingsController(this._settingsService);
 
   // Make SettingsService a private variable so it is not used directly.
@@ -16,7 +19,7 @@ class SettingsController with ChangeNotifier {
 
   // Make ThemeMode a private variable so it is not updated directly without
   // also persisting the changes with the SettingsService.
-  late ThemeMode _themeMode;
+  ThemeMode _themeMode = ThemeMode.system;
 
   // Allow Widgets to read the user's preferred ThemeMode.
   ThemeMode get themeMode => _themeMode;
@@ -26,9 +29,6 @@ class SettingsController with ChangeNotifier {
   /// settings from the service.
   Future<void> loadSettings() async {
     _themeMode = await _settingsService.themeMode();
-
-    // Important! Inform listeners a change has occurred.
-    notifyListeners();
   }
 
   /// Update and persist the ThemeMode based on the user's selection.
@@ -40,9 +40,10 @@ class SettingsController with ChangeNotifier {
 
     // Otherwise, store the new theme mode in memory
     _themeMode = newThemeMode;
+    print(_themeMode.toString());
 
     // Important! Inform listeners a change has occurred.
-    notifyListeners();
+    Get.changeThemeMode(newThemeMode);
 
     // Persist the changes to a local database or the internet using the
     // SettingService.
