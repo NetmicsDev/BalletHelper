@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-import '../settings/settings_view.dart';
-import 'sample_item.dart';
+import 'settings_view.dart';
+import '../../data/model/sample_item.dart';
 import 'sample_item_details_view.dart';
 
 /// Displays a list of SampleItems.

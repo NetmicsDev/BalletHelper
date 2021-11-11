@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import 'settings_controller.dart';
+import '../../controller/settings_controller.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
 class SettingsView extends StatelessWidget {
-  SettingsView({Key? key, required this.controller}) : super(key: key);
+  SettingsView({Key? key}) : super(key: key);
 
-  static const routeName = '/settings';
-
-  final SettingsController controller;
-
-  final Rx<ThemeMode> currentTheme = ThemeMode.system.obs;
+  final SettingsController controller = SettingsController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +27,9 @@ class SettingsView extends StatelessWidget {
         child: Obx(
           () => DropdownButton<ThemeMode>(
             // Read the selected themeMode from the controller
-            value: currentTheme.value,
+            value: controller.themeMode,
             // Call the updateThemeMode method any time the user selects a theme.
-            onChanged: (newThemeMode) => currentTheme.value = newThemeMode!,
+            onChanged: controller.updateThemeMode,
             items: const [
               DropdownMenuItem(
                 value: ThemeMode.system,
