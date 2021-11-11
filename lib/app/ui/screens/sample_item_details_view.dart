@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
-/// Displays detailed information about a SampleItem.
 class SampleItemDetailsView extends StatelessWidget {
   const SampleItemDetailsView({Key? key}) : super(key: key);
 

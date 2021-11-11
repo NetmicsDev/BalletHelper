@@ -8,7 +8,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-/// The Widget that configures your application.
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.home,
       getPages: Pages.pages,
     );
   }
