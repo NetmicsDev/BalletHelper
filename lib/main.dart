@@ -1,14 +1,14 @@
 import 'dart:developer';
 
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/pages.dart';
 
-void main() async {
-  final result = await GetStorage.init('item');
+void main() {
   runApp(const MyApp());
 }
 
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      initialRoute: Routes.home,
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.mainTheme,
+      initialRoute: Routes.login,
       getPages: Pages.pages,
     );
   }
