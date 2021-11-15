@@ -6,7 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 
 class Pages {
   static final pages = [
-    GetPage(name: Routes.home, page: () => const SampleItemListView()),
+    GetPage(name: Routes.home, page: () => SampleItemListView()),
     GetPage(name: Routes.detail, page: () => const SampleItemDetailsView()),
     GetPage(name: Routes.setting, page: () => SettingsView()),
   ];
