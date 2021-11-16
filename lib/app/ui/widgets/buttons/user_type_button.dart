@@ -7,12 +7,14 @@ class UserTypeButton extends StatefulWidget {
   final String title;
   final String content;
   final double? size;
+  final Function()? onClick;
   const UserTypeButton(
       {Key? key,
       required this.imagePath,
       required this.title,
       required this.content,
-      this.size})
+      this.size,
+      this.onClick})
       : super(key: key);
   @override
   State<UserTypeButton> createState() => _UserTypeButtonState();
@@ -36,6 +38,7 @@ class _UserTypeButtonState extends State<UserTypeButton> {
         }),
         onTapUp: (_) => setState(() {
           isPressing = false;
+          widget.onClick?.call();
         }),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
