@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/ui/screen/login/code_check_page.dart';
+import 'package:ballet_helper/app/ui/screen/login/sign_in_page.dart';
+import 'package:ballet_helper/app/ui/screen/login/sign_up_page.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/widgets/page_wrapper.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'choose_sign_page.dart';
+import 'code_result_page.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -41,6 +44,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 break;
               case 'CODE_CHECK':
                 page = CodeCheckPage();
+                break;
+              case 'CODE_RESULT':
+                page = CodeResultPage();
+                break;
+              case 'SIGN_IN':
+                page = SignInPage();
+                break;
+              case 'SIGN_UP':
+                page = SignUpPage();
                 break;
               default:
                 page = Container();

@@ -11,6 +11,18 @@ class CodeCheckPage extends StatefulWidget {
 
 class _CodeCheckPageState extends State<CodeCheckPage> {
   final LoginController _controller = Get.find();
+  final TextEditingController _inputController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _inputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +38,13 @@ class _CodeCheckPageState extends State<CodeCheckPage> {
           decoration: InputDecoration(
             border: OutlineInputBorder(),
           ),
+          controller: _inputController,
         ),
         Container(
           alignment: Alignment.centerRight,
           margin: EdgeInsets.only(top: 10),
           child: ElevatedButton(
-            onPressed: () => _controller.toSignUp(),
+            onPressed: () => _controller.toCodeResult(_inputController.text),
             child: Text('확인'),
           ),
         )
