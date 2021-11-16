@@ -12,6 +12,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   late TabController pageController;
 
+  String? userType;
+
   @override
   void onInit() {
     super.onInit();
@@ -30,10 +32,29 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     if (!isRoot) {
       if (pageController.index == 4) {
         pageController.index = 1;
+      } else if (pageController.index == 3) {
+        pageController.index = 1;
       } else {
         pageController.index = pageController.index - 1;
       }
     }
     return !isRoot;
+  }
+
+  void toChooseSign(String userType) {
+    this.userType = userType;
+    pageController.animateTo(1);
+  }
+
+  void toCodeCheck() {
+    pageController.animateTo(2);
+  }
+
+  void toSignIn() {
+    pageController.animateTo(3);
+  }
+
+  void toSignUp() {
+    pageController.animateTo(4);
   }
 }

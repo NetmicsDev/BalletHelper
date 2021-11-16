@@ -4,6 +4,7 @@ import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/ui/screen/login/code_check_page.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
+import 'package:ballet_helper/app/ui/widgets/page_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,16 +31,22 @@ class _LoginScreenState extends State<LoginScreen> {
         body: TabBarView(
           controller: _controller.pageController,
           children: _controller.pages.map((name) {
+            late final Widget page;
             switch (name) {
               case 'USER_TYPE':
-                return UserTypePage();
+                page = UserTypePage();
+                break;
               case 'CHOOSE_SIGN':
-                return ChooseSignPage();
+                page = ChooseSignPage();
+                break;
               case 'CODE_CHECK':
-                return CodeCheckPage();
+                page = CodeCheckPage();
+                break;
               default:
-                return Container();
+                page = Container();
+                break;
             }
+            return PageWrapper(page: page);
           }).toList(),
         ),
       ),

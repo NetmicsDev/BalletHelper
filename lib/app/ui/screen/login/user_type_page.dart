@@ -21,43 +21,44 @@ class _UserTypePageState extends State<UserTypePage> {
   @override
   Widget build(BuildContext context) {
     double buttonSize = Get.height / 6;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Align(
-              alignment: Alignment.centerLeft,
-              child: Text(Strings.chooseUserType, style: headlineStyle)),
-          const SizedBox(height: 20),
-          UserTypeButton(
-            imagePath: '',
-            title: Strings.parent,
-            content: Strings.parentContent,
-            size: buttonSize,
-            onClick: () => _controller.pageController.animateTo(1),
-          ),
-          UserTypeButton(
-              imagePath: '',
-              title: Strings.teacher,
-              content: Strings.teacherContent,
-              size: buttonSize),
-          UserTypeButton(
-              imagePath: '',
-              title: Strings.owner,
-              content: Strings.ownerContent,
-              size: buttonSize),
-          SizedBox(height: 30),
-          TextButton(
-              onPressed: () => Get.toNamed(
-                    Routes.preview,
-                  ),
-              child: Text(
-                "체험하기",
-                style: TextStyle(decoration: TextDecoration.underline),
-              ))
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Align(
+            alignment: Alignment.centerLeft,
+            child: Text(Strings.chooseUserType, style: headlineStyle)),
+        const SizedBox(height: 20),
+        UserTypeButton(
+          imagePath: '',
+          title: Strings.parent,
+          content: Strings.parentContent,
+          size: buttonSize,
+          onClick: () => _controller.toChooseSign(Strings.parent),
+        ),
+        UserTypeButton(
+          imagePath: '',
+          title: Strings.teacher,
+          content: Strings.teacherContent,
+          size: buttonSize,
+          onClick: () => _controller.toChooseSign(Strings.teacher),
+        ),
+        UserTypeButton(
+          imagePath: '',
+          title: Strings.owner,
+          content: Strings.ownerContent,
+          size: buttonSize,
+          onClick: () => _controller.toChooseSign(Strings.owner),
+        ),
+        SizedBox(height: 30),
+        TextButton(
+            onPressed: () => Get.toNamed(
+                  Routes.preview,
+                ),
+            child: Text(
+              "체험하기",
+              style: TextStyle(decoration: TextDecoration.underline),
+            ))
+      ],
     );
   }
 }
