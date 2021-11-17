@@ -78,7 +78,7 @@ class _UserTypePageState extends State<UserTypePage> {
       title: '어떤 회원으로 체험하시겠어요?',
       options: userTypes,
       onSelect: (idx) {
-        log('Select ${userTypes[idx]}');
+        Get.toNamed(Routes.preview, arguments: idx);
       },
     ));
   }
