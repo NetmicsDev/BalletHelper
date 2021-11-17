@@ -4,7 +4,26 @@ import 'package:ballet_helper/app/ui/values/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+enum UserType { parent, teacher, owner }
+
 class LoginController extends GetxController with SingleGetTickerProviderMixin {
+  final List<Map<String, dynamic>> userTypes = [
+    {
+      'type': UserType.parent,
+      'label': Strings.parent,
+      'content': Strings.parentContent,
+    },
+    {
+      'type': UserType.teacher,
+      'label': Strings.teacher,
+      'content': Strings.teacherContent,
+    },
+    {
+      'type': UserType.owner,
+      'label': Strings.owner,
+      'content': Strings.ownerContent,
+    },
+  ];
   final List pages = [
     'USER_TYPE', // 회원 권한 선택
     'CHOOSE_SIGN', // 로그인인지 회원가입인지
@@ -16,7 +35,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   late TabController pageController;
 
-  String? userType;
+  UserType? currentUserType;
   String? code;
 
   @override
@@ -37,7 +56,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     if (!isRoot) {
       if (pageController.index == 5) {
         pageController.index = 1;
-      } else if (pageController.index == 4 && userType == Strings.owner) {
+      } else if (pageController.index == 4 &&
+          currentUserType == UserType.owner) {
         pageController.index = 1;
       } else {
         pageController.index = pageController.index - 1;
@@ -46,8 +66,8 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     return !isRoot;
   }
 
-  void toChooseSign(String userType) {
-    this.userType = userType;
+  void toChooseSign(UserType userType) {
+    this.currentUserType = userType;
     pageController.animateTo(1);
   }
 

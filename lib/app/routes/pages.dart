@@ -1,15 +1,35 @@
+import 'package:ballet_helper/app/controller/login_controller.dart';
+import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
 import 'package:ballet_helper/app/ui/screen/preview_screen.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/state_manager.dart';
 
 class Pages {
   static final pages = [
-    GetPage(name: Routes.login, page: () => LoginScreen()),
     GetPage(
-        name: Routes.preview,
-        page: () => PreviewScreen(),
-        transition: Transition.fadeIn),
+      name: Routes.login,
+      page: () => const LoginScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(LoginController());
+      }),
+    ),
+    GetPage(
+      name: Routes.preview,
+      page: () => PreviewScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: Routes.home,
+      page: () => HomeScreen(),
+      transition: Transition.fadeIn,
+      binding: BindingsBuilder(() {
+        Get.put(MainController());
+      }),
+    )
   ];
 }

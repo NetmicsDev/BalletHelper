@@ -1,5 +1,8 @@
+import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:get/get_instance/get_instance.dart';
 
 class PreviewScreen extends StatelessWidget {
   PreviewScreen({Key? key}) : super(key: key);
@@ -25,7 +28,7 @@ class PreviewScreen extends StatelessWidget {
           )
         ],
       ),
-      body: buildBody(),
+      body: HomeScreen(),
     );
   }
 
@@ -39,19 +42,6 @@ class PreviewScreen extends StatelessWidget {
         return '관리자로 체험 중';
       default:
         return '보호자로 체험 중';
-    }
-  }
-
-  Widget buildBody() {
-    switch (userType) {
-      case 0:
-        return Text('보호자로 체험 중');
-      case 1:
-        return Text('선생님으로 체험 중');
-      case 2:
-        return Text('관리자로 체험 중');
-      default:
-        return Text('보호자로 체험 중');
     }
   }
 }

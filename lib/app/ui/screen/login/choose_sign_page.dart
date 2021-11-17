@@ -30,7 +30,7 @@ class _ChooseSignPageState extends State<ChooseSignPage> {
           title: '회원가입',
           content: '이번이 처음이에요!',
           onClick: () {
-            if (_controller.userType == Strings.owner) {
+            if (_controller.currentUserType == UserType.owner) {
               _controller.toSignUp();
             } else {
               _controller.toCodeCheck();

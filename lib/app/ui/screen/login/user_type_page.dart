@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:ballet_helper/app/controller/login_controller.dart';
+import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
@@ -12,7 +13,7 @@ import 'package:get/route_manager.dart';
 import 'package:get/instance_manager.dart';
 
 class UserTypePage extends StatefulWidget {
-  UserTypePage({Key? key}) : super(key: key);
+  const UserTypePage({Key? key}) : super(key: key);
 
   @override
   _UserTypePageState createState() => _UserTypePageState();
@@ -34,27 +35,15 @@ class _UserTypePageState extends State<UserTypePage> {
               style: TextStyles.headlineStyle,
             )),
         const SizedBox(height: 20),
-        UserTypeButton(
-          imagePath: '',
-          title: Strings.parent,
-          content: Strings.parentContent,
-          size: buttonSize,
-          onClick: () => _controller.toChooseSign(Strings.parent),
-        ),
-        UserTypeButton(
-          imagePath: '',
-          title: Strings.teacher,
-          content: Strings.teacherContent,
-          size: buttonSize,
-          onClick: () => _controller.toChooseSign(Strings.teacher),
-        ),
-        UserTypeButton(
-          imagePath: '',
-          title: Strings.owner,
-          content: Strings.ownerContent,
-          size: buttonSize,
-          onClick: () => _controller.toChooseSign(Strings.owner),
-        ),
+        ..._controller.userTypes
+            .map<Widget>((user) => UserTypeButton(
+                  imagePath: '',
+                  title: user['label'],
+                  content: user['content'],
+                  size: buttonSize,
+                  onClick: () => _controller.toChooseSign(user['type']),
+                ))
+            .toList(),
         UserTypeButton(
           imagePath: '',
           title: Strings.preview,
@@ -62,23 +51,19 @@ class _UserTypePageState extends State<UserTypePage> {
           size: buttonSize,
           onClick: showUserTypeModal,
         ),
-        // TextButton(
-        //     onPressed: showUserTypeModal,
-        //     child: Text(
-        //       Strings.preview,
-        //       style: TextStyle(decoration: TextDecoration.underline),
-        //     ))
       ],
     );
   }
 
   showUserTypeModal() {
-    List<String> userTypes = [Strings.parent, Strings.teacher, Strings.owner];
     Get.bottomSheet(BottomSheets.select(
       title: '어떤 회원으로 체험하시겠어요?',
-      options: userTypes,
-      onSelect: (idx) {
-        Get.toNamed(Routes.preview, arguments: idx);
+      options: _controller.userTypes.map<String>((e) => e['label']).toList(),
+      onSelect: (idx) async {
+        Get.put(MainController(
+            isPreview: true, userType: _controller.userTypes[idx]['type']));
+        await Get.toNamed(Routes.preview, arguments: idx);
+        Get.delete<MainController>();
       },
     ));
   }

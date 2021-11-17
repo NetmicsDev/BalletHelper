@@ -13,27 +13,20 @@ import 'package:get/get.dart';
 import 'choose_sign_page.dart';
 import 'code_result_page.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
-
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final LoginController _controller = Get.put(LoginController());
+class LoginScreen extends GetView<LoginController> {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return !_controller.pop();
+        return !controller.pop();
       },
       child: Scaffold(
         backgroundColor: AppColors.scaffoldBackgroundColor,
         body: TabBarView(
-          controller: _controller.pageController,
-          children: _controller.pages.map((name) {
+          controller: controller.pageController,
+          children: controller.pages.map((name) {
             late final Widget page;
             switch (name) {
               case 'USER_TYPE':
