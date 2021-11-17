@@ -3,24 +3,37 @@ import 'package:flutter/cupertino.dart';
 
 class TextStyles {
   static const headlineStyle = TextStyle(
-    color: AppColors.headlineTextColor,
+    color: AppColors.titleColor,
     fontSize: 30,
     fontWeight: FontWeight.bold,
   );
 
   static const buttonTitleStyle = TextStyle(
-    color: AppColors.headlineTextColor,
+    color: AppColors.titleColor,
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
 
   static const buttonContentStyle = TextStyle(
-    color: AppColors.headlineTextColor,
+    color: AppColors.titleColor,
     fontSize: 14,
   );
 
   static const bottomSheetTitleStyle = TextStyle(
-      color: AppColors.headlineTextColor,
-      fontSize: 20,
-      fontWeight: FontWeight.bold);
+    color: AppColors.titleColor,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const academyNameStyle = TextStyle(
+    color: AppColors.subtitleColor,
+    fontSize: 26,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const brightContentStyle = TextStyle(
+    color: AppColors.brightTextColor,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
 }

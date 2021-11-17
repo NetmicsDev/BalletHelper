@@ -1,5 +1,6 @@
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
+import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -18,13 +19,17 @@ class PreviewScreen extends StatelessWidget {
         toolbarHeight: 40,
         title: Text(
           getTitle(),
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(color: AppColors.subtitleColor, fontSize: 16),
         ),
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: Get.back,
-            icon: const Icon(Icons.close, size: 24),
+            icon: const Icon(
+              Icons.close,
+              size: 24,
+              color: AppColors.subtitleColor,
+            ),
           )
         ],
       ),
