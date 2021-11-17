@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-final scaffoldBackgroundColor = Colors.white;
+class AppColors {
+  static const scaffoldBackgroundColor = Colors.white;
 
-final headlineTextColor = Colors.black;
+  static const headlineTextColor = Colors.black;
 
-final buttonDefaultColor = Colors.white;
-final buttonPressedColor = Colors.yellow;
+  static const buttonDefaultColor = Colors.white;
+  static const buttonPressedColor = Colors.yellow;
+}

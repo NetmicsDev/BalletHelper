@@ -2,7 +2,7 @@ import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
-class UserTypeButton extends StatefulWidget {
+class UserTypeButton extends StatelessWidget {
   final String imagePath;
   final String title;
   final String content;
@@ -16,60 +16,52 @@ class UserTypeButton extends StatefulWidget {
       this.size,
       this.onClick})
       : super(key: key);
-  @override
-  State<UserTypeButton> createState() => _UserTypeButtonState();
-}
-
-class _UserTypeButtonState extends State<UserTypeButton> {
-  bool isPressing = false;
 
   @override
   Widget build(BuildContext context) {
-    double size = widget.size ?? 150;
+    double _size = size ?? 150;
     return Card(
-      color: isPressing ? buttonPressedColor : buttonDefaultColor,
+      color: AppColors.buttonDefaultColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       elevation: 5,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapDown: (_) => setState(() {
-          isPressing = true;
-        }),
-        onTapUp: (_) => setState(() {
-          isPressing = false;
-          widget.onClick?.call();
-        }),
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () => onClick?.call(),
+        highlightColor: Colors.transparent,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               'assets/images/test_user_type.png',
-              width: size,
-              height: size,
+              width: _size,
+              height: _size,
             ),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(widget.title, style: buttonTitleStyle),
-                  SizedBox(height: 10),
-                  Text(
-                    widget.content,
-                    style: buttonContentStyle,
-                  )
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: TextStyles.buttonTitleStyle),
+                    const SizedBox(height: 10),
+                    Text(
+                      content,
+                      style: TextStyles.buttonContentStyle,
+                    )
+                  ],
+                ),
               ),
             ),
-            Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Image.asset(
-                  'assets/images/next.png',
-                  width: 30,
-                  height: 50,
-                  fit: BoxFit.fill,
-                )),
+            // Padding(
+            //     padding: EdgeInsets.symmetric(horizontal: 10),
+            //     child: Image.asset(
+            //       'assets/images/next.png',
+            //       width: 30,
+            //       height: 50,
+            //       fit: BoxFit.fill,
+            //     )),
           ],
         ),
       ),

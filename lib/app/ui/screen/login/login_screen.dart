@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return !_controller.pop();
       },
       child: Scaffold(
-        backgroundColor: scaffoldBackgroundColor,
+        backgroundColor: AppColors.scaffoldBackgroundColor,
         body: TabBarView(
           controller: _controller.pageController,
           children: _controller.pages.map((name) {

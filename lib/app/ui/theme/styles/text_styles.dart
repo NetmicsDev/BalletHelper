@@ -1,10 +1,26 @@
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 
-final headlineStyle = TextStyle(
-    color: headlineTextColor, fontSize: 30, fontWeight: FontWeight.bold);
+class TextStyles {
+  static const headlineStyle = TextStyle(
+    color: AppColors.headlineTextColor,
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  );
 
-final buttonTitleStyle = TextStyle(
-    color: headlineTextColor, fontSize: 20, fontWeight: FontWeight.bold);
+  static const buttonTitleStyle = TextStyle(
+    color: AppColors.headlineTextColor,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
 
-final buttonContentStyle = TextStyle(color: headlineTextColor, fontSize: 14);
+  static const buttonContentStyle = TextStyle(
+    color: AppColors.headlineTextColor,
+    fontSize: 14,
+  );
+
+  static const bottomSheetTitleStyle = TextStyle(
+      color: AppColors.headlineTextColor,
+      fontSize: 20,
+      fontWeight: FontWeight.bold);
+}

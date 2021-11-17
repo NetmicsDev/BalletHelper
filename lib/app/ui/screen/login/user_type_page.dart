@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
-import 'package:ballet_helper/app/ui/values/string.dart';
+import 'package:ballet_helper/app/ui/values/strings.dart';
+import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/user_type_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -20,13 +23,16 @@ class _UserTypePageState extends State<UserTypePage> {
 
   @override
   Widget build(BuildContext context) {
-    double buttonSize = Get.height / 6;
+    double buttonSize = Get.height / 7;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Align(
+        const Align(
             alignment: Alignment.centerLeft,
-            child: Text(Strings.chooseUserType, style: headlineStyle)),
+            child: Text(
+              Strings.chooseUserType,
+              style: TextStyles.headlineStyle,
+            )),
         const SizedBox(height: 20),
         UserTypeButton(
           imagePath: '',
@@ -49,16 +55,31 @@ class _UserTypePageState extends State<UserTypePage> {
           size: buttonSize,
           onClick: () => _controller.toChooseSign(Strings.owner),
         ),
-        SizedBox(height: 30),
-        TextButton(
-            onPressed: () => Get.toNamed(
-                  Routes.preview,
-                ),
-            child: Text(
-              "체험하기",
-              style: TextStyle(decoration: TextDecoration.underline),
-            ))
+        UserTypeButton(
+          imagePath: '',
+          title: Strings.preview,
+          content: Strings.previewContent,
+          size: buttonSize,
+          onClick: showUserTypeModal,
+        ),
+        // TextButton(
+        //     onPressed: showUserTypeModal,
+        //     child: Text(
+        //       Strings.preview,
+        //       style: TextStyle(decoration: TextDecoration.underline),
+        //     ))
       ],
     );
+  }
+
+  showUserTypeModal() {
+    List<String> userTypes = [Strings.parent, Strings.teacher, Strings.owner];
+    Get.bottomSheet(BottomSheets.select(
+      title: '어떤 회원으로 체험하시겠어요?',
+      options: userTypes,
+      onSelect: (idx) {
+        log('Select ${userTypes[idx]}');
+      },
+    ));
   }
 }

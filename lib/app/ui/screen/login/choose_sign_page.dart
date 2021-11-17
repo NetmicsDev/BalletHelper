@@ -1,5 +1,5 @@
 import 'package:ballet_helper/app/controller/login_controller.dart';
-import 'package:ballet_helper/app/ui/values/string.dart';
+import 'package:ballet_helper/app/ui/values/strings.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/user_type_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
