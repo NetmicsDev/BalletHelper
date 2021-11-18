@@ -1,7 +1,9 @@
+import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/screen/album_screen.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
@@ -34,11 +36,20 @@ class Pages {
       }),
     ),
     GetPage(
-        name: Routes.notice,
-        page: () => NoticeScreen(),
-        transition: Transition.downToUp,
-        binding: BindingsBuilder(() {
-          Get.put(NoticeController());
-        })),
+      name: Routes.notice,
+      page: () => NoticeScreen(),
+      transition: Transition.downToUp,
+      binding: BindingsBuilder(() {
+        Get.put(NoticeController());
+      }),
+    ),
+    GetPage(
+      name: Routes.album,
+      page: () => AlbumScreen(),
+      transition: Transition.downToUp,
+      binding: BindingsBuilder(() {
+        Get.put(AlbumController());
+      }),
+    ),
   ];
 }

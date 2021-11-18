@@ -128,7 +128,7 @@ class HomeScreen extends GetView<MainController> {
                 color: Color(0xffFFA42D),
                 title: '앨범',
                 assetPath: '',
-                routeName: '',
+                routeName: Routes.album,
               ),
               MenuButton(
                 size: buttonSize,

@@ -2,6 +2,8 @@ import 'package:ballet_helper/app/data/model/image_model.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 
+import 'model/album_model.dart';
+
 class DummyDatas {
   static UserModel parent = UserModel(
     name: '아이유',
@@ -28,5 +30,25 @@ class DummyDatas {
         title: '휴원 안내',
         content: '2021년 12월 1일 폭설로 인해 휴원합니다.\n다들 따뜻하게 입으세요~ㅎㅎ',
         image: 'assets/images/test_notice_image.jpg'),
+  ];
+
+  static List<AlbumModel> albumList = [
+    AlbumModel(
+        name: '이호철 원장님',
+        profile: 'assets/images/test_owner_avatar.jpg',
+        dateTime: '5분전',
+        content: '허리 뽀샤뽀샤~',
+        images: [
+          'assets/images/test_album_2.png',
+          'assets/images/test_album_3.png',
+        ]),
+    AlbumModel(
+        name: '이호철 원장님',
+        profile: 'assets/images/test_owner_avatar.jpg',
+        dateTime: '5분전',
+        content: '열심열심',
+        images: [
+          'assets/images/test_album_1.png',
+        ]),
   ];
 }

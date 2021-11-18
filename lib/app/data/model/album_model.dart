@@ -2,23 +2,21 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-class NoticeModel {
+class AlbumModel {
   int? id;
   String? name;
   String? profile;
   String? dateTime;
-  String? title;
   String? content;
-  String? image;
+  List<String>? images;
 
-  NoticeModel({
+  AlbumModel({
     this.id,
     this.name,
     this.profile,
     this.dateTime,
-    this.title,
     this.content,
-    this.image,
+    this.images,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,37 +25,37 @@ class NoticeModel {
       'name': name,
       'profile': profile,
       'dateTime': dateTime,
-      'title': title,
       'content': content,
-      'image': image,
+      'image': images,
     };
   }
 
-  factory NoticeModel.fromMap(Map<String, dynamic> map) {
-    return NoticeModel(
+  factory AlbumModel.fromMap(Map<String, dynamic> map) {
+    return AlbumModel(
       id: map['id'],
       name: map['name'],
       profile: map['profile'],
       dateTime: map['dateTime'],
-      title: map['title'],
       content: map['content'],
-      image: map['image'],
+      images: map['image'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory NoticeModel.fromJson(String source) =>
-      NoticeModel.fromMap(json.decode(source));
+  factory AlbumModel.fromJson(String source) =>
+      AlbumModel.fromMap(json.decode(source));
 
   ImageProvider? get profileData => profile != null
       ? (profile!.contains('assets/images/')
           ? AssetImage(profile!) as ImageProvider
           : NetworkImage(profile!))
       : null;
-  ImageProvider? get imageData => image != null
-      ? (image!.contains('assets/images/')
-          ? AssetImage(image!) as ImageProvider
-          : NetworkImage(image!))
+  List<ImageProvider>? get imagesData => images != null
+      ? images!
+          .map<ImageProvider>((image) => image.contains('assets/images/')
+              ? AssetImage(image) as ImageProvider
+              : NetworkImage(image))
+          .toList()
       : null;
 }
