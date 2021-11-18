@@ -44,11 +44,11 @@ class UserTypeButton extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: TextStyles.buttonTitleStyle),
+                    Text(title, style: TextStyles.buttonDarkTitleStyle),
                     const SizedBox(height: 10),
                     Text(
                       content,
-                      style: TextStyles.buttonContentStyle,
+                      style: TextStyles.buttonDarkContentStyle,
                     )
                   ],
                 ),

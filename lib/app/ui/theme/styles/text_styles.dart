@@ -8,15 +8,24 @@ class TextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static const buttonTitleStyle = TextStyle(
+  static const buttonDarkTitleStyle = TextStyle(
     color: AppColors.titleColor,
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
+  static const buttonBrightTitleStyle = TextStyle(
+    color: AppColors.brightTextColor,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
 
-  static const buttonContentStyle = TextStyle(
+  static const buttonDarkContentStyle = TextStyle(
     color: AppColors.titleColor,
     fontSize: 14,
+  );
+  static const buttonBrightContentStyle = TextStyle(
+    color: AppColors.brightTextColor,
+    fontSize: 15,
   );
 
   static const bottomSheetTitleStyle = TextStyle(
@@ -30,10 +39,16 @@ class TextStyles {
     fontSize: 26,
     fontWeight: FontWeight.bold,
   );
-
   static const brightContentStyle = TextStyle(
     color: AppColors.brightTextColor,
     fontSize: 20,
     fontWeight: FontWeight.bold,
+  );
+
+  static const menuButtonStyle = TextStyle(
+    color: AppColors.brightTextColor,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    textBaseline: TextBaseline.alphabetic,
   );
 }

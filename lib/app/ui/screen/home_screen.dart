@@ -1,6 +1,7 @@
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
+import 'package:ballet_helper/app/ui/widgets/buttons/menu_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
@@ -24,7 +25,8 @@ class HomeScreen extends GetView<MainController> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          buildHeader(height: Get.height / 5),
+          buildHeader(height: Get.height * 0.2),
+          buildButtons(),
         ],
       ),
     );
@@ -100,5 +102,48 @@ class HomeScreen extends GetView<MainController> {
         ],
       ),
     );
+  }
+
+  Widget buildButtons() {
+    return Container(
+        color: AppColors.secondaryColor,
+        padding: const EdgeInsets.all(10.0),
+        child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+          double buttonSize = (constraints.maxWidth - 38) * 0.25;
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              MenuButton(
+                size: buttonSize,
+                color: Color(0xff4EE3C6),
+                title: '알림장',
+                assetPath: '',
+                routeName: '',
+              ),
+              MenuButton(
+                size: buttonSize,
+                color: Color(0xffFFA42D),
+                title: '앨범',
+                assetPath: '',
+                routeName: '',
+              ),
+              MenuButton(
+                size: buttonSize,
+                color: Color(0xffE74ACD),
+                title: 'AI',
+                assetPath: '',
+                routeName: '',
+              ),
+              MenuButton(
+                size: buttonSize,
+                color: Color(0xff309AAB),
+                title: '소개',
+                assetPath: '',
+                routeName: '',
+              ),
+            ],
+          );
+        }));
   }
 }
