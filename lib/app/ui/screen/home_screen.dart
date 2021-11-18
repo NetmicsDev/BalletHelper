@@ -1,4 +1,5 @@
 import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/menu_button.dart';
@@ -120,7 +121,7 @@ class HomeScreen extends GetView<MainController> {
                 color: Color(0xff4EE3C6),
                 title: '알림장',
                 assetPath: '',
-                routeName: '',
+                routeName: Routes.notice,
               ),
               MenuButton(
                 size: buttonSize,

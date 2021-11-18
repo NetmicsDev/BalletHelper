@@ -1,5 +1,6 @@
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 class MenuButton extends StatelessWidget {
   final double size;
@@ -26,7 +27,9 @@ class MenuButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
         splashColor: Colors.white.withOpacity(0.5),
         highlightColor: color.withOpacity(0.5),
-        onTap: () {},
+        onTap: () {
+          Get.toNamed(routeName);
+        },
         child: Container(
             width: size,
             height: size,

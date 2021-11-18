@@ -19,7 +19,8 @@ class PreviewScreen extends StatelessWidget {
         toolbarHeight: 40,
         title: Text(
           getTitle(),
-          style: const TextStyle(color: AppColors.subtitleColor, fontSize: 16),
+          style:
+              const TextStyle(color: AppColors.primaryDarkColor, fontSize: 16),
         ),
         centerTitle: true,
         actions: [
@@ -28,7 +29,7 @@ class PreviewScreen extends StatelessWidget {
             icon: const Icon(
               Icons.close,
               size: 24,
-              color: AppColors.subtitleColor,
+              color: AppColors.primaryDarkColor,
             ),
           )
         ],

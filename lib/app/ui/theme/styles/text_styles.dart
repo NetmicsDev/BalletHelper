@@ -35,7 +35,7 @@ class TextStyles {
   );
 
   static const academyNameStyle = TextStyle(
-    color: AppColors.subtitleColor,
+    color: AppColors.primaryDarkColor,
     fontSize: 26,
     fontWeight: FontWeight.bold,
   );
@@ -50,5 +50,16 @@ class TextStyles {
     fontSize: 16,
     fontWeight: FontWeight.bold,
     textBaseline: TextBaseline.alphabetic,
+  );
+
+  static const authorStyle = TextStyle(
+    color: AppColors.titleColor,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const dateTimeStyle = TextStyle(
+    color: AppColors.subtitleColor,
+    fontSize: 13,
   );
 }
