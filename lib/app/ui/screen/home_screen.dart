@@ -27,6 +27,7 @@ class HomeScreen extends GetView<MainController> {
         children: [
           buildHeader(height: Get.height * 0.2),
           buildButtons(),
+          buildGallery()
         ],
       ),
     );
@@ -145,5 +146,32 @@ class HomeScreen extends GetView<MainController> {
             ],
           );
         }));
+  }
+
+  Widget buildGallery() {
+    return Expanded(
+      child: GridView.builder(
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1,
+          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 10.0,
+        ),
+        itemCount: controller.imageList.length,
+        padding: EdgeInsets.all(10),
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: controller.imageList[index].imageData as ImageProvider,
+              ),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
