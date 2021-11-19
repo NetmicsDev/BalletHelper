@@ -39,7 +39,13 @@ class AlbumScreen extends GetView<AlbumController> {
         itemCount: controller.albumList.length,
         itemBuilder: (context, index) {
           AlbumModel album = controller.albumList[index];
-          return Feed();
+          return Feed(
+            author: album.name,
+            profile: album.profileData,
+            dateTime: album.dateTime,
+            content: album.content,
+            images: album.imagesData,
+          );
         },
       ),
     );

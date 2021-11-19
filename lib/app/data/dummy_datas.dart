@@ -43,12 +43,31 @@ class DummyDatas {
           'assets/images/test_album_3.png',
         ]),
     AlbumModel(
-        name: '이호철 원장님',
-        profile: 'assets/images/test_owner_avatar.jpg',
-        dateTime: '5분전',
+        name: '박소라 선생님',
+        profile: 'assets/images/test_teacher_avatar.png',
+        dateTime: '2021년 11월 28일',
         content: '열심열심',
         images: [
           'assets/images/test_album_1.png',
+        ]),
+    AlbumModel(
+        name: '박소라 선생님',
+        profile: 'assets/images/test_teacher_avatar.png',
+        dateTime: '2021년 10월 28일',
+        content: '단체로 뿅!',
+        images: [
+          'assets/images/test_album_1.png',
+          'assets/images/test_album_2.png',
+          'assets/images/test_album_3.png',
+          'assets/images/test_album_1.png',
+          'assets/images/test_album_2.png',
+          'assets/images/test_album_3.png',
+          'assets/images/test_album_1.png',
+          'assets/images/test_album_2.png',
+          'assets/images/test_album_3.png',
+          'assets/images/test_album_1.png',
+          'assets/images/test_album_2.png',
+          'assets/images/test_album_3.png',
         ]),
   ];
 }
