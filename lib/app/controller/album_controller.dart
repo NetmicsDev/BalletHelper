@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:ballet_helper/app/controller/feed_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
@@ -12,6 +13,10 @@ class AlbumController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    albumList.forEach((album) {
+      log('put feedController ${album.id}');
+      Get.put(FeedController(album), tag: album.id.toString());
+    });
   }
 
   @override

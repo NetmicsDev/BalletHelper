@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:ballet_helper/app/controller/album_controller.dart';
+import 'package:ballet_helper/app/controller/feed_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
@@ -39,13 +42,8 @@ class AlbumScreen extends GetView<AlbumController> {
         itemCount: controller.albumList.length,
         itemBuilder: (context, index) {
           AlbumModel album = controller.albumList[index];
-          return Feed(
-            author: album.name,
-            profile: album.profileData,
-            dateTime: album.dateTime,
-            content: album.content,
-            images: album.imagesData,
-          );
+          String tag = album.id.toString();
+          return Feed(id: tag);
         },
       ),
     );

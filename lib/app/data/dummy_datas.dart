@@ -34,6 +34,7 @@ class DummyDatas {
 
   static List<AlbumModel> albumList = [
     AlbumModel(
+        id: 2,
         name: '이호철 원장님',
         profile: 'assets/images/test_owner_avatar.jpg',
         dateTime: '5분전',
@@ -43,6 +44,7 @@ class DummyDatas {
           'assets/images/test_album_3.png',
         ]),
     AlbumModel(
+        id: 1,
         name: '박소라 선생님',
         profile: 'assets/images/test_teacher_avatar.png',
         dateTime: '2021년 11월 28일',
@@ -51,6 +53,7 @@ class DummyDatas {
           'assets/images/test_album_1.png',
         ]),
     AlbumModel(
+        id: 0,
         name: '박소라 선생님',
         profile: 'assets/images/test_teacher_avatar.png',
         dateTime: '2021년 10월 28일',
