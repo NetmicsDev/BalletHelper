@@ -1,8 +1,11 @@
+import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
+import 'package:ballet_helper/app/ui/values/strings.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/menu_button.dart';
+import 'package:ballet_helper/app/ui/widgets/buttons/navigate_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
@@ -10,25 +13,68 @@ import 'package:get/route_manager.dart';
 class HomeScreen extends GetView<MainController> {
   HomeScreen({Key? key}) : super(key: key);
 
+  double toolbarHeight = 40;
+  double headerHeight = Get.height * 0.2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 40,
+        toolbarHeight: toolbarHeight,
         elevation: 0,
       ),
       endDrawerEnableOpenDragGesture: false,
-      endDrawer: Drawer(
-        child: Center(
-          child: Text('MENU'),
-        ),
-      ),
+      endDrawer: buildDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          buildHeader(height: Get.height * 0.2),
+          buildHeader(),
           buildButtons(),
-          buildGallery()
+          buildGallery(),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDrawer() {
+    late String userType;
+    switch (controller.userType) {
+      case UserType.parent:
+        userType = Strings.parent;
+        break;
+      case UserType.teacher:
+        userType = Strings.teacher;
+        break;
+      case UserType.owner:
+        userType = Strings.owner;
+        break;
+    }
+    return Container(
+      width: Get.width * 0.75,
+      color: AppColors.secondaryColor,
+      child: Column(
+        children: [
+          Container(
+              color: AppColors.primaryColor,
+              height: toolbarHeight + headerHeight,
+              child: Center(
+                  child: Text(
+                userType,
+                style: TextStyles.buttonDarkTitleStyle,
+              ))),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                NavigateButton(title: '아이 정보 보기'),
+                NavigateButton(title: 'FAQ'),
+                NavigateButton(title: '권한 전환'),
+                NavigateButton(title: '탈퇴'),
+                NavigateButton(title: '약관'),
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -36,10 +82,9 @@ class HomeScreen extends GetView<MainController> {
 
   Widget buildHeader({double? height}) {
     final userData = controller.userData;
-    final _height = height ?? Get.height / 5;
     return Container(
       color: AppColors.primaryColor,
-      height: _height,
+      height: headerHeight,
       child: Stack(
         children: [
           Container(
@@ -74,7 +119,7 @@ class HomeScreen extends GetView<MainController> {
                   ],
                 ),
                 CircleAvatar(
-                  radius: _height / 2 - 6,
+                  radius: headerHeight / 2 - 6,
                   backgroundColor: Colors.white,
                   backgroundImage: userData.profileData as ImageProvider,
                 )

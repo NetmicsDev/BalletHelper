@@ -43,7 +43,7 @@ class MenuButton extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyles.menuButtonStyle,
+                  style: TextStyles.buttonMenuStyle,
                 ),
                 Image(
                   image: AssetImage('assets/images/flutter_logo.png'),

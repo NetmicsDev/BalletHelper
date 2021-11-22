@@ -45,7 +45,7 @@ class TextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static const menuButtonStyle = TextStyle(
+  static const buttonMenuStyle = TextStyle(
     color: AppColors.brightTextColor,
     fontSize: 16,
     fontWeight: FontWeight.bold,
@@ -61,5 +61,11 @@ class TextStyles {
   static const dateTimeStyle = TextStyle(
     color: AppColors.subtitleColor,
     fontSize: 13,
+  );
+
+  static const buttonNavigateStyle = TextStyle(
+    color: AppColors.primaryDarkColor,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
   );
 }
