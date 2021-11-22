@@ -28,7 +28,11 @@ class MenuButton extends StatelessWidget {
         splashColor: Colors.white.withOpacity(0.5),
         highlightColor: color.withOpacity(0.5),
         onTap: () {
-          Get.toNamed(routeName);
+          try {
+            Get.toNamed(routeName);
+          } catch (err) {
+            Get.defaultDialog(title: '오류', content: Text('아직 구현이 안된 페이지 입니다'));
+          }
         },
         child: Container(
             width: size,
