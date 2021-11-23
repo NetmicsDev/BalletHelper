@@ -1,5 +1,8 @@
+import 'package:ballet_helper/app/controller/login_controller.dart';
+import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
+import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/bulletin.dart';
@@ -32,25 +35,39 @@ class NoticeScreen extends GetView<NoticeController> {
           )
         ],
       ),
+      floatingActionButton:
+          Get.find<MainController>().userType != UserType.parent
+              ? FloatingActionButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.noticePost);
+                  },
+                  child: Icon(
+                    Icons.post_add,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  backgroundColor: AppColors.primaryColor,
+                )
+              : null,
       backgroundColor: AppColors.secondaryColor,
-      body: ListView.builder(
-        itemCount: controller.noticeList.length,
-        itemBuilder: (context, index) {
-          NoticeModel notice = controller.noticeList[index];
-          return Bulletin(
-            author: notice.name,
-            profile: notice.profileData != null
-                ? notice.profileData as ImageProvider
-                : null,
-            dateTime: notice.dateTime,
-            title: notice.title,
-            content: notice.content,
-            image: notice.imageData != null
-                ? notice.imageData as ImageProvider
-                : null,
-          );
-        },
-      ),
+      body: Obx(() => ListView.builder(
+            itemCount: controller.noticeList.length,
+            itemBuilder: (context, index) {
+              NoticeModel notice = controller.noticeList[index];
+              return Bulletin(
+                author: notice.name,
+                profile: notice.profileData != null
+                    ? notice.profileData as ImageProvider
+                    : null,
+                dateTime: notice.dateTime,
+                title: notice.title,
+                content: notice.content,
+                image: notice.imageData != null
+                    ? notice.imageData as ImageProvider
+                    : null,
+              );
+            },
+          )),
     );
   }
 }

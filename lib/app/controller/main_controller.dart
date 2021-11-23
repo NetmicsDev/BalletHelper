@@ -20,10 +20,27 @@ class MainController extends GetxController {
   List<ImageModel> get imageList =>
       isPreview ? getDummyImageList() : getImageList();
 
+  String get userName {
+    switch (userType) {
+      case UserType.parent:
+        return userData.name!;
+      case UserType.teacher:
+        return '${userData.name} 쌤';
+      case UserType.owner:
+        return '${userData.name} 원장님';
+      default:
+        return userData.name!;
+    }
+  }
+
   getDummyUserData() {
     switch (userType) {
       case UserType.parent:
         return DummyDatas.parent;
+      case UserType.teacher:
+        return DummyDatas.teacher;
+      case UserType.owner:
+        return DummyDatas.owner;
       default:
         return DummyDatas.parent;
     }

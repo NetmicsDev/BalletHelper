@@ -7,6 +7,7 @@ import 'package:ballet_helper/app/ui/screen/album_screen.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
+import 'package:ballet_helper/app/ui/screen/notice_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/notice_screen.dart';
 import 'package:ballet_helper/app/ui/screen/preview_screen.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -42,6 +43,12 @@ class Pages {
       binding: BindingsBuilder(() {
         Get.put(NoticeController());
       }),
+    ),
+    GetPage(
+      name: Routes.noticePost,
+      page: () => NoticePostScreen(),
+      transition: Transition.topLevel,
+      transitionDuration: Duration(seconds: 1),
     ),
     GetPage(
       name: Routes.album,

@@ -82,6 +82,8 @@ class HomeScreen extends GetView<MainController> {
 
   Widget buildHeader({double? height}) {
     final userData = controller.userData;
+    late String name;
+
     return Container(
       color: AppColors.primaryColor,
       height: headerHeight,
@@ -90,9 +92,32 @@ class HomeScreen extends GetView<MainController> {
           Container(
             alignment: Alignment.topLeft,
             margin: const EdgeInsets.only(left: 12.0),
-            child: Text(
-              userData.academyName ?? '',
-              style: TextStyles.academyNameStyle,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  userData.academyName ?? '',
+                  style: TextStyles.academyNameStyle,
+                ),
+                SizedBox(height: 16.0),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      userData.branchName ?? '',
+                      style: TextStyles.brightContentStyle,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      userData.className ?? '',
+                      style: TextStyles.brightContentStyle,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           Container(
@@ -108,7 +133,7 @@ class HomeScreen extends GetView<MainController> {
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   children: [
                     Text(
-                      userData.name ?? '',
+                      controller.userName,
                       style: TextStyles.brightContentStyle,
                     ),
                     const Text(
@@ -123,26 +148,6 @@ class HomeScreen extends GetView<MainController> {
                   backgroundColor: Colors.white,
                   backgroundImage: userData.profileData as ImageProvider,
                 )
-              ],
-            ),
-          ),
-          Container(
-            alignment: Alignment.bottomLeft,
-            margin: const EdgeInsets.only(left: 12.0, bottom: 12.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              textBaseline: TextBaseline.alphabetic,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              children: [
-                Text(
-                  userData.branchName ?? '',
-                  style: TextStyles.brightContentStyle,
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  userData.className ?? '',
-                  style: TextStyles.brightContentStyle,
-                ),
               ],
             ),
           ),

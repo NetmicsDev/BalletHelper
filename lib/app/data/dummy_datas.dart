@@ -12,6 +12,20 @@ class DummyDatas {
     branchName: '판교점',
     className: 'A반',
   );
+  static UserModel teacher = UserModel(
+    name: '박소라',
+    profile: 'assets/images/test_teacher_avatar.png',
+    academyName: '이화 YSM',
+    branchName: '판교점',
+    className: 'A반',
+  );
+  static UserModel owner = UserModel(
+    name: '이호철',
+    profile: 'assets/images/test_owner_avatar.jpg',
+    academyName: '이화 YSM',
+    branchName: '판교점',
+    className: 'A반',
+  );
 
   static List<ImageModel> imageList = List.filled(
       15, ImageModel(id: 0, uri: 'assets/images/test_grid_image.png'));
