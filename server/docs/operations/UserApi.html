@@ -1,0 +1,328 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="userLoginGet"></a>userLoginGet</h2>
+  <hr>
+  <p></p>
+  <p>회원 (선생님, 관리자) 로그인</p>
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/login</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="User"><a href="">User</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">email</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">password</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description"></p>
+	  </li>
+  </ul>
+  <h2><a name="userOwnersGet"></a>userOwnersGet</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/owners</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Owner"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="userOwnersPost"></a>userOwnersPost</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/owners</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="code_body"><a href="">code_body</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">User_owners_body(User_owners_body)</span>
+      
+      <p class="param-description">Created user object</p>
+	  </li>
+  </ul>
+  <h2><a name="userOwnersUidGet"></a>userOwnersUidGet</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/owners/{uid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Owner"><a href="">Owner</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">uid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The user uid for login</p>
+	  </li>
+  </ul>
+  <h2><a name="userOwnersUidPut"></a>userOwnersUidPut</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/owners/{uid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="owners_uid_body"><a href="">owners_uid_body</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">uid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The user uid for login</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Owners_uid_body(Owners_uid_body)</span>
+      
+      <p class="param-description">수정할 정보</p>
+	  </li>
+  </ul>
+  <h2><a name="userParentsGet"></a>userParentsGet</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/parents</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_1"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="userParentsPost"></a>userParentsPost</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/parents</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="code_body"><a href="">code_body</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">User_parents_body(User_parents_body)</span>
+      
+      <p class="param-description">Created user object</p>
+	  </li>
+  </ul>
+  <h2><a name="userParentsUidGet"></a>userParentsUidGet</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/parents/{uid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_2"><a href="">inline_response_200_2</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">uid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The user uid for login</p>
+	  </li>
+  </ul>
+  <h2><a name="userParentsUidPut"></a>userParentsUidPut</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/parents/{uid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="parents_uid_body"><a href="">parents_uid_body</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">uid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The user uid for login</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Parents_uid_body(Parents_uid_body)</span>
+      
+      <p class="param-description">수정할 정보</p>
+	  </li>
+  </ul>
+  <h2><a name="userTeachersGet"></a>userTeachersGet</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/teachers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Teacher"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="userTeachersPost"></a>userTeachersPost</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/teachers</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="code_body"><a href="">code_body</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">User_teachers_body(User_teachers_body)</span>
+      
+      <p class="param-description">Created user object</p>
+	  </li>
+  </ul>
+  <h2><a name="userTeachersUidGet"></a>userTeachersUidGet</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/teachers/{uid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="inline_response_200_3"><a href="">inline_response_200_3</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">uid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The user uid for login</p>
+	  </li>
+  </ul>
+  <h2><a name="userTeachersUidPut"></a>userTeachersUidPut</h2>
+  <hr>
+  <p></p>
+  
+  <h3 class="section">URL</h3>
+  <code>https://virtserver.swaggerhub.com/SnoopyKim/BalletHelper/1.0.0/user/teachers/{uid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>PUT</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="teachers_uid_body"><a href="">teachers_uid_body</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">uid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The user uid for login</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Teachers_uid_body(Teachers_uid_body)</span>
+      
+      <p class="param-description">수정할 정보</p>
+	  </li>
+  </ul>
+</div>
