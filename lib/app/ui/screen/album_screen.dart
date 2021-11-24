@@ -47,7 +47,7 @@ class AlbumScreen extends GetView<AlbumController> {
                     Get.toNamed(Routes.albumPost);
                   },
                   child: Icon(
-                    Icons.add_photo_alternate_outlined,
+                    Icons.post_add,
                     color: Colors.white,
                     size: 30,
                   ),

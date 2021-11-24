@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -54,8 +55,10 @@ class AlbumModel {
   List<ImageProvider>? get imagesData => images != null
       ? images!
           .map<ImageProvider>((image) => image.contains('assets/images/')
-              ? AssetImage(image) as ImageProvider
-              : NetworkImage(image))
+              ? AssetImage(image)
+              : image.contains('image_picker')
+                  ? FileImage(File(image)) as ImageProvider
+                  : NetworkImage(image))
           .toList()
       : null;
 }

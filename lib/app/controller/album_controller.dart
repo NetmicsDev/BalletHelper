@@ -6,6 +6,7 @@ import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class AlbumController extends GetxController {
@@ -26,11 +27,25 @@ class AlbumController extends GetxController {
   RxList<AlbumModel> albumList = <AlbumModel>[].obs;
   String get selectedBranch =>
       '${mainController.userData.branchName} ${mainController.userData.className}';
+
+  final ImagePicker _picker = ImagePicker();
+  final List<String> imageList = <String>[].obs;
   final contentInputController = TextEditingController();
+
+  void pickImages() async {
+    final List<XFile>? images = await _picker.pickMultiImage();
+    if (images != null) {
+      imageList.addAll(images.map((e) => e.path).toList());
+    }
+  }
+
+  void deleteImage(String image) {
+    imageList.remove(image);
+  }
 
   addAlbum() {
     final content = contentInputController.text;
-    if (content == '') {
+    if (imageList.isEmpty || content == '') {
       return false;
     }
     final data = AlbumModel(
@@ -39,8 +54,9 @@ class AlbumController extends GetxController {
         profile: mainController.userData.profile,
         dateTime: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
         content: contentInputController.text,
-        images: []);
+        images: List.from(imageList));
     isPreview ? albumList.insert(0, data) : () {};
+    imageList.clear();
     contentInputController.clear();
     return true;
   }
