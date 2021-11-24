@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/controller/feed_controller.dart';
+import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
+import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/bulletin.dart';
@@ -38,14 +40,29 @@ class AlbumScreen extends GetView<AlbumController> {
           )
         ],
       ),
-      body: ListView.builder(
-        itemCount: controller.albumList.length,
-        itemBuilder: (context, index) {
-          AlbumModel album = controller.albumList[index];
-          String tag = album.id.toString();
-          return Feed(id: tag);
-        },
-      ),
+      floatingActionButton:
+          controller.mainController.userType != UserType.parent
+              ? FloatingActionButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.albumPost);
+                  },
+                  child: Icon(
+                    Icons.add_photo_alternate_outlined,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  backgroundColor: AppColors.primaryColor,
+                )
+              : null,
+      body: Obx(() => ListView.builder(
+            itemCount: controller.albumList.length,
+            itemBuilder: (context, index) {
+              AlbumModel album = controller.albumList[index];
+              String tag = album.id.toString();
+              Get.put(FeedController(album), tag: tag);
+              return Feed(id: tag);
+            },
+          )),
     );
   }
 }

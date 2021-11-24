@@ -61,6 +61,7 @@ class Feed extends StatelessWidget {
             options: CarouselOptions(
               aspectRatio: 1 / 1,
               viewportFraction: 1,
+              initialPage: controller.imageIndex,
               enlargeCenterPage: true,
               enlargeStrategy: CenterPageEnlargeStrategy.scale,
               enableInfiniteScroll: false,

@@ -36,7 +36,7 @@ class NoticeScreen extends GetView<NoticeController> {
         ],
       ),
       floatingActionButton:
-          Get.find<MainController>().userType != UserType.parent
+          controller.mainController.userType != UserType.parent
               ? FloatingActionButton(
                   onPressed: () {
                     Get.toNamed(Routes.noticePost);

@@ -3,6 +3,7 @@ import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/screen/album_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/album_screen.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
@@ -57,6 +58,12 @@ class Pages {
       binding: BindingsBuilder(() {
         Get.put(AlbumController());
       }),
+    ),
+    GetPage(
+      name: Routes.albumPost,
+      page: () => AlbumPostScreen(),
+      transition: Transition.cupertinoDialog,
+      // transitionDuration: Duration(milliseconds: 500),
     ),
   ];
 }
