@@ -54,15 +54,23 @@ class AlbumScreen extends GetView<AlbumController> {
                   backgroundColor: AppColors.primaryColor,
                 )
               : null,
-      body: Obx(() => ListView.builder(
-            itemCount: controller.albumList.length,
-            itemBuilder: (context, index) {
-              AlbumModel album = controller.albumList[index];
-              String tag = album.id.toString();
-              Get.put(FeedController(album), tag: tag);
-              return Feed(id: tag);
-            },
-          )),
+      body: Obx(() {
+        for (var element in controller.albumList) {
+          log(element.content!);
+        }
+        return ListView.builder(
+          itemCount: controller.albumList.length,
+          itemBuilder: (context, index) {
+            AlbumModel album = controller.albumList[index];
+            String tag = album.id.toString();
+            bool isExist = Get.isRegistered<FeedController>(tag: album.id);
+            isExist
+                ? Get.find<FeedController>(tag: album.id).setData(album)
+                : Get.put(FeedController(album), tag: tag);
+            return Feed(id: tag);
+          },
+        );
+      }),
     );
   }
 }

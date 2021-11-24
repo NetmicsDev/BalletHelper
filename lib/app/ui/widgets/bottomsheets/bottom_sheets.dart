@@ -5,7 +5,7 @@ import 'package:get/route_manager.dart';
 
 class BottomSheets {
   static Widget select({
-    required String title,
+    String? title,
     required List<String> options,
     required Function(int) onSelect,
   }) {

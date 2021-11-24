@@ -2,10 +2,9 @@ import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class BotttomSheetWrapper extends StatelessWidget {
-  final String title;
+  final String? title;
   final Widget child;
-  const BotttomSheetWrapper(
-      {Key? key, required this.title, required this.child})
+  const BotttomSheetWrapper({Key? key, this.title, required this.child})
       : super(key: key);
 
   @override
@@ -20,13 +19,15 @@ class BotttomSheetWrapper extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 20),
-            child: Text(
-              title,
-              style: TextStyles.bottomSheetTitleStyle,
-            ),
-          ),
+          title != null
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 20),
+                  child: Text(
+                    title!,
+                    style: TextStyles.bottomSheetTitleStyle,
+                  ),
+                )
+              : const SizedBox.shrink(),
           child
         ],
       ),

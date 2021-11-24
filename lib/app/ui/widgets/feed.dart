@@ -3,10 +3,12 @@ import 'dart:developer';
 import 'package:ballet_helper/app/controller/feed_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
+import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 
 class Feed extends StatelessWidget {
   final String id;
@@ -34,24 +36,27 @@ class Feed extends StatelessWidget {
                 backgroundImage: controller.profile,
                 radius: 25.0,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      controller.author,
-                      style: TextStyles.authorStyle,
-                    ),
-                    Text(
-                      controller.dateTime,
-                      style: TextStyles.dateTimeStyle,
-                    ),
-                  ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        controller.author,
+                        style: TextStyles.authorStyle,
+                      ),
+                      Text(
+                        controller.dateTime,
+                        style: TextStyles.dateTimeStyle,
+                      ),
+                    ],
+                  ),
                 ),
-              )
+              ),
+              buildOption(),
             ],
           ),
         ),
@@ -92,7 +97,7 @@ class Feed extends StatelessWidget {
   Widget buildIndicator() {
     return controller.images.length > 1
         ? Container(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
+            padding: EdgeInsets.symmetric(vertical: 10.0),
             alignment: Alignment.center,
             child: Obx(() => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +111,7 @@ class Feed extends StatelessWidget {
                                 i != controller.images.length - 1);
                     final double dotSize = visible
                         ? !isSide
-                            ? 8
+                            ? 7
                             : 5
                         : 0;
                     return AnimatedContainer(
@@ -124,5 +129,47 @@ class Feed extends StatelessWidget {
                 )),
           )
         : const SizedBox.shrink();
+  }
+
+  Widget buildOption() {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        Get.bottomSheet(BottomSheets.select(
+          options: ['수정', '삭제'],
+          onSelect: (idx) {
+            idx == 0 ? controller.fix() : controller.delete();
+          },
+        ));
+      },
+      child: Container(
+        width: 20,
+        height: 36,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 4.5,
+              height: 4.5,
+              decoration:
+                  BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+            ),
+            Container(
+              width: 4.5,
+              height: 4.5,
+              decoration:
+                  BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+            ),
+            Container(
+              width: 4.5,
+              height: 4.5,
+              decoration:
+                  BoxDecoration(color: Colors.black, shape: BoxShape.circle),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

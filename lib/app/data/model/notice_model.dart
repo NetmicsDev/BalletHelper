@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
 class NoticeModel {
@@ -55,9 +56,6 @@ class NoticeModel {
           ? AssetImage(profile!) as ImageProvider
           : NetworkImage(profile!))
       : null;
-  ImageProvider? get imageData => image != null
-      ? (image!.contains('assets/images/')
-          ? AssetImage(image!) as ImageProvider
-          : NetworkImage(image!))
-      : null;
+  ImageProvider? get imageData =>
+      image != null ? ImageUtils.pathToImage(image) : null;
 }

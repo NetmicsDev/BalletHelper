@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
+import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -52,7 +53,7 @@ class AlbumPostScreen extends GetView<AlbumController> {
                         )),
                     TextButton(
                         onPressed: () async {
-                          final bool result = controller.addAlbum();
+                          final bool result = controller.post();
                           result
                               ? Get.back()
                               : Get.defaultDialog(
@@ -152,7 +153,10 @@ class AlbumPostScreen extends GetView<AlbumController> {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Center(child: Image.file(File(image))),
+          Center(
+              child: Image(
+            image: ImageUtils.pathToImage(image),
+          )),
           Positioned(
             top: -6,
             right: -6,

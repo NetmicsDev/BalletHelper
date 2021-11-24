@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
 class AlbumModel {
-  int? id;
+  String? id;
   String? name;
   String? profile;
   String? dateTime;
@@ -54,11 +55,7 @@ class AlbumModel {
       : null;
   List<ImageProvider>? get imagesData => images != null
       ? images!
-          .map<ImageProvider>((image) => image.contains('assets/images/')
-              ? AssetImage(image)
-              : image.contains('image_picker')
-                  ? FileImage(File(image)) as ImageProvider
-                  : NetworkImage(image))
+          .map<ImageProvider>((image) => ImageUtils.pathToImage(image))
           .toList()
       : null;
 }
