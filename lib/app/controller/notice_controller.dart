@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -14,7 +15,6 @@ class NoticeController extends GetxController {
   void onInit() {
     super.onInit();
     noticeList.addAll(isPreview ? getDummyNoticeData() : getNoticeData());
-    selectedBranch.value = mainController.userData.branchName!;
   }
 
   @override
@@ -23,17 +23,28 @@ class NoticeController extends GetxController {
   }
 
   final RxList<NoticeModel> noticeList = <NoticeModel>[].obs;
-  final RxString selectedBranch = ''.obs;
+  String get selectedBranch =>
+      '${mainController.userData.branchName} ${mainController.userData.className}';
+  final titleInputController = TextEditingController();
+  final contentInputController = TextEditingController();
 
-  addNotice({required String title, required String content}) {
+  addNotice() {
+    final title = titleInputController.text;
+    final content = contentInputController.text;
+    if (title == '' || content == '') {
+      return false;
+    }
     final data = NoticeModel(
       name: mainController.userData.name,
       profile: mainController.userData.profile,
       dateTime: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
-      title: title,
-      content: content,
+      title: titleInputController.text,
+      content: contentInputController.text,
     );
     isPreview ? noticeList.insert(0, data) : () {};
+    titleInputController.clear();
+    contentInputController.clear();
+    return true;
   }
 
   getDummyNoticeData() {

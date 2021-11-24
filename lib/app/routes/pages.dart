@@ -47,8 +47,8 @@ class Pages {
     GetPage(
       name: Routes.noticePost,
       page: () => NoticePostScreen(),
-      transition: Transition.topLevel,
-      transitionDuration: Duration(seconds: 1),
+      transition: Transition.cupertinoDialog,
+      // transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: Routes.album,

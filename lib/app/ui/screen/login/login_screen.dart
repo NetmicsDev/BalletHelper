@@ -26,6 +26,7 @@ class LoginScreen extends GetView<LoginController> {
         backgroundColor: AppColors.scaffoldBackgroundColor,
         body: TabBarView(
           controller: controller.pageController,
+          physics: const NeverScrollableScrollPhysics(),
           children: controller.pages.map((name) {
             late final Widget page;
             switch (name) {
