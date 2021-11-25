@@ -32,6 +32,7 @@ class AlbumController extends GetxController {
   AlbumModel? postModel;
   final ImagePicker _picker = ImagePicker();
   final List<String> imageList = <String>[].obs;
+  final List<String> studentList = <String>['김재훈', '구제연', '아이유'].obs;
   final contentInputController = TextEditingController();
 
   void pickImages() async {

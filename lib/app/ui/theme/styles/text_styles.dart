@@ -74,4 +74,15 @@ class TextStyles {
     fontWeight: FontWeight.bold,
     letterSpacing: 2,
   );
+
+  static const chipDarkStyle = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    color: AppColors.primaryColor,
+  );
+  static const chipBrightStyle = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.bold,
+    color: AppColors.brightTextColor,
+  );
 }
