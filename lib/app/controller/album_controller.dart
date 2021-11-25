@@ -4,6 +4,7 @@ import 'package:ballet_helper/app/controller/feed_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
+import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ class AlbumController extends GetxController {
   AlbumModel? postModel;
   final ImagePicker _picker = ImagePicker();
   final List<String> imageList = <String>[].obs;
-  final List<String> studentList = <String>['김재훈', '구제연', '아이유'].obs;
+  final List<StudentModel> studentList = <StudentModel>[].obs;
   final contentInputController = TextEditingController();
 
   void pickImages() async {
@@ -46,9 +47,16 @@ class AlbumController extends GetxController {
     imageList.remove(image);
   }
 
+  void setStudents(List<StudentModel> students) {
+    studentList.clear();
+    students.sort((s1, s2) => s1.name!.compareTo(s2.name!));
+    studentList.addAll(students);
+  }
+
   initPostData() {
     postModel = null;
     imageList.clear();
+    studentList.clear();
     contentInputController.clear();
   }
 
@@ -73,8 +81,8 @@ class AlbumController extends GetxController {
         content: contentInputController.text,
         images: List.from(imageList));
     isPreview ? albumList.insert(0, data) : () {};
-    imageList.clear();
-    contentInputController.clear();
+
+    initPostData();
     return true;
   }
 
@@ -94,9 +102,7 @@ class AlbumController extends GetxController {
     isPreview ? (albumList[index] = data) : () {};
     Get.find<FeedController>(tag: postModel!.id).refresh();
 
-    postModel = null;
-    imageList.clear();
-    contentInputController.clear();
+    initPostData();
     return true;
   }
 

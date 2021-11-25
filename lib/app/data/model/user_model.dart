@@ -1,3 +1,4 @@
+import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
 class UserModel {
@@ -37,9 +38,6 @@ class UserModel {
     return data;
   }
 
-  Object? get profileData => profile != null
-      ? (profile!.contains('assets/images/')
-          ? AssetImage(profile!)
-          : NetworkImage(profile!))
-      : null;
+  Object? get profileData =>
+      profile != null ? ImageUtils.pathToImage(profile) : null;
 }

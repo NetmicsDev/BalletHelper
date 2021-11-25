@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/image_model.dart';
+import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,8 @@ class MainController extends GetxController {
   UserModel get userData => isPreview ? getDummyUserData() : getUserData();
   List<ImageModel> get imageList =>
       isPreview ? getDummyImageList() : getImageList();
+  List<StudentModel> get studentList =>
+      isPreview ? getDummyStudentList() : getStudentList();
 
   String get userName {
     switch (userType) {
@@ -55,6 +58,14 @@ class MainController extends GetxController {
   }
 
   getImageList() {
+    return [];
+  }
+
+  getDummyStudentList() {
+    return DummyDatas.studentList;
+  }
+
+  getStudentList() {
     return [];
   }
 }

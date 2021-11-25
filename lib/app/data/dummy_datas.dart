@@ -3,6 +3,7 @@ import 'package:ballet_helper/app/data/model/notice_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 
 import 'model/album_model.dart';
+import 'model/student_model.dart';
 
 class DummyDatas {
   static UserModel parent = UserModel(
@@ -86,5 +87,72 @@ class DummyDatas {
           'assets/images/test_album_2.png',
           'assets/images/test_album_3.png',
         ]),
+  ];
+
+  static List<StudentModel> studentList = [
+    StudentModel(
+      id: '0',
+      name: '김재훈',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '1',
+      name: '구제연',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '2',
+      name: '아이유',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '3',
+      name: '어이유',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '4',
+      name: '나에유',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '5',
+      name: '너에유',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '5',
+      name: '너에유',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    ),
+    StudentModel(
+      id: '5',
+      name: '너에유',
+      profile: 'assets/images/test_student_avatar.png',
+      academyName: '이화 YSM',
+      branchName: '판교점',
+      className: 'A반',
+    )
   ];
 }

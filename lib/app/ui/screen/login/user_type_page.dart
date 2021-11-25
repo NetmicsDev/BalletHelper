@@ -55,16 +55,15 @@ class _UserTypePageState extends State<UserTypePage> {
     );
   }
 
-  showUserTypeModal() {
-    Get.bottomSheet(BottomSheets.select(
+  showUserTypeModal() async {
+    final result = await Get.bottomSheet(BottomSheets.select(
       title: '어떤 회원으로 체험하시겠어요?',
       options: _controller.userTypes.map<String>((e) => e['label']).toList(),
-      onSelect: (idx) async {
-        Get.put(MainController(
-            isPreview: true, userType: _controller.userTypes[idx]['type']));
-        await Get.toNamed(Routes.preview, arguments: idx);
-        Get.delete<MainController>();
-      },
     ));
+    if (result == null) return;
+    Get.put(MainController(
+        isPreview: true, userType: _controller.userTypes[result]['type']));
+    await Get.toNamed(Routes.preview, arguments: result);
+    Get.delete<MainController>();
   }
 }

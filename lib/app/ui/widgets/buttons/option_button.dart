@@ -18,11 +18,12 @@ class OptionButton extends StatelessWidget {
     final double dotSize = height / 8;
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () {
-        Get.bottomSheet(BottomSheets.select(
-          options: options,
-          onSelect: onSelected,
-        ));
+      onTap: () async {
+        final result =
+            await Get.bottomSheet(BottomSheets.select(options: options));
+        if (result != null) {
+          onSelected(result);
+        }
       },
       child: Container(
         width: 20,
