@@ -25,8 +25,24 @@ class NoticeController extends GetxController {
   final RxList<NoticeModel> noticeList = <NoticeModel>[].obs;
   String get selectedBranch =>
       '${mainController.userData.branchName} ${mainController.userData.className}';
+
+  NoticeModel? noticeModel;
   final titleInputController = TextEditingController();
   final contentInputController = TextEditingController();
+
+  initPostData() {
+    noticeModel = null;
+    titleInputController.clear();
+    contentInputController.clear();
+  }
+
+  setDataForFix(NoticeModel data) {
+    noticeModel = data;
+    titleInputController.text = data.title!;
+    contentInputController.text = data.content!;
+  }
+
+  bool post() => noticeModel != null ? fixNotice() : addNotice();
 
   addNotice() {
     final title = titleInputController.text;
@@ -42,9 +58,34 @@ class NoticeController extends GetxController {
       content: contentInputController.text,
     );
     isPreview ? noticeList.insert(0, data) : () {};
-    titleInputController.clear();
-    contentInputController.clear();
+
+    initPostData();
     return true;
+  }
+
+  fixNotice() {
+    final title = titleInputController.text;
+    final content = contentInputController.text;
+    if (title == '' || content == '') {
+      return false;
+    }
+    final data = NoticeModel(
+      id: noticeModel!.id,
+      name: noticeModel!.name,
+      profile: noticeModel!.profile,
+      dateTime: noticeModel!.dateTime,
+      title: titleInputController.text,
+      content: contentInputController.text,
+    );
+    int index = noticeList.indexOf(noticeModel);
+    isPreview ? (noticeList[index] = data) : () {};
+
+    initPostData();
+    return true;
+  }
+
+  deleteNotice(NoticeModel notice) {
+    noticeList.remove(notice);
   }
 
   getDummyNoticeData() {

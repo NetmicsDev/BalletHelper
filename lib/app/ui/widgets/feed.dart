@@ -4,6 +4,7 @@ import 'package:ballet_helper/app/controller/feed_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
+import 'package:ballet_helper/app/ui/widgets/buttons/option_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
@@ -56,7 +57,14 @@ class Feed extends StatelessWidget {
                   ),
                 ),
               ),
-              buildOption(),
+              controller.isMine
+                  ? OptionButton(
+                      options: ['수정', '삭제'],
+                      onSelected: (idx) {
+                        idx == 0 ? controller.fix() : controller.delete();
+                      },
+                    )
+                  : const SizedBox.shrink(),
             ],
           ),
         ),
@@ -129,47 +137,5 @@ class Feed extends StatelessWidget {
                 )),
           )
         : const SizedBox.shrink();
-  }
-
-  Widget buildOption() {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        Get.bottomSheet(BottomSheets.select(
-          options: ['수정', '삭제'],
-          onSelect: (idx) {
-            idx == 0 ? controller.fix() : controller.delete();
-          },
-        ));
-      },
-      child: Container(
-        width: 20,
-        height: 36,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 4.5,
-              height: 4.5,
-              decoration:
-                  BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-            ),
-            Container(
-              width: 4.5,
-              height: 4.5,
-              decoration:
-                  BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-            ),
-            Container(
-              width: 4.5,
-              height: 4.5,
-              decoration:
-                  BoxDecoration(color: Colors.black, shape: BoxShape.circle),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

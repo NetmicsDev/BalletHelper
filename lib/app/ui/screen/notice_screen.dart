@@ -38,18 +38,19 @@ class NoticeScreen extends GetView<NoticeController> {
       floatingActionButton:
           controller.mainController.userType != UserType.parent
               ? FloatingActionButton(
+                  elevation: 4,
                   onPressed: () {
                     Get.toNamed(Routes.noticePost);
                   },
                   child: Icon(
                     Icons.post_add,
-                    color: Colors.white,
+                    color: AppColors.primaryColor,
                     size: 30,
                   ),
-                  backgroundColor: AppColors.primaryColor,
+                  backgroundColor: Colors.white,
                 )
               : null,
-      backgroundColor: AppColors.secondaryColor,
+      backgroundColor: AppColors.primaryColor,
       body: Obx(() => ListView.builder(
             itemCount: controller.noticeList.length,
             itemBuilder: (context, index) {
@@ -65,6 +66,13 @@ class NoticeScreen extends GetView<NoticeController> {
                 image: notice.imageData != null
                     ? notice.imageData as ImageProvider
                     : null,
+                onFix: () {
+                  controller.setDataForFix(notice);
+                  Get.toNamed(Routes.noticePost);
+                },
+                onDelete: () {
+                  controller.deleteNotice(notice);
+                },
               );
             },
           )),

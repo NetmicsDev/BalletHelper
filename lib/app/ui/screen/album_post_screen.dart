@@ -67,9 +67,10 @@ class AlbumPostScreen extends GetView<AlbumController> {
                           final bool result = controller.post();
                           result
                               ? Get.back()
-                              : Get.defaultDialog(
+                              : Get.dialog(Dialogs.alert(
                                   title: '업로드 불가',
-                                  content: Text('양식을 모두 채워주세요'));
+                                  content: '양식을 모두 채워주세요',
+                                ));
                         },
                         child: const Text(
                           '완료',

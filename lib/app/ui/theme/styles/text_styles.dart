@@ -55,7 +55,7 @@ class TextStyles {
   static const authorStyle = TextStyle(
     color: AppColors.titleColor,
     fontSize: 16,
-    fontWeight: FontWeight.bold,
+    // fontWeight: FontWeight.bold,
   );
 
   static const dateTimeStyle = TextStyle(

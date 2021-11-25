@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:ballet_helper/app/controller/album_controller.dart';
+import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/widgets/feed.dart';
@@ -26,6 +27,9 @@ class FeedController extends GetxController {
   String get dateTime => _album.dateTime!;
   String get content => _album.content!;
   List<ImageProvider> get images => _album.imagesData!;
+
+  bool get isMine =>
+      author.split(' ')[0] == Get.find<MainController>().userName.split(' ')[0];
 
   final RxInt _imageIndex = 0.obs;
   int get imageIndex => _imageIndex.value;

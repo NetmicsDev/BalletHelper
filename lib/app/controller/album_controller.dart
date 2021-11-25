@@ -57,7 +57,7 @@ class AlbumController extends GetxController {
     contentInputController.text = data.content!;
   }
 
-  post() => postModel != null ? fixAlbum() : addAlbum();
+  bool post() => postModel != null ? fixAlbum() : addAlbum();
 
   addAlbum() {
     final content = contentInputController.text;
