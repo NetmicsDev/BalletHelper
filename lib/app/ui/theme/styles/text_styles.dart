@@ -68,4 +68,10 @@ class TextStyles {
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
+
+  static const buttonActionStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 2,
+  );
 }

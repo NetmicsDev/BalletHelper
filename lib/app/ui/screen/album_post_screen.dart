@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
+import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,11 +47,21 @@ class AlbumPostScreen extends GetView<AlbumController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                        onPressed: Get.back,
-                        child: const Text(
-                          '취소',
-                          style: TextStyles.buttonBrightContentStyle,
-                        )),
+                      onPressed: () async {
+                        final result = await Get.dialog(Dialogs.confirm(
+                          title: '작성 취소',
+                          content: '작성 중인 내용이 모두 사라집니다. 정말 취소하시겠습니까?',
+                        ));
+                        if (result ?? false) {
+                          controller.initPostData();
+                          Get.back();
+                        }
+                      },
+                      child: const Text(
+                        '취소',
+                        style: TextStyles.buttonBrightContentStyle,
+                      ),
+                    ),
                     TextButton(
                         onPressed: () async {
                           final bool result = controller.post();

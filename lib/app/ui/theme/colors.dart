@@ -17,4 +17,7 @@ class AppColors {
   static const darkTextColor = Colors.black;
 
   static const cardBackgroundColor = Colors.white;
+
+  static const dialogColor = Colors.white;
+  static const borderDefaultColor = Color(0xffdddddd);
 }

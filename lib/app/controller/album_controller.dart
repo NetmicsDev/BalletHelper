@@ -45,6 +45,12 @@ class AlbumController extends GetxController {
     imageList.remove(image);
   }
 
+  initPostData() {
+    postModel = null;
+    imageList.clear();
+    contentInputController.clear();
+  }
+
   setDataForFix(AlbumModel data) {
     imageList.addAll(data.images!);
     postModel = data;
