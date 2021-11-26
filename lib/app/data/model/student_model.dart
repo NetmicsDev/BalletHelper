@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ballet_helper/app/utils/image_utils.dart';
+import 'package:flutter/cupertino.dart';
 
 class StudentModel {
   String? id;
@@ -46,6 +47,6 @@ class StudentModel {
   factory StudentModel.fromJson(String source) =>
       StudentModel.fromMap(json.decode(source));
 
-  Object? get profileData =>
+  ImageProvider<Object>? get profileData =>
       profile != null ? ImageUtils.pathToImage(profile) : null;
 }

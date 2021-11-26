@@ -53,6 +53,10 @@ class AlbumController extends GetxController {
     studentList.addAll(students);
   }
 
+  void deleteStudent(StudentModel student) {
+    studentList.remove(student);
+  }
+
   initPostData() {
     postModel = null;
     imageList.clear();

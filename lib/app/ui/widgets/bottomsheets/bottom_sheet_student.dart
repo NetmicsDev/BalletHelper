@@ -51,30 +51,8 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: widget.students.length,
-                  itemBuilder: (context, index) {
-                    final student = widget.students[index];
-                    return Obx(() {
-                      final bool isSelected = selectedList.contains(student);
-                      return Container(
-                        color:
-                            isSelected ? AppColors.primaryColor : Colors.white,
-                        child: ListTile(
-                          tileColor: Colors.amber,
-                          title: Text(
-                            student.name!,
-                            style: TextStyles.buttonDarkTitleStyle.copyWith(
-                                color:
-                                    isSelected ? Colors.white : Colors.black),
-                          ),
-                          onTap: () {
-                            isSelected
-                                ? selectedList.remove(student)
-                                : selectedList.add(student);
-                          },
-                        ),
-                      );
-                    });
-                  },
+                  itemBuilder: (context, index) =>
+                      buildItem(widget.students[index]),
                 ),
               ),
             ),
@@ -82,14 +60,14 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
               margin: EdgeInsets.only(top: 20),
               child: Row(
                 children: [
-                  DialogActionButton(
-                    title: '추가',
-                    onPressed: () {
-                      Get.back(result: selectedList);
-                    },
-                    color: AppColors.primaryColor,
-                    titleColor: Colors.white,
-                  ),
+                  Obx(() => DialogActionButton(
+                        title: '추가(${selectedList.length})',
+                        onPressed: () {
+                          Get.back(result: selectedList);
+                        },
+                        color: AppColors.primaryColor,
+                        titleColor: Colors.white,
+                      )),
                 ],
               ),
             )
@@ -97,6 +75,42 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
         ),
       ),
     );
-    ;
+  }
+
+  Widget buildItem(StudentModel student) {
+    return Obx(() {
+      final bool isSelected = selectedList.contains(student);
+      return Container(
+        decoration: BoxDecoration(
+          color: isSelected
+              ? AppColors.primaryColor.withOpacity(0.3)
+              : Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundImage: student.profileData,
+          ),
+          title: Text(
+            student.name!,
+            style: TextStyles.authorStyle,
+          ),
+          trailing: isSelected
+              ? Material(
+                  elevation: 0,
+                  color: AppColors.primaryColor,
+                  borderRadius: BorderRadius.circular(6),
+                  child: SizedBox(width: 12, height: 12),
+                )
+              : null,
+          onTap: () {
+            isSelected
+                ? selectedList.remove(student)
+                : selectedList.add(student);
+          },
+        ),
+      );
+    });
   }
 }
