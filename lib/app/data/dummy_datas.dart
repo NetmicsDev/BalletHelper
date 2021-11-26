@@ -57,6 +57,40 @@ class DummyDatas {
         images: [
           'assets/images/test_album_2.png',
           'assets/images/test_album_3.png',
+        ],
+        students: [
+          StudentModel(
+            id: '2',
+            name: '아이유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '3',
+            name: '어이유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '4',
+            name: '나에유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '5',
+            name: '너에유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
         ]),
     AlbumModel(
         id: '1',
@@ -66,6 +100,24 @@ class DummyDatas {
         content: '열심열심',
         images: [
           'assets/images/test_album_1.png',
+        ],
+        students: [
+          StudentModel(
+            id: '6',
+            name: '휘발유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '7',
+            name: '올리브유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
         ]),
     AlbumModel(
         id: '0',
@@ -86,6 +138,40 @@ class DummyDatas {
           'assets/images/test_album_1.png',
           'assets/images/test_album_2.png',
           'assets/images/test_album_3.png',
+        ],
+        students: [
+          StudentModel(
+            id: '0',
+            name: '김재훈',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '1',
+            name: '구제연',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '2',
+            name: '아이유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
+          StudentModel(
+            id: '3',
+            name: '어이유',
+            profile: 'assets/images/test_student_avatar.png',
+            academyName: '이화 YSM',
+            branchName: '판교점',
+            className: 'A반',
+          ),
         ]),
   ];
 
@@ -139,16 +225,16 @@ class DummyDatas {
       className: 'A반',
     ),
     StudentModel(
-      id: '5',
-      name: '너에유',
+      id: '6',
+      name: '휘발유',
       profile: 'assets/images/test_student_avatar.png',
       academyName: '이화 YSM',
       branchName: '판교점',
       className: 'A반',
     ),
     StudentModel(
-      id: '5',
-      name: '너에유',
+      id: '7',
+      name: '올리브유',
       profile: 'assets/images/test_student_avatar.png',
       academyName: '이화 YSM',
       branchName: '판교점',

@@ -79,7 +79,11 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
 
   Widget buildItem(StudentModel student) {
     return Obx(() {
-      final bool isSelected = selectedList.contains(student);
+      final bool isSelected = selectedList
+              .firstWhere((e) => e.id == student.id,
+                  orElse: () => StudentModel())
+              .id !=
+          null;
       return Container(
         decoration: BoxDecoration(
           color: isSelected

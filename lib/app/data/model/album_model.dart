@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class AlbumModel {
   String? dateTime;
   String? content;
   List<String>? images;
+  List<StudentModel>? students;
 
   AlbumModel({
     this.id,
@@ -19,6 +21,7 @@ class AlbumModel {
     this.dateTime,
     this.content,
     this.images,
+    this.students,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,7 +31,8 @@ class AlbumModel {
       'profile': profile,
       'dateTime': dateTime,
       'content': content,
-      'image': images,
+      'images': images,
+      'students': students,
     };
   }
 
@@ -40,6 +44,7 @@ class AlbumModel {
       dateTime: map['dateTime'],
       content: map['content'],
       images: map['image'],
+      students: map['students'],
     );
   }
 

@@ -6,6 +6,8 @@ import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
+import 'package:ballet_helper/app/ui/widgets/chips/add_chip.dart';
+import 'package:ballet_helper/app/ui/widgets/chips/student_chip.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
@@ -210,32 +212,18 @@ class AlbumPostScreen extends GetView<AlbumController> {
             children: [
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ActionChip(
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  avatar: const Icon(
-                    Icons.add,
-                    color: AppColors.primaryColor,
-                    size: 20,
-                  ),
-                  side: const BorderSide(color: AppColors.primaryColor),
-                  backgroundColor: Colors.white,
-                  label: const Text(
-                    '학생 추가',
-                    style: TextStyles.chipDarkStyle,
-                  ),
-                  labelPadding: const EdgeInsets.only(right: 8),
-                  pressElevation: 0,
-                  onPressed: () async {
-                    final result =
-                        await Get.bottomSheet(BottomSheets.add<StudentModel>(
-                      title: '아이를 선택하세요',
-                      options: controller.mainController.studentList,
-                      selectedList: controller.studentList,
-                    ));
-                    if (result == null) return;
-                    controller.setStudents(result);
-                  },
-                ),
+                child: AddChip(
+                    title: '학생 추가',
+                    onAdd: () async {
+                      final result =
+                          await Get.bottomSheet(BottomSheets.add<StudentModel>(
+                        title: '아이를 선택하세요',
+                        options: controller.mainController.studentList,
+                        selectedList: controller.studentList,
+                      ));
+                      if (result == null) return;
+                      controller.setStudents(result);
+                    }),
               ),
               ...controller.studentList.map<Widget>(buildTag).toList(),
             ],
@@ -246,17 +234,8 @@ class AlbumPostScreen extends GetView<AlbumController> {
   Widget buildTag(StudentModel student) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Chip(
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        side: const BorderSide(color: AppColors.primaryColor),
-        backgroundColor: AppColors.primaryColor,
-        label: Text(student.name!, style: TextStyles.chipBrightStyle),
-        labelPadding: const EdgeInsets.only(left: 8),
-        deleteIcon: const Icon(
-          Icons.close,
-          size: 18,
-          color: Colors.white,
-        ),
+      child: StudentChip(
+        name: student.name!,
         onDeleted: () {
           controller.deleteStudent(student);
         },

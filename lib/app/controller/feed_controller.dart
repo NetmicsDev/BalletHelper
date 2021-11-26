@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
+import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/widgets/feed.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,6 +28,7 @@ class FeedController extends GetxController {
   String get dateTime => _album.dateTime!;
   String get content => _album.content!;
   List<ImageProvider> get images => _album.imagesData!;
+  List<StudentModel> get students => _album.students!;
 
   bool get isMine =>
       author.split(' ')[0] == Get.find<MainController>().userName.split(' ')[0];

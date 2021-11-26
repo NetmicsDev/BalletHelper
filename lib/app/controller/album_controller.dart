@@ -66,6 +66,7 @@ class AlbumController extends GetxController {
 
   setDataForFix(AlbumModel data) {
     imageList.addAll(data.images!);
+    studentList.addAll(data.students!);
     postModel = data;
     contentInputController.text = data.content!;
   }
@@ -83,7 +84,8 @@ class AlbumController extends GetxController {
         profile: mainController.userData.profile,
         dateTime: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
         content: contentInputController.text,
-        images: List.from(imageList));
+        images: List.from(imageList),
+        students: List.from(studentList));
     isPreview ? albumList.insert(0, data) : () {};
 
     initPostData();

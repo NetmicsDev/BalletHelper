@@ -5,6 +5,7 @@ import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/option_button.dart';
+import 'package:ballet_helper/app/ui/widgets/chips/student_chip.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
@@ -91,6 +92,7 @@ class Feed extends StatelessWidget {
           ),
         ),
         buildIndicator(),
+        buildTags(),
         Container(
           padding: EdgeInsets.all(16.0),
           child: Text(
@@ -105,7 +107,7 @@ class Feed extends StatelessWidget {
   Widget buildIndicator() {
     return controller.images.length > 1
         ? Container(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
             alignment: Alignment.center,
             child: Obx(() => Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -135,6 +137,21 @@ class Feed extends StatelessWidget {
                     );
                   }).toList(),
                 )),
+          )
+        : const SizedBox.shrink();
+  }
+
+  Widget buildTags() {
+    return controller.students.length > 0
+        ? Container(
+            margin: EdgeInsets.fromLTRB(
+                16, controller.images.length > 1 ? 0 : 8, 16, 0),
+            child: Wrap(
+              children: controller.students
+                  .map((e) => Transform.scale(
+                      scale: 0.9, child: StudentChip(name: e.name!)))
+                  .toList(),
+            ),
           )
         : const SizedBox.shrink();
   }
