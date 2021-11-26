@@ -1,3 +1,4 @@
+import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
 class ImageModel {
@@ -19,9 +20,5 @@ class ImageModel {
     return data;
   }
 
-  Object? get imageData => uri != null
-      ? (uri!.contains('assets/images/')
-          ? AssetImage(uri!)
-          : NetworkImage(uri!))
-      : null;
+  Object? get imageData => uri != null ? ImageUtils.pathToImage(uri!) : null;
 }

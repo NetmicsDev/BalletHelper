@@ -53,11 +53,8 @@ class AlbumModel {
   factory AlbumModel.fromJson(String source) =>
       AlbumModel.fromMap(json.decode(source));
 
-  ImageProvider? get profileData => profile != null
-      ? (profile!.contains('assets/images/')
-          ? AssetImage(profile!) as ImageProvider
-          : NetworkImage(profile!))
-      : null;
+  ImageProvider? get profileData =>
+      profile != null ? ImageUtils.pathToImage(profile!) : null;
   List<ImageProvider>? get imagesData => images != null
       ? images!
           .map<ImageProvider>((image) => ImageUtils.pathToImage(image))

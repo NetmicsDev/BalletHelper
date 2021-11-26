@@ -39,5 +39,5 @@ class UserModel {
   }
 
   Object? get profileData =>
-      profile != null ? ImageUtils.pathToImage(profile) : null;
+      profile != null ? ImageUtils.pathToImage(profile!) : null;
 }

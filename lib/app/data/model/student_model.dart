@@ -48,5 +48,5 @@ class StudentModel {
       StudentModel.fromMap(json.decode(source));
 
   ImageProvider<Object>? get profileData =>
-      profile != null ? ImageUtils.pathToImage(profile) : null;
+      profile != null ? ImageUtils.pathToImage(profile!) : null;
 }

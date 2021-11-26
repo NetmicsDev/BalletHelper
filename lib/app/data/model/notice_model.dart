@@ -51,11 +51,8 @@ class NoticeModel {
   factory NoticeModel.fromJson(String source) =>
       NoticeModel.fromMap(json.decode(source));
 
-  ImageProvider? get profileData => profile != null
-      ? (profile!.contains('assets/images/')
-          ? AssetImage(profile!) as ImageProvider
-          : NetworkImage(profile!))
-      : null;
+  ImageProvider? get profileData =>
+      profile != null ? ImageUtils.pathToImage(profile!) : null;
   ImageProvider? get imageData =>
-      image != null ? ImageUtils.pathToImage(image) : null;
+      image != null ? ImageUtils.pathToImage(image!) : null;
 }
