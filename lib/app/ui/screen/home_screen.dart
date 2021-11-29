@@ -38,15 +38,19 @@ class HomeScreen extends GetView<MainController> {
 
   Widget buildDrawer() {
     late String userType;
+    late NavigateButton privateButton;
     switch (controller.userType) {
       case UserType.parent:
         userType = Strings.parent;
+        privateButton = NavigateButton(title: '가족 정보 관리');
         break;
       case UserType.teacher:
         userType = Strings.teacher;
+        privateButton = NavigateButton(title: '원생 정보 관리');
         break;
       case UserType.owner:
         userType = Strings.owner;
+        privateButton = NavigateButton(title: '학원 관리');
         break;
     }
     return Container(
@@ -67,7 +71,8 @@ class HomeScreen extends GetView<MainController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                NavigateButton(title: '아이 정보 보기'),
+                NavigateButton(title: '내 정보'),
+                privateButton,
                 NavigateButton(title: 'FAQ'),
                 NavigateButton(title: '권한 전환'),
                 NavigateButton(title: '탈퇴'),
