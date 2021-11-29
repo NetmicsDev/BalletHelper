@@ -34,6 +34,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   ];
 
   late TabController pageController;
+  final currentPageIndex = 0.obs;
 
   UserType? currentUserType;
   String? code;
@@ -42,6 +43,9 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   void onInit() {
     super.onInit();
     pageController = TabController(length: pages.length, vsync: this);
+    pageController.addListener(() {
+      currentPageIndex.value = pageController.index;
+    });
   }
 
   @override
@@ -52,15 +56,15 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   // true -> pop을 했다. false -> pop을 할 수 없다.
   bool pop() {
-    bool isRoot = pageController.index == 0;
+    bool isRoot = currentPageIndex.value == 0;
     if (!isRoot) {
-      if (pageController.index == 5) {
+      if (currentPageIndex.value == 5) {
         pageController.index = 1;
-      } else if (pageController.index == 4 &&
+      } else if (currentPageIndex.value == 4 &&
           currentUserType == UserType.owner) {
         pageController.index = 1;
       } else {
-        pageController.index = pageController.index - 1;
+        pageController.index = currentPageIndex.value - 1;
       }
     }
     return !isRoot;
