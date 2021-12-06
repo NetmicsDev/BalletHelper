@@ -8,6 +8,8 @@ import 'model/student_model.dart';
 class DummyDatas {
   static UserModel parent = UserModel(
     name: '아이유',
+    birth: '2018-10-13',
+    phone: '010-1234-5678',
     profile: 'assets/images/test_student_avatar.png',
     academyName: '이화 YSM',
     branchName: '판교점',

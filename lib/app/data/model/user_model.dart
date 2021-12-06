@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class UserModel {
   int? id;
   String? name;
+  String? birth;
+  String? phone;
   String? profile;
   String? academyName;
   String? branchName;
@@ -12,6 +14,8 @@ class UserModel {
   UserModel({
     this.id,
     this.name,
+    this.birth,
+    this.phone,
     this.profile,
     this.academyName,
     this.branchName,
@@ -21,6 +25,8 @@ class UserModel {
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    birth = json['birth'];
+    phone = json['phone'];
     profile = json['profile'];
     academyName = json['academyName'];
     branchName = json['branchName'];
@@ -30,6 +36,8 @@ class UserModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {
       'name': name,
+      'birth': birth,
+      'phone': phone,
       'profile': profile,
       'academyName': academyName,
       'branchName': branchName,
@@ -38,6 +46,6 @@ class UserModel {
     return data;
   }
 
-  Object? get profileData =>
+  ImageProvider<Object>? get profileData =>
       profile != null ? ImageUtils.pathToImage(profile!) : null;
 }

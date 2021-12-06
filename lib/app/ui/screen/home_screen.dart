@@ -71,7 +71,10 @@ class HomeScreen extends GetView<MainController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                NavigateButton(title: '내 정보'),
+                NavigateButton(
+                  title: '내 정보',
+                  onPressed: () => Get.toNamed(Routes.myPage),
+                ),
                 privateButton,
                 NavigateButton(title: 'FAQ'),
                 NavigateButton(title: '권한 전환'),

@@ -1,6 +1,7 @@
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/my_page_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/screen/album_post_screen.dart';
@@ -8,6 +9,7 @@ import 'package:ballet_helper/app/ui/screen/album_screen.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
+import 'package:ballet_helper/app/ui/screen/my_page_screen.dart';
 import 'package:ballet_helper/app/ui/screen/notice_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/notice_screen.dart';
 import 'package:ballet_helper/app/ui/screen/preview_screen.dart';
@@ -65,5 +67,14 @@ class Pages {
       transition: Transition.cupertinoDialog,
       // transitionDuration: Duration(milliseconds: 500),
     ),
+    GetPage(
+        name: Routes.myPage,
+        page: () => MyPageScreen(),
+        transition: Transition.rightToLeft,
+        binding: BindingsBuilder(() {
+          Get.put(MyPageController());
+        })
+        // transitionDuration: Duration(milliseconds: 500),
+        ),
   ];
 }
