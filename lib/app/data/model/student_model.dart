@@ -6,16 +6,18 @@ import 'package:flutter/cupertino.dart';
 class StudentModel {
   String? id;
   String? name;
+  String? birth;
+  String? phone;
   String? profile;
-  String? academyName;
   String? branchName;
   String? className;
 
   StudentModel({
     this.id,
     this.name,
+    this.birth,
+    this.phone,
     this.profile,
-    this.academyName,
     this.branchName,
     this.className,
   });
@@ -24,8 +26,9 @@ class StudentModel {
     return {
       'id': id,
       'name': name,
+      'birth': birth,
+      'phone': phone,
       'profile': profile,
-      'academyName': academyName,
       'branchName': branchName,
       'className': className,
     };
@@ -35,8 +38,9 @@ class StudentModel {
     return StudentModel(
       id: map['id'],
       name: map['name'],
+      birth: map['birth'],
+      phone: map['phone'],
       profile: map['profile'],
-      academyName: map['academyName'],
       branchName: map['branchName'],
       className: map['className'],
     );

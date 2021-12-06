@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/image_model.dart';
+import 'package:ballet_helper/app/data/model/parent_model.dart';
 import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,15 @@ class MainController extends GetxController {
   late final bool isPreview;
   late final UserType userType;
 
-  UserModel get userData => isPreview ? getDummyUserData() : getUserData();
+  get userData => isPreview ? getDummyUserData() : getUserData();
+
+  get branchName => userType == UserType.parent
+      ? (userData as ParentModel).student!.branchName
+      : (userData as UserModel).branchName;
+  get className => userType == UserType.parent
+      ? (userData as ParentModel).student!.className
+      : (userData as UserModel).className;
+
   List<ImageModel> get imageList =>
       isPreview ? getDummyImageList() : getImageList();
   List<StudentModel> get studentList =>

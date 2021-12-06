@@ -1,5 +1,7 @@
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/data/model/parent_model.dart';
+import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
@@ -93,6 +95,7 @@ class HomeScreen extends GetView<MainController> {
 
   Widget buildHeader({double? height}) {
     final userData = controller.userData;
+
     late String name;
 
     return Container(
@@ -107,7 +110,7 @@ class HomeScreen extends GetView<MainController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  userData.academyName ?? '',
+                  '이화 YSM',
                   style: TextStyles.academyNameStyle,
                 ),
                 SizedBox(height: 16.0),
@@ -118,12 +121,12 @@ class HomeScreen extends GetView<MainController> {
                   textBaseline: TextBaseline.alphabetic,
                   children: [
                     Text(
-                      userData.branchName ?? '',
+                      controller.branchName ?? '',
                       style: TextStyles.brightContentStyle,
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      userData.className ?? '',
+                      controller.className ?? '',
                       style: TextStyles.brightContentStyle,
                     ),
                   ],

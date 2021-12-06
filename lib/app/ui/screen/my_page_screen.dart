@@ -70,13 +70,13 @@ class MyPageScreen extends GetView<MyPageController> {
                           children: [
                             Expanded(
                                 child: Text(
-                              controller.userData.branchName!,
+                              controller.branchName,
                               textAlign: TextAlign.center,
                             )),
                             Expanded(
                                 flex: 1,
                                 child: Text(
-                                  controller.userData.className!,
+                                  controller.className,
                                   textAlign: TextAlign.center,
                                 )),
                           ],

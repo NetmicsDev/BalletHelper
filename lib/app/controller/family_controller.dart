@@ -15,7 +15,7 @@ class FamilyController extends GetxController {
 
   invite() async {
     await Share.share('[학원 이름]\n'
-        '아이유의 학원 생활을 지켜보세요!\n'
+        '${Get.find<MainController>().userName}의 학원 생활을 지켜보세요!\n'
         '=> 링크를 통해 앱을 설치한 후 회원가입 화면에서 초대코드를 입력해주세요!\n'
         '(초대코드: TESTCODE)');
   }

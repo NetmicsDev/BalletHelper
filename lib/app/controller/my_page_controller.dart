@@ -1,5 +1,6 @@
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/data/model/parent_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,12 @@ import 'package:intl/intl.dart';
 class MyPageController extends GetxController {
   final _mainController = Get.find<MainController>();
   UserType get userType => _mainController.userType;
-  UserModel get userData => _mainController.userData;
+  get userData => _mainController.userData;
+  String get branchName => _mainController.branchName;
+  String get className => _mainController.className;
+
   String get birth {
-    final date = userData.birth!.split('-');
+    final date = (userData as ParentModel).student!.birth!.split('-');
     return '${date[0]}년 ${date[1]}월 ${date[2]}일';
   }
 
