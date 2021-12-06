@@ -7,4 +7,5 @@ abstract class Routes {
   static const String album = '/album';
   static const String albumPost = '/albumPost';
   static const String myPage = '/myPage';
+  static const String family = '/family';
 }

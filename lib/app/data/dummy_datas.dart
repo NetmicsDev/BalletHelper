@@ -243,4 +243,10 @@ class DummyDatas {
       className: 'A반',
     )
   ];
+
+  static List<Map<String, dynamic>> familyList = [
+    {'phone': '010-1111-1111', 'relation': '아버지'},
+    {'phone': '010-2222-2222', 'relation': '할아버지'},
+    {'phone': '010-3333-3333', 'relation': '할머니'},
+  ];
 }
