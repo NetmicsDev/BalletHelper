@@ -20,29 +20,27 @@ class DialogActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Material(
-        color: color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: color == Colors.white
-              ? BorderSide(color: AppColors.borderDefaultColor, width: 0.5)
-              : BorderSide.none,
-        ),
-        child: InkWell(
-          splashColor: Colors.transparent,
-          highlightColor: AppColors.borderDefaultColor.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(10),
-          onTap: () {
-            onPressed?.call();
-          },
-          child: SizedBox(
-            height: 40,
-            child: Center(
-              child: Text(
-                title,
-                style: TextStyles.buttonActionStyle.copyWith(color: titleColor),
-              ),
+    return Material(
+      color: color,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: color == Colors.white
+            ? BorderSide(color: AppColors.borderDefaultColor, width: 0.5)
+            : BorderSide.none,
+      ),
+      child: InkWell(
+        splashColor: Colors.transparent,
+        highlightColor: AppColors.borderDefaultColor.withOpacity(0.4),
+        borderRadius: BorderRadius.circular(10),
+        onTap: () {
+          onPressed?.call();
+        },
+        child: SizedBox(
+          height: 40,
+          child: Center(
+            child: Text(
+              title,
+              style: TextStyles.buttonActionStyle.copyWith(color: titleColor),
             ),
           ),
         ),

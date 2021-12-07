@@ -58,18 +58,14 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
             ),
             Container(
               margin: EdgeInsets.only(top: 20),
-              child: Row(
-                children: [
-                  Obx(() => DialogActionButton(
-                        title: '추가(${selectedList.length})',
-                        onPressed: () {
-                          Get.back(result: selectedList);
-                        },
-                        color: AppColors.primaryColor,
-                        titleColor: Colors.white,
-                      )),
-                ],
-              ),
+              child: Obx(() => DialogActionButton(
+                    title: '추가(${selectedList.length})',
+                    onPressed: () {
+                      Get.back(result: selectedList);
+                    },
+                    color: AppColors.primaryColor,
+                    titleColor: Colors.white,
+                  )),
             )
           ],
         ),

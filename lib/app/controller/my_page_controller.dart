@@ -48,13 +48,12 @@ class MyPageController extends GetxController {
 
   edit() async {
     if (userData.phone == phoneTEC.text) {
-      Get.dialog(Dialogs.alert(title: '수정 불가', content: '수정된 사항이 없습니다'));
+      Dialogs.alert(title: '수정 불가', content: '수정된 사항이 없습니다');
     } else {
       if (!_mainController.isPreview) {
         // TODO: 유저 정보 수정 요청
       }
-      await Get.dialog(
-          Dialogs.alert(title: '수정 완료', content: '회원님의 정보가 수정되었습니다'));
+      await Dialogs.alert(title: '수정 완료', content: '회원님의 정보가 수정되었습니다');
       Get.back();
     }
   }

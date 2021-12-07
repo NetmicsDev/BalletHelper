@@ -51,7 +51,10 @@ class HomeScreen extends GetView<MainController> {
         break;
       case UserType.teacher:
         userType = Strings.teacher;
-        privateButton = NavigateButton(title: '원생 정보 관리');
+        privateButton = NavigateButton(
+          title: '원생 관리',
+          onPressed: () => Get.toNamed(Routes.student),
+        );
         break;
       case UserType.owner:
         userType = Strings.owner;

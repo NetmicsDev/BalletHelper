@@ -43,16 +43,12 @@ class FamilyScreen extends GetView<FamilyController> {
                   );
                 },
               )),
-              Row(
-                children: [
-                  DialogActionButton(
-                    title: '가족 초대',
-                    color: AppColors.primaryColor,
-                    titleColor: Colors.white,
-                    onPressed: controller.invite,
-                  )
-                ],
-              )
+              DialogActionButton(
+                title: '가족 초대',
+                color: AppColors.primaryColor,
+                titleColor: Colors.white,
+                onPressed: controller.invite,
+              ),
             ],
           ),
         )));

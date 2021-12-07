@@ -1,13 +1,15 @@
+import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/dialog_action_button.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialog_wrapper.dart';
+import 'package:ballet_helper/app/ui/widgets/dialogs/student_info_dialogs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
 class Dialogs {
-  static alert({String? title, String? content}) {
+  static Future<T?> alert<T>({String? title, String? content}) {
     final titleWidget = title != null
         ? Center(
             child: Text(
@@ -22,7 +24,7 @@ class Dialogs {
             textAlign: TextAlign.center,
           )
         : null;
-    return DialogWrapper(
+    return Get.dialog<T>(DialogWrapper(
       title: titleWidget,
       content: contentWidget,
       actions: [
@@ -35,10 +37,10 @@ class Dialogs {
           },
         )
       ],
-    );
+    ));
   }
 
-  static confirm({String? title, String? content}) {
+  static Future<T?> confirm<T>({String? title, String? content}) {
     final titleWidget = title != null
         ? Center(
             child: Text(
@@ -53,7 +55,7 @@ class Dialogs {
             textAlign: TextAlign.center,
           )
         : null;
-    return DialogWrapper(
+    return Get.dialog<T>(DialogWrapper(
       title: titleWidget,
       content: contentWidget,
       actions: [
@@ -64,7 +66,6 @@ class Dialogs {
             Get.back(result: false);
           },
         ),
-        const SizedBox(width: 10),
         DialogActionButton(
           color: AppColors.primaryColor,
           title: '확인',
@@ -74,6 +75,10 @@ class Dialogs {
           },
         )
       ],
-    );
+    ));
+  }
+
+  static Future<T?> studentInfo<T>(StudentModel student) {
+    return Get.dialog<T>(StudentInfoDialog(student: student));
   }
 }

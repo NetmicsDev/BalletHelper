@@ -74,15 +74,11 @@ class MyPageScreen extends GetView<MyPageController> {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              DialogActionButton(
-                                title: '정보 수정',
-                                titleColor: Colors.white,
-                                color: AppColors.primaryColor,
-                                onPressed: controller.edit,
-                              )
-                            ],
+                          DialogActionButton(
+                            title: '정보 수정',
+                            titleColor: Colors.white,
+                            color: AppColors.primaryColor,
+                            onPressed: controller.edit,
                           ),
                         ],
                       ),

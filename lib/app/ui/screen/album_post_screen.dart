@@ -26,10 +26,10 @@ class AlbumPostScreen extends GetView<AlbumController> {
       );
 
   void cancel() async {
-    final result = await Get.dialog(Dialogs.confirm(
+    final result = await Dialogs.confirm(
       title: '작성 취소',
       content: '작성 중인 내용이 모두 사라집니다. 정말 취소하시겠습니까?',
-    ));
+    );
     if (result ?? false) {
       controller.initPostData();
       Get.back();
@@ -113,10 +113,10 @@ class AlbumPostScreen extends GetView<AlbumController> {
                 final bool result = controller.post();
                 result
                     ? Get.back()
-                    : Get.dialog(Dialogs.alert(
+                    : Dialogs.alert(
                         title: '업로드 불가',
                         content: '양식을 모두 채워주세요',
-                      ));
+                      );
               },
               child: const Text(
                 '완료',
