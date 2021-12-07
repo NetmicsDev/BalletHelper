@@ -22,10 +22,10 @@ class MainController extends GetxController {
 
   get branchName => userType == UserType.parent
       ? (userData as ParentModel).student!.branchName
-      : (userData as UserModel).branchName;
+      : (userData as UserModel).branchName![0];
   get className => userType == UserType.parent
       ? (userData as ParentModel).student!.className
-      : (userData as UserModel).className;
+      : (userData as UserModel).className![0];
 
   List<ImageModel> get imageList =>
       isPreview ? getDummyImageList() : getImageList();

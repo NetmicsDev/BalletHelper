@@ -17,24 +17,28 @@ class DummyDatas {
     className: 'A반',
   );
   static ParentModel parent = ParentModel(
-    name: '아이유',
+    name: '아이유 어머님',
     phone: '010-1234-5678',
     email: 'parent1@naver.com',
     student: student,
   );
   static UserModel teacher = UserModel(
     name: '박소라',
+    birth: '1988-01-01',
+    phone: '010-8765-4321',
+    email: 'teacher1@naver.com',
     profile: 'assets/images/test_teacher_avatar.png',
-    academyName: '이화 YSM',
-    branchName: '판교점',
-    className: 'A반',
+    branchName: ['판교점'],
+    className: ['A반', 'B반', 'C반'],
   );
   static UserModel owner = UserModel(
     name: '이호철',
+    birth: '1975-01-01',
+    phone: '010-8765-4321',
+    email: 'owner1@gmail.com',
     profile: 'assets/images/test_owner_avatar.jpg',
-    academyName: '이화 YSM',
-    branchName: '판교점',
-    className: 'A반',
+    branchName: ['판교점', '보정점'],
+    className: ['A반', 'B반', 'C반'],
   );
 
   static List<ImageModel> imageList = List.filled(

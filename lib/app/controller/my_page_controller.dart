@@ -11,9 +11,9 @@ class MyPageController extends GetxController {
   final _mainController = Get.find<MainController>();
   UserType get userType => _mainController.userType;
   get userData => _mainController.userData;
-  String get branchName => _mainController.branchName;
-  String get className => _mainController.className;
 
+  // 부모님의 경우
+  String get studentName => (userData as ParentModel).student!.name!;
   String get birth {
     final date = (userData as ParentModel).student!.birth!.split('-');
     return '${date[0]}년 ${date[1]}월 ${date[2]}일';
@@ -22,6 +22,16 @@ class MyPageController extends GetxController {
   final _relation = '어머니'.obs;
   String get relation => _relation.value;
   set relation(String value) => _relation.value = value;
+
+  // 선생님의 경우
+  final _selectedClass = 'A반'.obs;
+  String get selectedClass => _selectedClass.value;
+  set selectedClass(String value) => _selectedClass.value = value;
+
+  // 공용 (부모님이면 String, 외에는 List<String>)
+  get branchName => _mainController.userData.branchName;
+  get className => _mainController.userData.className;
+
   late final TextEditingController phoneTEC;
 
   @override

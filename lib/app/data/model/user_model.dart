@@ -1,23 +1,24 @@
 import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
+// 원장 & 선생
 class UserModel {
   int? id;
   String? name;
   String? birth;
   String? phone;
+  String? email;
   String? profile;
-  String? academyName;
-  String? branchName;
-  String? className;
+  List<String>? branchName;
+  List<String>? className;
 
   UserModel({
     this.id,
     this.name,
     this.birth,
     this.phone,
+    this.email,
     this.profile,
-    this.academyName,
     this.branchName,
     this.className,
   });
@@ -27,9 +28,11 @@ class UserModel {
     name = json['name'];
     birth = json['birth'];
     phone = json['phone'];
+    email = json['email'];
     profile = json['profile'];
-    academyName = json['academyName'];
-    branchName = json['branchName'];
+    branchName = json['branchName'] is String
+        ? [json['branchName']]
+        : json['branchName'];
     className = json['className'];
   }
 
@@ -38,9 +41,9 @@ class UserModel {
       'name': name,
       'birth': birth,
       'phone': phone,
+      'email': email,
       'profile': profile,
-      'academyName': academyName,
-      'branchName': branchName,
+      'branchName': branchName!.length == 1 ? branchName![0] : branchName,
       'className': className,
     };
     return data;
