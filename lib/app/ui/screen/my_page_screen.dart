@@ -248,6 +248,75 @@ class MyPageScreen extends GetView<MyPageController> {
   }
 
   Widget buildOwnerInfo() {
-    return SizedBox();
+    return Column(
+      children: [
+        SizedBox(
+          height: 120,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            clipBehavior: Clip.hardEdge,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image(
+                image: controller.userData.profileData!,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Text(
+            controller.userData.name!,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 100,
+                child: Obx(() => DropdownButton<String>(
+                      value: controller.selectedBranch,
+                      isExpanded: true,
+                      items: (controller.branchName as List<String>)
+                          .map((e) => DropdownMenuItem<String>(
+                              value: e,
+                              alignment: Alignment.center,
+                              child: Text(
+                                e,
+                                textAlign: TextAlign.center,
+                              )))
+                          .toList(),
+                      onChanged: (value) =>
+                          controller.selectedBranch = value ?? '판교점',
+                    )),
+              ),
+              const SizedBox(width: 20),
+              Container(
+                width: 100,
+                child: Obx(() => DropdownButton<String>(
+                      value: controller.selectedClass,
+                      isExpanded: true,
+                      items: (controller.className as List<String>)
+                          .map((e) => DropdownMenuItem<String>(
+                              value: e,
+                              alignment: Alignment.center,
+                              child: Text(
+                                e,
+                                textAlign: TextAlign.center,
+                              )))
+                          .toList(),
+                      onChanged: (value) =>
+                          controller.selectedClass = value ?? 'A반',
+                    )),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

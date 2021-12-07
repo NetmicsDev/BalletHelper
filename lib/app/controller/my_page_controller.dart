@@ -23,6 +23,11 @@ class MyPageController extends GetxController {
   String get relation => _relation.value;
   set relation(String value) => _relation.value = value;
 
+  // 원장님의 경우
+  final _selectedBranch = '판교점'.obs;
+  String get selectedBranch => _selectedBranch.value;
+  set selectedBranch(String value) => _selectedBranch.value = value;
+
   // 선생님의 경우
   final _selectedClass = 'A반'.obs;
   String get selectedClass => _selectedClass.value;
