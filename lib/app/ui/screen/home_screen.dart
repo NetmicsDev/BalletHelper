@@ -40,25 +40,32 @@ class HomeScreen extends GetView<MainController> {
 
   Widget buildDrawer() {
     late String userType;
-    late NavigateButton privateButton;
+    List<NavigateButton> privateButtons = [];
     switch (controller.userType) {
       case UserType.parent:
         userType = Strings.parent;
-        privateButton = NavigateButton(
+        privateButtons.add(NavigateButton(
           title: '가족 정보 관리',
           onPressed: () => Get.toNamed(Routes.family),
-        );
+        ));
         break;
       case UserType.teacher:
         userType = Strings.teacher;
-        privateButton = NavigateButton(
+        privateButtons.add(NavigateButton(
           title: '원생 관리',
           onPressed: () => Get.toNamed(Routes.student),
-        );
+        ));
         break;
       case UserType.owner:
         userType = Strings.owner;
-        privateButton = NavigateButton(title: '학원 관리');
+        privateButtons.add(NavigateButton(
+          title: '교사 관리',
+          onPressed: () => Get.toNamed(Routes.teacher),
+        ));
+        privateButtons.add(NavigateButton(
+          title: '원생 관리',
+          onPressed: () => Get.toNamed(Routes.student),
+        ));
         break;
     }
     return Container(
@@ -83,7 +90,7 @@ class HomeScreen extends GetView<MainController> {
                   title: '내 정보',
                   onPressed: () => Get.toNamed(Routes.myPage),
                 ),
-                privateButton,
+                ...privateButtons,
                 NavigateButton(title: 'FAQ'),
                 NavigateButton(title: '권한 전환'),
                 NavigateButton(title: '탈퇴'),

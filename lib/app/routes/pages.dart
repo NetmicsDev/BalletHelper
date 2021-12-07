@@ -5,6 +5,7 @@ import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/controller/my_page_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/controller/student_controller.dart';
+import 'package:ballet_helper/app/controller/teacher_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/screen/album_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/album_screen.dart';
@@ -18,6 +19,8 @@ import 'package:ballet_helper/app/ui/screen/notice_screen.dart';
 import 'package:ballet_helper/app/ui/screen/preview_screen.dart';
 import 'package:ballet_helper/app/ui/screen/student_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/student_screen.dart';
+import 'package:ballet_helper/app/ui/screen/teacher_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/teacher_screen.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/state_manager.dart';
@@ -99,6 +102,20 @@ class Pages {
     GetPage(
       name: Routes.studentPost,
       page: () => StudentPostScreen(),
+      transition: Transition.cupertinoDialog,
+      // transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: Routes.teacher,
+      page: () => TeacherScreen(),
+      transition: Transition.rightToLeft,
+      binding: BindingsBuilder(() {
+        Get.put(TeacherController());
+      }),
+    ),
+    GetPage(
+      name: Routes.teacherPost,
+      page: () => TeacherPostScreen(),
       transition: Transition.cupertinoDialog,
       // transitionDuration: Duration(milliseconds: 500),
     ),
