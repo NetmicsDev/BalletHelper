@@ -1,14 +1,21 @@
+import 'package:ballet_helper/app/controller/student_controller.dart';
 import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/dialog_action_button.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialog_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 import 'package:share_plus/share_plus.dart';
 
 class StudentInfoDialog extends StatelessWidget {
   final StudentModel student;
   const StudentInfoDialog({Key? key, required this.student}) : super(key: key);
+
+  edit() {
+    Get.back(result: 'edit');
+  }
 
   invite() async {
     await Share.share('[학원 이름]\n'
@@ -39,7 +46,8 @@ class StudentInfoDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 clipBehavior: Clip.hardEdge,
                 child: Image(
-                  image: student.profileData!,
+                  image: student.profileData ??
+                      AssetImage('assets/images/test_student_avatar.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -50,8 +58,8 @@ class StudentInfoDialog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(student.name!),
-                  Text('생일: ${student.birth ?? '-'}'),
-                  Text('연락처: ${student.phone ?? '-'}'),
+                  Text('🎂 ${student.birth ?? '-'}'),
+                  Text('📱 ${student.phone ?? '-'}'),
                   Text(
                       '${student.branchName ?? '미정'} ${student.className ?? '미정'}'),
                 ],
@@ -64,7 +72,7 @@ class StudentInfoDialog extends StatelessWidget {
       actions: [
         DialogActionButton(
           title: '정보 수정',
-          onPressed: invite,
+          onPressed: edit,
         ),
         DialogActionButton(
           title: '부모님 초대',

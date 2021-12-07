@@ -9,4 +9,5 @@ abstract class Routes {
   static const String myPage = '/myPage';
   static const String family = '/family';
   static const String student = '/student';
+  static const String studentPost = '/studentPost';
 }

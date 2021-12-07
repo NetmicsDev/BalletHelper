@@ -212,28 +212,28 @@ class DummyDatas {
       name: '나에유',
       profile: 'assets/images/test_student_avatar.png',
       branchName: '판교점',
-      className: 'A반',
+      className: 'B반',
     ),
     StudentModel(
       id: '5',
       name: '너에유',
       profile: 'assets/images/test_student_avatar.png',
       branchName: '판교점',
-      className: 'A반',
+      className: 'B반',
     ),
     StudentModel(
       id: '6',
       name: '휘발유',
       profile: 'assets/images/test_student_avatar.png',
       branchName: '판교점',
-      className: 'A반',
+      className: 'C반',
     ),
     StudentModel(
       id: '7',
       name: '올리브유',
       profile: 'assets/images/test_student_avatar.png',
       branchName: '판교점',
-      className: 'A반',
+      className: 'C반',
     )
   ];
 

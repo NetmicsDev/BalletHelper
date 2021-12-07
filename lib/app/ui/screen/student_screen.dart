@@ -47,47 +47,50 @@ class StudentScreen extends GetView<StudentController> {
                 thickness: 1,
               ),
               Expanded(
-                  child: ListView.builder(
-                itemCount: controller.studentList.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  final student = controller.studentList[index];
-                  return SizedBox(
-                    height: 40,
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () => controller.showStudentInfo(index),
-                      child: Row(
-                        children: [
-                          Expanded(
-                              flex: 1,
-                              child: Text(
-                                student.name!,
-                                textAlign: TextAlign.center,
-                              )),
-                          Expanded(
-                              flex: 1,
-                              child: Text(
-                                student.branchName!,
-                                textAlign: TextAlign.center,
-                              )),
-                          Expanded(
-                              flex: 1,
-                              child: Text(
-                                student.className!,
-                                textAlign: TextAlign.center,
-                              )),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              )),
+                  child: Obx(() => ListView.builder(
+                        itemCount: controller.studentList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final student = controller.studentList[index];
+                          return SizedBox(
+                            height: 40,
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.translucent,
+                              onTap: () => controller.showStudentInfo(index),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                      flex: 1,
+                                      child: Text(
+                                        student.name!,
+                                        textAlign: TextAlign.center,
+                                      )),
+                                  Expanded(
+                                      flex: 1,
+                                      child: Text(
+                                        student.branchName!,
+                                        textAlign: TextAlign.center,
+                                      )),
+                                  Expanded(
+                                      flex: 1,
+                                      child: Text(
+                                        student.className!,
+                                        textAlign: TextAlign.center,
+                                      )),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ))),
               DialogActionButton(
-                title: '원아 초대',
+                title: '원아 추가',
                 color: AppColors.primaryColor,
                 titleColor: Colors.white,
-                onPressed: controller.addStudent,
+                onPressed: () {
+                  controller.setDataForAdd();
+                  controller.goToPost();
+                },
               )
             ],
           ),

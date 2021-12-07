@@ -16,6 +16,7 @@ import 'package:ballet_helper/app/ui/screen/my_page_screen.dart';
 import 'package:ballet_helper/app/ui/screen/notice_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/notice_screen.dart';
 import 'package:ballet_helper/app/ui/screen/preview_screen.dart';
+import 'package:ballet_helper/app/ui/screen/student_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/student_screen.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -94,6 +95,12 @@ class Pages {
       binding: BindingsBuilder(() {
         Get.put(StudentController());
       }),
+    ),
+    GetPage(
+      name: Routes.studentPost,
+      page: () => StudentPostScreen(),
+      transition: Transition.cupertinoDialog,
+      // transitionDuration: Duration(milliseconds: 500),
     ),
   ];
 }
