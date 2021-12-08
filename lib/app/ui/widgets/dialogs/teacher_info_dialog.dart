@@ -22,12 +22,19 @@ class TeacherInfoDialog extends StatelessWidget {
     Get.back(result: 'delete');
   }
 
+  invite() async {
+    await Share.share('[학원 이름]\n'
+        '${teacher.name}님, 원생 관리를 더욱 편하게 해보세요!\n'
+        '=> 링크를 통해 앱을 설치한 후 회원가입 화면에서 초대코드를 입력해주세요!\n'
+        '(초대코드: TESTCODE)');
+  }
+
   @override
   Widget build(BuildContext context) {
     return DialogWrapper(
       title: Center(
         child: Text(
-          '원생 정보',
+          '교사 정보',
           style: TextStyles.bottomSheetTitleStyle,
         ),
       ),
@@ -55,11 +62,10 @@ class TeacherInfoDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(teacher.name!),
-                  Text('🎂 ${teacher.birth ?? '-'}'),
+                  Text('${teacher.name} (${teacher.position})'),
                   Text('📱 ${teacher.phone ?? '-'}'),
-                  Text(
-                      '${teacher.branchName ?? '미정'} ${teacher.className ?? '미정'}'),
+                  Text('${teacher.branchName ?? '미정'}'),
+                  Text('${teacher.className ?? '미정'}'),
                 ],
               ),
             )
@@ -71,6 +77,12 @@ class TeacherInfoDialog extends StatelessWidget {
         DialogActionButton(
           title: '정보 수정',
           onPressed: edit,
+        ),
+        DialogActionButton(
+          title: '초대코드 전송',
+          color: AppColors.primaryColor,
+          titleColor: Colors.white,
+          onPressed: invite,
         ),
         DialogActionButton(
           title: '교사 삭제',
