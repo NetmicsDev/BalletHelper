@@ -53,6 +53,8 @@ class StudentController extends GetxController {
     if (result == 'edit') {
       setDataForFix(studentList[idx]);
       goToPost();
+    } else if (result == 'delete') {
+      deleteStudent(studentList[idx]);
     }
   }
 
@@ -120,4 +122,8 @@ class StudentController extends GetxController {
   }
 
   post() => isEdit ? fixStudent() : addStudent();
+
+  deleteStudent(StudentModel student) async {
+    studentList.remove(student);
+  }
 }

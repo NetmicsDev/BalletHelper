@@ -85,7 +85,7 @@ class StudentInfoDialog extends StatelessWidget {
           onPressed: invite,
         ),
         DialogActionButton(
-          title: '교사 삭제',
+          title: '원생 삭제',
           onPressed: delete,
           color: AppColors.delete,
           titleColor: AppColors.white,
