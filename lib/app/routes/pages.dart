@@ -1,3 +1,4 @@
+import 'package:ballet_helper/app/controller/academy_controller.dart';
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/controller/family_controller.dart';
 import 'package:ballet_helper/app/controller/login_controller.dart';
@@ -7,6 +8,8 @@ import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/controller/student_controller.dart';
 import 'package:ballet_helper/app/controller/teacher_controller.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/screen/academy_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/academy_screen.dart';
 import 'package:ballet_helper/app/ui/screen/album_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/album_screen.dart';
 import 'package:ballet_helper/app/ui/screen/family_screen.dart';
@@ -116,6 +119,20 @@ class Pages {
     GetPage(
       name: Routes.teacherPost,
       page: () => TeacherPostScreen(),
+      transition: Transition.cupertinoDialog,
+      // transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: Routes.academy,
+      page: () => AcademyScreen(),
+      transition: Transition.rightToLeft,
+      binding: BindingsBuilder(() {
+        Get.put(AcademyController());
+      }),
+    ),
+    GetPage(
+      name: Routes.academyPost,
+      page: () => AcademyPostScreen(),
       transition: Transition.cupertinoDialog,
       // transitionDuration: Duration(milliseconds: 500),
     ),
