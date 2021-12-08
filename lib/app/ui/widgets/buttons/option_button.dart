@@ -19,8 +19,7 @@ class OptionButton extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () async {
-        final result =
-            await Get.bottomSheet(BottomSheets.select(options: options));
+        final result = await BottomSheets.select(options: options);
         if (result != null) {
           onSelected(result);
         }

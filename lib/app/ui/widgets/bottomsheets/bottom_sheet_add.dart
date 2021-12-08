@@ -11,24 +11,28 @@ import 'package:get/route_manager.dart';
 
 import 'bottom_sheet_wrapper.dart';
 
-class BottomSheetStudent extends StatefulWidget {
+class BottomSheetAdd<T> extends StatefulWidget {
   final String title;
-  final List<StudentModel> students;
-  final List<StudentModel> selectedList;
+  final List<T> options;
+  final List<T> selectedList;
+  final Widget Function(T) itemBuilder;
+  Widget Function(T)? leadingBuilder;
 
-  const BottomSheetStudent({
+  BottomSheetAdd({
     Key? key,
     required this.title,
-    required this.students,
+    required this.options,
     required this.selectedList,
+    required this.itemBuilder,
+    this.leadingBuilder,
   }) : super(key: key);
 
   @override
-  _BottomSheetStudentState createState() => _BottomSheetStudentState();
+  _BottomSheetAddState<T> createState() => _BottomSheetAddState<T>();
 }
 
-class _BottomSheetStudentState extends State<BottomSheetStudent> {
-  final List<StudentModel> selectedList = <StudentModel>[].obs;
+class _BottomSheetAddState<T> extends State<BottomSheetAdd<T>> {
+  final List<T> selectedList = <T>[].obs;
 
   @override
   void initState() {
@@ -50,9 +54,9 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
                 isAlwaysShown: true,
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: widget.students.length,
+                  itemCount: widget.options.length,
                   itemBuilder: (context, index) =>
-                      buildItem(widget.students[index]),
+                      buildItem(widget.options[index]),
                 ),
               ),
             ),
@@ -73,13 +77,9 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
     );
   }
 
-  Widget buildItem(StudentModel student) {
+  Widget buildItem(T item) {
     return Obx(() {
-      final bool isSelected = selectedList
-              .firstWhere((e) => e.id == student.id,
-                  orElse: () => StudentModel())
-              .id !=
-          null;
+      final bool isSelected = selectedList.contains(item);
       return Container(
         decoration: BoxDecoration(
           color: isSelected
@@ -89,13 +89,8 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
         ),
         margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         child: ListTile(
-          leading: CircleAvatar(
-            backgroundImage: student.profileData,
-          ),
-          title: Text(
-            student.name!,
-            style: TextStyles.authorStyle,
-          ),
+          leading: widget.leadingBuilder?.call(item),
+          title: widget.itemBuilder(item),
           trailing: isSelected
               ? Material(
                   elevation: 0,
@@ -105,9 +100,7 @@ class _BottomSheetStudentState extends State<BottomSheetStudent> {
                 )
               : null,
           onTap: () {
-            isSelected
-                ? selectedList.remove(student)
-                : selectedList.add(student);
+            isSelected ? selectedList.remove(item) : selectedList.add(item);
           },
         ),
       );

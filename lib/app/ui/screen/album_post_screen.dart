@@ -215,12 +215,18 @@ class AlbumPostScreen extends GetView<AlbumController> {
                 child: AddChip(
                     title: '학생 추가',
                     onAdd: () async {
-                      final result =
-                          await Get.bottomSheet(BottomSheets.add<StudentModel>(
+                      final result = await BottomSheets.add<StudentModel>(
                         title: '아이를 선택하세요',
                         options: controller.mainController.studentList,
                         selectedList: controller.studentList,
-                      ));
+                        itemBuilder: (student) => Text(
+                          student.name!,
+                          style: TextStyles.authorStyle,
+                        ),
+                        leadingBuilder: (student) => CircleAvatar(
+                          backgroundImage: student.profileData,
+                        ),
+                      );
                       if (result == null) return;
                       controller.setStudents(result);
                     }),

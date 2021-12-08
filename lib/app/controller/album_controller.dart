@@ -79,13 +79,14 @@ class AlbumController extends GetxController {
       return false;
     }
     final data = AlbumModel(
-        id: albumList.length.toString(),
-        name: mainController.userData.name,
-        profile: mainController.userData.profile,
-        dateTime: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
-        content: contentInputController.text,
-        images: List.from(imageList),
-        students: List.from(studentList));
+      id: albumList.length.toString(),
+      name: mainController.userData.name,
+      profile: mainController.userData.profile,
+      dateTime: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
+      content: contentInputController.text,
+      images: List.from(imageList),
+      students: List.from(studentList),
+    );
     isPreview ? albumList.insert(0, data) : () {};
 
     initPostData();
@@ -98,12 +99,14 @@ class AlbumController extends GetxController {
       return false;
     }
     final data = AlbumModel(
-        id: postModel!.id,
-        name: postModel!.name,
-        profile: postModel!.profile,
-        dateTime: postModel!.dateTime,
-        content: contentInputController.text,
-        images: List.from(imageList));
+      id: postModel!.id,
+      name: postModel!.name,
+      profile: postModel!.profile,
+      dateTime: postModel!.dateTime,
+      content: contentInputController.text,
+      images: List.from(imageList),
+      students: List.from(studentList),
+    );
     int index = albumList.indexOf(postModel);
     isPreview ? (albumList[index] = data) : () {};
     Get.find<FeedController>(tag: postModel!.id).refresh();

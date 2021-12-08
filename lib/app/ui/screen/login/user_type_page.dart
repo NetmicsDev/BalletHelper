@@ -56,10 +56,10 @@ class _UserTypePageState extends State<UserTypePage> {
   }
 
   showUserTypeModal() async {
-    final result = await Get.bottomSheet(BottomSheets.select(
+    final result = await BottomSheets.select(
       title: '어떤 회원으로 체험하시겠어요?',
       options: _controller.userTypes.map<String>((e) => e['label']).toList(),
-    ));
+    );
     if (result == null) return;
     Get.put(MainController(
         isPreview: true, userType: _controller.userTypes[result]['type']));
