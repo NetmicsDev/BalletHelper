@@ -14,4 +14,5 @@ abstract class Routes {
   static const String teacherPost = '/teacherPost';
   static const String academy = '/academy';
   static const String academyPost = '/academyPost';
+  static const String branchPost = '/branchPost';
 }

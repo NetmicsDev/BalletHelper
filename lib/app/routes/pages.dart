@@ -12,6 +12,7 @@ import 'package:ballet_helper/app/ui/screen/academy_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/academy_screen.dart';
 import 'package:ballet_helper/app/ui/screen/album_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/album_screen.dart';
+import 'package:ballet_helper/app/ui/screen/branch_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/family_screen.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
@@ -133,6 +134,12 @@ class Pages {
     GetPage(
       name: Routes.academyPost,
       page: () => AcademyPostScreen(),
+      transition: Transition.cupertinoDialog,
+      // transitionDuration: Duration(milliseconds: 500),
+    ),
+    GetPage(
+      name: Routes.branchPost,
+      page: () => BranchPostScreen(),
       transition: Transition.cupertinoDialog,
       // transitionDuration: Duration(milliseconds: 500),
     ),

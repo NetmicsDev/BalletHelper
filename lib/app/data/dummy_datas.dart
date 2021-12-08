@@ -1,3 +1,4 @@
+import 'package:ballet_helper/app/data/model/branch_model.dart';
 import 'package:ballet_helper/app/data/model/image_model.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
@@ -211,4 +212,21 @@ class DummyDatas {
   ];
 
   static List<String> positionList = ['관리자', '교사', '조교'];
+
+  static List<BranchModel> branchList = [
+    BranchModel(
+      name: '판교점',
+      address: '경기도 성남시 분당구 대왕판교로 670 (유스페이스2) 310호',
+      teachers: teacherList.getRange(0, 2).toList(),
+      classList: ['A반', 'B반', 'C반'],
+      studentCount: studentList.length,
+    ),
+    BranchModel(
+      name: '보정점',
+      address: '경기도 용인시 기흥구 보정로 87',
+      teachers: teacherList.getRange(2, 4).toList(),
+      classList: ['A반', 'B반', 'C반'],
+      studentCount: 0,
+    ),
+  ];
 }

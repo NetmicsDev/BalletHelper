@@ -1,8 +1,10 @@
+import 'package:ballet_helper/app/data/model/branch_model.dart';
 import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/dialog_action_button.dart';
+import 'package:ballet_helper/app/ui/widgets/dialogs/branch_info_dialog.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialog_wrapper.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/student_info_dialog.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/teacher_info_dialog.dart';
@@ -86,5 +88,9 @@ class Dialogs {
 
   static Future<T?> teacherInfo<T>(UserModel teacher) {
     return Get.dialog<T>(TeacherInfoDialog(teacher: teacher));
+  }
+
+  static Future<T?> branchInfo<T>(BranchModel branch) {
+    return Get.dialog<T>(BranchInfoDialog(branch: branch));
   }
 }
