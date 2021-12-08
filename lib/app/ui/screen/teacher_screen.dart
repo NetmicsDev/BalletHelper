@@ -65,7 +65,9 @@ class TeacherScreen extends GetView<TeacherController> {
                                 Expanded(
                                     flex: 1,
                                     child: Text(
-                                      teacher.branchName![0],
+                                      teacher.branchName!.length > 0
+                                          ? teacher.branchName![0]
+                                          : '미정',
                                       textAlign: TextAlign.center,
                                     )),
                                 Expanded(

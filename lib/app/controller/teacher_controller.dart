@@ -19,20 +19,18 @@ class TeacherController extends GetxController {
 
   bool get isEdit => teacherModel != null;
 
-  final _selectedBranch = ''.obs;
-  get selectedBranch => _selectedBranch.value;
-  set selectedBranch(value) => _selectedBranch.value = value;
-  final _selectedClass = ''.obs;
-  get selectedClass => _selectedClass.value;
-  set selectedClass(value) => _selectedClass.value = value;
+  final selectedBranch = <String>[].obs;
+  final selectedClass = <String>[].obs;
   final _selectedPosition = ''.obs;
   get selectedPosition => _selectedPosition.value;
   set selectedPosition(value) => _selectedPosition.value = value;
 
   UserModel? teacherModel;
   final nameTEC = TextEditingController();
-  final birthTEC = TextEditingController();
   final phoneTEC = TextEditingController();
+  final branchTEC = TextEditingController();
+  final classTEC = TextEditingController();
+  final positionTEC = TextEditingController();
 
   @override
   void onInit() {
@@ -43,8 +41,10 @@ class TeacherController extends GetxController {
   @override
   onClose() {
     nameTEC.dispose();
-    birthTEC.dispose();
     phoneTEC.dispose();
+    branchTEC.dispose();
+    classTEC.dispose();
+    positionTEC.dispose();
     super.onClose();
   }
 
@@ -68,23 +68,27 @@ class TeacherController extends GetxController {
   initPostData() {
     teacherModel = null;
     nameTEC.clear();
-    birthTEC.clear();
     phoneTEC.clear();
+    branchTEC.clear();
+    classTEC.clear();
+    positionTEC.clear();
+    selectedBranch.clear();
+    selectedClass.clear();
   }
 
   setDataForAdd() {
-    selectedBranch = branchList[0];
-    selectedClass = classList[0];
     selectedPosition = positionList[0];
   }
 
   setDataForFix(UserModel data) {
     teacherModel = data;
     nameTEC.text = data.name!;
-    birthTEC.text = data.birth ?? '';
     phoneTEC.text = data.phone ?? '';
-    selectedBranch = data.branchName![0];
-    selectedClass = data.className![0];
+    branchTEC.text = data.phone ?? '';
+    classTEC.text = data.phone ?? '';
+    positionTEC.text = data.phone ?? '';
+    selectedBranch.addAll(data.branchName!);
+    selectedClass.addAll(data.className!);
     selectedPosition = data.position;
   }
 
@@ -95,7 +99,7 @@ class TeacherController extends GetxController {
     }
     final data = UserModel(
       name: nameTEC.text,
-      birth: birthTEC.text,
+      profile: 'assets/images/test_teacher_avatar.png',
       phone: phoneTEC.text,
       branchName: selectedBranch,
       className: selectedClass,
@@ -115,10 +119,9 @@ class TeacherController extends GetxController {
     final data = UserModel(
       name: nameTEC.text,
       profile: teacherModel?.profile,
-      birth: birthTEC.text,
       phone: phoneTEC.text,
-      branchName: selectedBranch,
-      className: selectedClass,
+      branchName: List.from(selectedBranch),
+      className: List.from(selectedClass),
       position: selectedPosition,
     );
     int index = _teacherList.indexOf(teacherModel);
