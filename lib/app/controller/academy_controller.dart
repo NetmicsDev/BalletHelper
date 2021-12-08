@@ -2,6 +2,7 @@ import 'package:ballet_helper/app/controller/main_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/branch_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class AcademyController extends GetxController {
   BranchModel? branchModel;
   final nameTEC = TextEditingController();
   final addressTEC = TextEditingController();
-  final classTEC = TextEditingController();
+  final classList = <String>[].obs;
 
   @override
   void onInit() {
@@ -29,7 +30,6 @@ class AcademyController extends GetxController {
   void onClose() {
     nameTEC.dispose();
     addressTEC.dispose();
-    classTEC.dispose();
     super.onClose();
   }
 
@@ -56,15 +56,14 @@ class AcademyController extends GetxController {
     branchModel = null;
     nameTEC.clear();
     addressTEC.clear();
-    classTEC.clear();
+    classList.clear();
   }
 
   setDataForFix(BranchModel data) {
     branchModel = data;
     nameTEC.text = data.name!;
     addressTEC.text = data.address ?? '';
-    classTEC.text =
-        data.classList != null ? data.classList!.length.toString() : '0';
+    classList.addAll(data.classList!);
   }
 
   bool get checkValid => nameTEC.text != '';
@@ -76,7 +75,7 @@ class AcademyController extends GetxController {
       name: nameTEC.text,
       address: addressTEC.text,
       teachers: [],
-      classList: [],
+      classList: List.from(classList),
       studentCount: 0,
     );
     isPreview ? branchList.add(data) : () {};
@@ -92,7 +91,7 @@ class AcademyController extends GetxController {
       name: nameTEC.text,
       address: addressTEC.text,
       teachers: List.from(branchModel!.teachers!.toList()),
-      classList: List.from(branchModel!.classList!.toList()),
+      classList: List.from(classList),
       studentCount: branchModel!.studentCount,
     );
     int index = branchList.indexOf(branchModel);
@@ -103,6 +102,16 @@ class AcademyController extends GetxController {
   }
 
   post() => isEdit ? fixTeacher() : addTeacher();
+
+  showClassCreateSheet() async {
+    final result =
+        await BottomSheets.create(title: '반 생성', selectedList: classList);
+    if (result != null) {
+      classList.clear();
+      result.sort((s1, s2) => s1.compareTo(s2));
+      classList.addAll(result);
+    }
+  }
 
   deleteTeacher(BranchModel branch) async {
     branchList.remove(branch);

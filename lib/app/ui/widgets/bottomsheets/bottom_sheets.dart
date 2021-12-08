@@ -2,6 +2,7 @@ import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheet_add.dart';
+import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheet_create.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheet_wrapper.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/dialog_action_button.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/option_button.dart';
@@ -52,6 +53,16 @@ class BottomSheets {
                 style: TextStyles.authorStyle,
               ),
       leadingBuilder: leadingBuilder,
+    ));
+  }
+
+  static Future<List<String>?> create({
+    required String title,
+    required List<String> selectedList,
+  }) {
+    return Get.bottomSheet(BottomSheetCreate(
+      title: title,
+      selectedList: selectedList,
     ));
   }
 }
