@@ -48,7 +48,7 @@ class BottomSheets {
       selectedList: selectedList,
       itemBuilder: itemBuilder ??
           (T item) => Text(
-                T.toString(),
+                item.toString(),
                 style: TextStyles.authorStyle,
               ),
       leadingBuilder: leadingBuilder,

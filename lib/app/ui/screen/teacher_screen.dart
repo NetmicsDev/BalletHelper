@@ -49,6 +49,9 @@ class TeacherScreen extends GetView<TeacherController> {
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         final teacher = controller.teacherList[index];
+                        final String branchText = teacher.branchName!.isNotEmpty
+                            ? teacher.branchName![0]
+                            : '미정';
                         return SizedBox(
                           height: 40,
                           child: GestureDetector(
@@ -65,9 +68,7 @@ class TeacherScreen extends GetView<TeacherController> {
                                 Expanded(
                                     flex: 1,
                                     child: Text(
-                                      teacher.branchName!.length > 0
-                                          ? teacher.branchName![0]
-                                          : '미정',
+                                      branchText,
                                       textAlign: TextAlign.center,
                                     )),
                                 Expanded(

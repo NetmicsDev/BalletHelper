@@ -53,40 +53,45 @@ class TeacherPostScreen extends GetView<TeacherController> {
                     buildTextField(
                       controller: controller.nameTEC,
                       labelText: '이름',
+                      hintText: '이름을 입력해주세요',
                       isRequired: true,
                     ),
                     SizedBox(height: 20),
                     buildTextField(
-                        controller: controller.phoneTEC, labelText: '연락처'),
+                      controller: controller.phoneTEC,
+                      labelText: '연락처',
+                      hintText: '휴대폰 번호를 입력해주세요',
+                    ),
                     SizedBox(height: 20),
                     Obx(() {
-                      controller.branchTEC.text =
-                          controller.selectedBranch.toString();
+                      final hintText = controller.selectedBranch.isNotEmpty
+                          ? controller.selectedBranch.toString()
+                          : '-';
                       return buildTextField(
-                          controller: controller.branchTEC,
                           labelText: '지점',
+                          hintText: hintText,
                           isRequired: true,
-                          onSelect: () {});
+                          onTap: controller.showBranchSheet);
                     }),
                     SizedBox(height: 20),
                     Obx(() {
-                      controller.classTEC.text =
-                          controller.selectedClass.toString();
+                      final hintText = controller.selectedClass.isNotEmpty
+                          ? controller.selectedClass.toString()
+                          : '-';
                       return buildTextField(
-                          controller: controller.classTEC,
                           labelText: '반',
+                          hintText: hintText,
                           isRequired: true,
-                          onSelect: () {});
+                          onTap: controller.showClassSheet);
                     }),
                     SizedBox(height: 20),
                     Obx(() {
-                      controller.positionTEC.text =
-                          controller.selectedPosition.toString();
+                      final hintText = controller.selectedPosition;
                       return buildTextField(
-                          controller: controller.positionTEC,
                           labelText: '직책',
+                          hintText: hintText,
                           isRequired: true,
-                          onSelect: () {});
+                          onTap: controller.showPositionSheet);
                     }),
                     Expanded(
                       child: Align(
@@ -118,10 +123,11 @@ class TeacherPostScreen extends GetView<TeacherController> {
   }
 
   Widget buildTextField(
-      {required TextEditingController controller,
+      {TextEditingController? controller,
       required String labelText,
+      String hintText = '-',
       bool isRequired = false,
-      Function? onSelect}) {
+      Function? onTap}) {
     Text label = isRequired
         ? Text.rich(TextSpan(
             children: <InlineSpan>[
@@ -141,9 +147,12 @@ class TeacherPostScreen extends GetView<TeacherController> {
     return TextField(
       controller: controller,
       cursorColor: AppColors.primaryColor,
-      readOnly: onSelect != null,
+      style: TextStyle(color: AppColors.primaryDarkColor),
+      readOnly: onTap != null,
       decoration: InputDecoration(
-        suffixIcon: onSelect == null
+        hintText: hintText,
+        hintStyle: TextStyle(color: AppColors.primaryDarkColor),
+        suffixIcon: onTap == null
             ? null
             : Icon(
                 Icons.arrow_drop_down_rounded,
@@ -156,8 +165,9 @@ class TeacherPostScreen extends GetView<TeacherController> {
             borderSide: BorderSide(color: AppColors.primaryColor)),
         labelStyle: TextStyle(color: AppColors.primaryDarkColor),
         label: label,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
-      onTap: () => onSelect?.call(),
+      onTap: () => onTap?.call(),
     );
   }
 }

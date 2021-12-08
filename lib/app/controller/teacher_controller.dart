@@ -1,6 +1,7 @@
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
+import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,9 +29,6 @@ class TeacherController extends GetxController {
   UserModel? teacherModel;
   final nameTEC = TextEditingController();
   final phoneTEC = TextEditingController();
-  final branchTEC = TextEditingController();
-  final classTEC = TextEditingController();
-  final positionTEC = TextEditingController();
 
   @override
   void onInit() {
@@ -42,9 +40,6 @@ class TeacherController extends GetxController {
   onClose() {
     nameTEC.dispose();
     phoneTEC.dispose();
-    branchTEC.dispose();
-    classTEC.dispose();
-    positionTEC.dispose();
     super.onClose();
   }
 
@@ -58,7 +53,9 @@ class TeacherController extends GetxController {
     if (result == 'edit') {
       setDataForFix(teacherList[idx]);
       goToPost();
-    } else if (result == 'delete') {}
+    } else if (result == 'delete') {
+      deleteTeacher(teacherList[idx]);
+    }
   }
 
   goToPost() async {
@@ -69,9 +66,6 @@ class TeacherController extends GetxController {
     teacherModel = null;
     nameTEC.clear();
     phoneTEC.clear();
-    branchTEC.clear();
-    classTEC.clear();
-    positionTEC.clear();
     selectedBranch.clear();
     selectedClass.clear();
   }
@@ -84,25 +78,25 @@ class TeacherController extends GetxController {
     teacherModel = data;
     nameTEC.text = data.name!;
     phoneTEC.text = data.phone ?? '';
-    branchTEC.text = data.phone ?? '';
-    classTEC.text = data.phone ?? '';
-    positionTEC.text = data.phone ?? '';
     selectedBranch.addAll(data.branchName!);
     selectedClass.addAll(data.className!);
     selectedPosition = data.position;
   }
 
+  bool get checkValid =>
+      nameTEC.text != '' &&
+      selectedBranch.isNotEmpty &&
+      selectedClass.isNotEmpty;
+
   addTeacher() {
-    final name = nameTEC.text;
-    if (name == '') {
-      return false;
-    }
+    if (!checkValid) return false;
+
     final data = UserModel(
       name: nameTEC.text,
       profile: 'assets/images/test_teacher_avatar.png',
       phone: phoneTEC.text,
-      branchName: selectedBranch,
-      className: selectedClass,
+      branchName: List.from(selectedBranch),
+      className: List.from(selectedClass),
       position: selectedPosition,
     );
     isPreview ? teacherList.add(data) : () {};
@@ -112,10 +106,8 @@ class TeacherController extends GetxController {
   }
 
   fixTeacher() {
-    final name = nameTEC.text;
-    if (name == '') {
-      return false;
-    }
+    if (!checkValid) return false;
+
     final data = UserModel(
       name: nameTEC.text,
       profile: teacherModel?.profile,
@@ -132,4 +124,42 @@ class TeacherController extends GetxController {
   }
 
   post() => isEdit ? fixTeacher() : addTeacher();
+
+  showBranchSheet() async {
+    final result = await BottomSheets.select(
+      title: '지점 선택',
+      options: branchList,
+    );
+    if (result != null) {
+      selectedBranch.clear();
+      selectedBranch.add(branchList[result]);
+    }
+  }
+
+  showClassSheet() async {
+    final result = await BottomSheets.add(
+      title: '담당 반 추가',
+      options: classList,
+      selectedList: selectedClass,
+    );
+    if (result != null) {
+      selectedClass.clear();
+      result.sort((s1, s2) => s1.compareTo(s2));
+      selectedClass.addAll(result);
+    }
+  }
+
+  showPositionSheet() async {
+    final result = await BottomSheets.select(
+      title: '직책 선택',
+      options: positionList,
+    );
+    if (result != null) {
+      selectedPosition = positionList[result];
+    }
+  }
+
+  deleteTeacher(UserModel teacher) async {
+    teacherList.remove(teacher);
+  }
 }
