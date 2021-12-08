@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static const white = Colors.white;
   static const scaffoldBackgroundColor = Colors.white;
 
   static const primaryColor = Color(0xffFFC526);
@@ -20,4 +21,6 @@ class AppColors {
 
   static const dialogColor = Colors.white;
   static const borderDefaultColor = Color(0xffdddddd);
+
+  static const delete = Color(0xffFF8582);
 }

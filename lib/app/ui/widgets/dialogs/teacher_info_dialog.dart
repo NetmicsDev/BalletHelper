@@ -1,5 +1,6 @@
 import 'package:ballet_helper/app/controller/student_controller.dart';
 import 'package:ballet_helper/app/data/model/student_model.dart';
+import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/dialog_action_button.dart';
@@ -9,19 +10,16 @@ import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:share_plus/share_plus.dart';
 
-class StudentInfoDialog extends StatelessWidget {
-  final StudentModel student;
-  const StudentInfoDialog({Key? key, required this.student}) : super(key: key);
+class TeacherInfoDialog extends StatelessWidget {
+  final UserModel teacher;
+  const TeacherInfoDialog({Key? key, required this.teacher}) : super(key: key);
 
   edit() {
     Get.back(result: 'edit');
   }
 
-  invite() async {
-    await Share.share('[학원 이름]\n'
-        '${student.name}의 학원 생활을 지켜보세요!\n'
-        '=> 링크를 통해 앱을 설치한 후 회원가입 화면에서 초대코드를 입력해주세요!\n'
-        '(초대코드: TESTCODE)');
+  delete() {
+    Get.back(result: 'delete');
   }
 
   @override
@@ -46,7 +44,7 @@ class StudentInfoDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 clipBehavior: Clip.hardEdge,
                 child: Image(
-                  image: student.profileData ??
+                  image: teacher.profileData ??
                       AssetImage('assets/images/test_student_avatar.png'),
                   fit: BoxFit.cover,
                 ),
@@ -57,11 +55,11 @@ class StudentInfoDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(student.name!),
-                  Text('🎂 ${student.birth ?? '-'}'),
-                  Text('📱 ${student.phone ?? '-'}'),
+                  Text(teacher.name!),
+                  Text('🎂 ${teacher.birth ?? '-'}'),
+                  Text('📱 ${teacher.phone ?? '-'}'),
                   Text(
-                      '${student.branchName ?? '미정'} ${student.className ?? '미정'}'),
+                      '${teacher.branchName ?? '미정'} ${teacher.className ?? '미정'}'),
                 ],
               ),
             )
@@ -75,11 +73,11 @@ class StudentInfoDialog extends StatelessWidget {
           onPressed: edit,
         ),
         DialogActionButton(
-          title: '부모님 초대',
-          color: AppColors.primaryColor,
-          titleColor: Colors.white,
-          onPressed: invite,
-        )
+          title: '교사 삭제',
+          onPressed: delete,
+          color: AppColors.delete,
+          titleColor: AppColors.white,
+        ),
       ],
     );
   }

@@ -11,6 +11,7 @@ class UserModel {
   String? profile;
   List<String>? branchName;
   List<String>? className;
+  String? position;
 
   UserModel({
     this.id,
@@ -21,6 +22,7 @@ class UserModel {
     this.profile,
     this.branchName,
     this.className,
+    this.position,
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class UserModel {
         ? [json['branchName']]
         : json['branchName'];
     className = json['className'];
+    position = json['position'];
   }
 
   Map<String, dynamic> toJson() {
@@ -45,6 +48,7 @@ class UserModel {
       'profile': profile,
       'branchName': branchName!.length == 1 ? branchName![0] : branchName,
       'className': className,
+      'position': position,
     };
     return data;
   }

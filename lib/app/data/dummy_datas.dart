@@ -24,7 +24,6 @@ class DummyDatas {
   );
   static UserModel teacher = UserModel(
     name: '박소라',
-    birth: '1988-01-01',
     phone: '010-8765-4321',
     email: 'teacher1@naver.com',
     profile: 'assets/images/test_teacher_avatar.png',
@@ -33,7 +32,6 @@ class DummyDatas {
   );
   static UserModel owner = UserModel(
     name: '이호철',
-    birth: '1975-01-01',
     phone: '010-8765-4321',
     email: 'owner1@gmail.com',
     profile: 'assets/images/test_owner_avatar.jpg',
@@ -242,4 +240,45 @@ class DummyDatas {
     {'phone': '010-2222-2222', 'relation': '할아버지'},
     {'phone': '010-3333-3333', 'relation': '할머니'},
   ];
+
+  static List<UserModel> teacherList = [
+    UserModel(
+      name: '박소라',
+      phone: '010-8765-4321',
+      email: 'teacher1@naver.com',
+      profile: 'assets/images/test_teacher_avatar.png',
+      branchName: ['판교점'],
+      className: ['A반', 'B반', 'C반'],
+      position: '교사',
+    ),
+    UserModel(
+      name: '임동혁',
+      phone: '010-8765-4321',
+      email: 'teacher2@naver.com',
+      profile: 'assets/images/test_teacher_avatar.png',
+      branchName: ['판교점'],
+      className: ['A반', 'B반', 'C반'],
+      position: '관리자',
+    ),
+    UserModel(
+      name: '나교사',
+      phone: '010-8765-4321',
+      email: 'teacher3@naver.com',
+      profile: 'assets/images/test_teacher_avatar.png',
+      branchName: ['보정점'],
+      className: ['A반', 'B반', 'C반'],
+      position: '교사',
+    ),
+    UserModel(
+      name: '나조교',
+      phone: '010-8765-4321',
+      email: 'teacher4@naver.com',
+      profile: 'assets/images/test_teacher_avatar.png',
+      branchName: ['보정점'],
+      className: ['A반', 'B반', 'C반'],
+      position: '조교',
+    ),
+  ];
+
+  static List<String> positionList = ['관리자', '교사', '조교'];
 }
