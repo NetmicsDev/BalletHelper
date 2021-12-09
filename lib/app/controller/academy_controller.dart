@@ -1,4 +1,4 @@
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/branch_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AcademyController extends GetxController {
-  final _mainController = Get.find<MainController>();
+  final _mainController = Get.find<HomeController>();
   bool get isPreview => _mainController.isPreview;
 
   final branchList = <BranchModel>[].obs;

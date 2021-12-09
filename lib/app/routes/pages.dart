@@ -2,7 +2,7 @@ import 'package:ballet_helper/app/controller/academy_controller.dart';
 import 'package:ballet_helper/app/controller/album_controller.dart';
 import 'package:ballet_helper/app/controller/family_controller.dart';
 import 'package:ballet_helper/app/controller/login_controller.dart';
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/controller/my_page_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/controller/student_controller.dart';
@@ -50,7 +50,7 @@ class Pages {
       page: () => HomeScreen(),
       transition: Transition.fadeIn,
       binding: BindingsBuilder(() {
-        Get.put(MainController());
+        Get.put(HomeController());
       }),
     ),
     GetPage(

@@ -1,5 +1,5 @@
 import 'package:ballet_helper/app/controller/login_controller.dart';
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/data/model/parent_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 
-class HomeScreen extends GetView<MainController> {
+class HomeScreen extends GetView<HomeController> {
   HomeScreen({Key? key}) : super(key: key);
 
   double toolbarHeight = 40;

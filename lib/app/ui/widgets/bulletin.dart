@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/option_button.dart';
@@ -32,7 +32,7 @@ class Bulletin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isMine = author!.split(' ')[0] ==
-        Get.find<MainController>().userName.split(' ')[0];
+        Get.find<HomeController>().userName.split(' ')[0];
     return Card(
       color: AppColors.cardBackgroundColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:ballet_helper/app/controller/feed_controller.dart';
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
 import 'package:ballet_helper/app/data/model/student_model.dart';
@@ -12,7 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class AlbumController extends GetxController {
-  final mainController = Get.find<MainController>();
+  final mainController = Get.find<HomeController>();
   bool get isPreview => mainController.isPreview;
 
   @override

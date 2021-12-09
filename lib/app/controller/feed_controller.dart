@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:ballet_helper/app/controller/album_controller.dart';
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/data/model/album_model.dart';
 import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
@@ -31,7 +31,7 @@ class FeedController extends GetxController {
   List<StudentModel> get students => _album.students!;
 
   bool get isMine =>
-      author.split(' ')[0] == Get.find<MainController>().userName.split(' ')[0];
+      author.split(' ')[0] == Get.find<HomeController>().userName.split(' ')[0];
 
   final RxInt _imageIndex = 0.obs;
   int get imageIndex => _imageIndex.value;

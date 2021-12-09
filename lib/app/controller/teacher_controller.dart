@@ -6,10 +6,10 @@ import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'main_controller.dart';
+import 'home_controller.dart';
 
 class TeacherController extends GetxController {
-  final _mainController = Get.find<MainController>();
+  final _mainController = Get.find<HomeController>();
   bool get isPreview => _mainController.isPreview;
 
   final _teacherList = <UserModel>[].obs;

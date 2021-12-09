@@ -8,8 +8,8 @@ import 'package:ballet_helper/app/data/model/student_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:get/get.dart';
 
-class MainController extends GetxController {
-  MainController({bool? isPreview, UserType? userType}) {
+class HomeController extends GetxController {
+  HomeController({bool? isPreview, UserType? userType}) {
     this.isPreview = isPreview ?? false;
     this.userType = userType ?? _loginController.currentUserType!;
     log('$isPreview $userType');

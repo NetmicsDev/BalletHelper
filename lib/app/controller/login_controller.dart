@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
-import 'main_controller.dart';
+import 'home_controller.dart';
 
 enum UserType { parent, teacher, owner }
 
@@ -114,9 +114,9 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     );
     if (result == null) return;
     Get.put(
-        MainController(isPreview: true, userType: userTypes[result]['type']));
+        HomeController(isPreview: true, userType: userTypes[result]['type']));
     await Get.toNamed(Routes.preview, arguments: result);
-    Get.delete<MainController>();
+    Get.delete<HomeController>();
   }
 
   signIn({required String email, required String password}) async {

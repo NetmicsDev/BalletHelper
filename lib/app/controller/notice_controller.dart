@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class NoticeController extends GetxController {
-  final mainController = Get.find<MainController>();
+  final mainController = Get.find<HomeController>();
   bool get isPreview => mainController.isPreview;
 
   @override
