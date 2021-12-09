@@ -156,7 +156,7 @@ class AlbumPostScreen extends GetView<AlbumController> {
                   ),
                 ),
               ),
-              ...controller.imageList.map<Widget>(buildImage).toList(),
+              ...controller.postImages.map<Widget>(buildImage).toList(),
             ],
           )),
     );
@@ -217,7 +217,7 @@ class AlbumPostScreen extends GetView<AlbumController> {
                     onAdd: () async {
                       final result = await BottomSheets.add<StudentModel>(
                         title: '아이를 선택하세요',
-                        options: controller.mainController.studentList,
+                        options: controller.studentList,
                         selectedList: controller.studentList,
                         itemBuilder: (student) => Text(
                           student.name!,

@@ -29,8 +29,6 @@ class HomeController extends GetxController {
 
   List<ImageModel> get imageList =>
       isPreview ? getDummyImageList() : getImageList();
-  List<StudentModel> get studentList =>
-      isPreview ? getDummyStudentList() : getStudentList();
 
   String get userName {
     switch (userType) {
@@ -67,14 +65,6 @@ class HomeController extends GetxController {
   }
 
   getImageList() {
-    return [];
-  }
-
-  getDummyStudentList() {
-    return DummyDatas.studentList;
-  }
-
-  getStudentList() {
     return [];
   }
 }

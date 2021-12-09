@@ -1,5 +1,5 @@
 import 'package:ballet_helper/app/controller/login_controller.dart';
-import 'package:ballet_helper/app/controller/main_controller.dart';
+import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/data/model/notice_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';

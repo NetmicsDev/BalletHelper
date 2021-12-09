@@ -30,43 +30,46 @@ class AlbumController extends GetxController {
   String get selectedBranch =>
       '${mainController.userData.branchName} ${mainController.userData.className}';
 
+  List<StudentModel> get studentList =>
+      isPreview ? getDummyStudentList() : getStudentList();
+
   AlbumModel? postModel;
   final ImagePicker _picker = ImagePicker();
-  final List<String> imageList = <String>[].obs;
-  final List<StudentModel> studentList = <StudentModel>[].obs;
+  final List<String> postImages = <String>[].obs;
+  final List<StudentModel> postStudents = <StudentModel>[].obs;
   final contentInputController = TextEditingController();
 
   void pickImages() async {
     final List<XFile>? images = await _picker.pickMultiImage();
     if (images != null) {
-      imageList.addAll(images.map((e) => e.path).toList());
+      postImages.addAll(images.map((e) => e.path).toList());
     }
   }
 
   void deleteImage(String image) {
-    imageList.remove(image);
+    postImages.remove(image);
   }
 
   void setStudents(List<StudentModel> students) {
-    studentList.clear();
+    postStudents.clear();
     students.sort((s1, s2) => s1.name!.compareTo(s2.name!));
-    studentList.addAll(students);
+    postStudents.addAll(students);
   }
 
   void deleteStudent(StudentModel student) {
-    studentList.remove(student);
+    postStudents.remove(student);
   }
 
   initPostData() {
     postModel = null;
-    imageList.clear();
-    studentList.clear();
+    postImages.clear();
+    postStudents.clear();
     contentInputController.clear();
   }
 
   setDataForFix(AlbumModel data) {
-    imageList.addAll(data.images!);
-    studentList.addAll(data.students!);
+    postImages.addAll(data.images!);
+    postStudents.addAll(data.students!);
     postModel = data;
     contentInputController.text = data.content!;
   }
@@ -75,7 +78,7 @@ class AlbumController extends GetxController {
 
   addAlbum() {
     final content = contentInputController.text;
-    if (imageList.isEmpty || content == '') {
+    if (postImages.isEmpty || content == '') {
       return false;
     }
     final data = AlbumModel(
@@ -84,8 +87,8 @@ class AlbumController extends GetxController {
       profile: mainController.userData.profile,
       dateTime: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
       content: contentInputController.text,
-      images: List.from(imageList),
-      students: List.from(studentList),
+      images: List.from(postImages),
+      students: List.from(postStudents),
     );
     isPreview ? albumList.insert(0, data) : () {};
 
@@ -95,7 +98,7 @@ class AlbumController extends GetxController {
 
   fixAlbum() {
     final content = contentInputController.text;
-    if (imageList.isEmpty || content == '') {
+    if (postImages.isEmpty || content == '') {
       return false;
     }
     final data = AlbumModel(
@@ -104,8 +107,8 @@ class AlbumController extends GetxController {
       profile: postModel!.profile,
       dateTime: postModel!.dateTime,
       content: contentInputController.text,
-      images: List.from(imageList),
-      students: List.from(studentList),
+      images: List.from(postImages),
+      students: List.from(postStudents),
     );
     int index = albumList.indexOf(postModel);
     isPreview ? (albumList[index] = data) : () {};
@@ -125,6 +128,14 @@ class AlbumController extends GetxController {
   }
 
   getAlbumData() {
+    return [];
+  }
+
+  getDummyStudentList() {
+    return DummyDatas.studentList;
+  }
+
+  getStudentList() {
     return [];
   }
 }
