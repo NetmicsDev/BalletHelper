@@ -1,12 +1,25 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:ballet_helper/app/data/provider/login_provider.dart';
+import 'package:ballet_helper/app/data/repository/login_repository.dart';
+import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/values/strings.dart';
+import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
+import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+
+import 'main_controller.dart';
 
 enum UserType { parent, teacher, owner }
 
 class LoginController extends GetxController with SingleGetTickerProviderMixin {
+  final LoginRepository _repository =
+      LoginRepository(Get.find<LoginProvider>());
+
   final List<Map<String, dynamic>> userTypes = [
     {
       'type': UserType.parent,
@@ -92,5 +105,36 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
   void toSignUp() {
     pageController.animateTo(4);
+  }
+
+  showUserTypeModal() async {
+    final result = await BottomSheets.select(
+      title: '어떤 회원으로 체험하시겠어요?',
+      options: userTypes.map<String>((e) => e['label']).toList(),
+    );
+    if (result == null) return;
+    Get.put(
+        MainController(isPreview: true, userType: userTypes[result]['type']));
+    await Get.toNamed(Routes.preview, arguments: result);
+    Get.delete<MainController>();
+  }
+
+  signIn({required String email, required String password}) async {
+    final result = await _repository.signIn(
+        type: currentUserType!, email: email, password: password);
+    if (result['result']) {
+      String uid = result['uid'];
+      String userType = result['userType'];
+      await GetStorage().write('login', {
+        'uid': uid,
+        'userType': userType,
+      });
+      Get.offAllNamed(Routes.home);
+    } else {
+      Dialogs.alert(
+        title: '로그인 실패',
+        content: result['message'],
+      );
+    }
   }
 }

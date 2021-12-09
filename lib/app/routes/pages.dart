@@ -7,6 +7,7 @@ import 'package:ballet_helper/app/controller/my_page_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/controller/student_controller.dart';
 import 'package:ballet_helper/app/controller/teacher_controller.dart';
+import 'package:ballet_helper/app/data/provider/login_provider.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/screen/academy_post_screen.dart';
 import 'package:ballet_helper/app/ui/screen/academy_screen.dart';
@@ -35,6 +36,7 @@ class Pages {
       name: Routes.login,
       page: () => const LoginScreen(),
       binding: BindingsBuilder(() {
+        Get.put(LoginProvider());
         Get.put(LoginController());
       }),
     ),

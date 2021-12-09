@@ -34,8 +34,8 @@ class MyPageController extends GetxController {
   set selectedClass(String value) => _selectedClass.value = value;
 
   // 공용 (부모님이면 String, 외에는 List<String>)
-  get branchName => _mainController.userData.branchName;
-  get className => _mainController.userData.className;
+  get branchName => _mainController.branchName;
+  get className => _mainController.className;
 
   late final TextEditingController phoneTEC;
 
