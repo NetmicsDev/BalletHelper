@@ -13,6 +13,9 @@ class LoginProvider extends GetConnect {
   Future<Response> signInTeacher(Map<String, dynamic> data) =>
       post('/academy/login', data);
 
+  Future<Response> signUpTeacher(Map<String, dynamic> data) =>
+      post('/academy/signup', data);
+
   // Get request
   // Future<Response> getUser(int id) => get('http://youapi/users/id');
 
