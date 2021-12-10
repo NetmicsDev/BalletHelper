@@ -7,6 +7,7 @@ import 'package:ballet_helper/app/controller/my_page_controller.dart';
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/controller/student_controller.dart';
 import 'package:ballet_helper/app/controller/teacher_controller.dart';
+import 'package:ballet_helper/app/data/provider/branch_provider.dart';
 import 'package:ballet_helper/app/data/provider/home_provider.dart';
 import 'package:ballet_helper/app/data/provider/login_provider.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
@@ -132,6 +133,7 @@ class Pages {
       page: () => AcademyScreen(),
       transition: Transition.rightToLeft,
       binding: BindingsBuilder(() {
+        Get.put(BranchProvider());
         Get.put(AcademyController());
       }),
     ),

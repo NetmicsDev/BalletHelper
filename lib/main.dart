@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
                 SystemUiOverlayStyle(statusBarColor: AppColors.primaryColor),
             color: AppColors.primaryColor,
           )),
-      initialRoute: GetStorage().hasData('login') ? Routes.home : Routes.login,
-      // initialRoute: Routes.login,
+      // initialRoute: GetStorage().hasData('login') ? Routes.home : Routes.login,
+      initialRoute: Routes.login,
       getPages: Pages.pages,
     );
   }

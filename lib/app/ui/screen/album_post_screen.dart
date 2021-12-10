@@ -55,39 +55,47 @@ class AlbumPostScreen extends GetView<AlbumController> {
           centerTitle: true,
         ),
         body: SafeArea(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                buildOptionArea(),
-                SizedBox(
-                  height: 40,
-                  child: Center(
-                    child: Text(
-                      controller.selectedBranch,
-                      style: TextStyles.buttonDarkContentStyle,
+          child: SingleChildScrollView(
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: Get.focusScope?.unfocus,
+              child: SizedBox(
+                width: Get.width,
+                height: Get.height -
+                    MediaQuery.of(context).padding.top -
+                    kToolbarHeight,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    buildOptionArea(),
+                    SizedBox(
+                      height: 40,
+                      child: Center(
+                        child: Text(
+                          controller.selectedBranch,
+                          style: TextStyles.buttonDarkContentStyle,
+                        ),
+                      ),
                     ),
-                  ),
+                    const Divider(indent: 16.0, endIndent: 16.0, height: 1),
+                    buildImageUploadArea(),
+                    buildTagArea(),
+                    Divider(indent: 16.0, endIndent: 16.0, height: 1),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: TextField(
+                          controller: controller.contentInputController,
+                          maxLines: null,
+                          textInputAction: TextInputAction.newline,
+                          keyboardType: TextInputType.multiline,
+                          decoration: inputDecoration('내용을 입력하세요'),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                const Divider(indent: 16.0, endIndent: 16.0, height: 1),
-                buildImageUploadArea(),
-                buildTagArea(),
-                Divider(indent: 16.0, endIndent: 16.0, height: 1),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: TextField(
-                      controller: controller.contentInputController,
-                      maxLines: null,
-                      textInputAction: TextInputAction.newline,
-                      keyboardType: TextInputType.multiline,
-                      decoration: inputDecoration('내용을 입력하세요'),
-                    ),
-                  ),
-                )
-              ],
+              ),
             ),
           ),
         ),
@@ -218,7 +226,7 @@ class AlbumPostScreen extends GetView<AlbumController> {
                       final result = await BottomSheets.add<StudentModel>(
                         title: '아이를 선택하세요',
                         options: controller.studentList,
-                        selectedList: controller.studentList,
+                        selectedList: controller.postStudents,
                         itemBuilder: (student) => Text(
                           student.name!,
                           style: TextStyles.authorStyle,
@@ -231,7 +239,7 @@ class AlbumPostScreen extends GetView<AlbumController> {
                       controller.setStudents(result);
                     }),
               ),
-              ...controller.studentList.map<Widget>(buildTag).toList(),
+              ...controller.postStudents.map<Widget>(buildTag).toList(),
             ],
           )),
     );

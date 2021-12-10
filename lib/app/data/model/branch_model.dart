@@ -37,7 +37,7 @@ class BranchModel {
       id: map['id'],
       name: map['name'],
       address: map['address'],
-      teachers: map['teachers'],
+      teachers: [UserModel.fromJson(map['manager'] ?? {})],
       classList: map['classList'],
       studentCount: map['studentCount'],
     );

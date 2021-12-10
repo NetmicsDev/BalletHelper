@@ -44,7 +44,9 @@ class BranchPostScreen extends GetView<AcademyController> {
             child: SingleChildScrollView(
               child: Container(
                 width: Get.width,
-                height: Get.height - Get.statusBarHeight,
+                height: Get.height -
+                    MediaQuery.of(context).padding.top -
+                    kToolbarHeight,
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Column(

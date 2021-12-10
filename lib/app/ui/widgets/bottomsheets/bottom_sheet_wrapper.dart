@@ -20,7 +20,8 @@ class BotttomSheetWrapper extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           title != null
-              ? Padding(
+              ? Container(
+                  height: 60,
                   padding: const EdgeInsets.only(top: 10, bottom: 20),
                   child: Text(
                     title!,

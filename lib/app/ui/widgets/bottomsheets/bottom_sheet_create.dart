@@ -43,71 +43,68 @@ class _BottomSheetCreateState extends State<BottomSheetCreate> {
       onTap: Get.focusScope?.unfocus,
       child: BotttomSheetWrapper(
         title: widget.title,
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _tec,
-                      cursorColor: AppColors.primaryColor,
-                      style: TextStyle(color: AppColors.primaryDarkColor),
-                      decoration: InputDecoration(
-                        hintText: '반 이름을 입력해주세요',
-                        hintStyle: TextStyle(color: AppColors.primaryDarkColor),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.primaryColor)),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.primaryColor)),
-                      ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _tec,
+                    cursorColor: AppColors.primaryColor,
+                    style: TextStyle(color: AppColors.primaryDarkColor),
+                    decoration: InputDecoration(
+                      hintText: '반 이름을 입력해주세요',
+                      hintStyle: TextStyle(color: AppColors.primaryDarkColor),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColors.primaryColor)),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: AppColors.primaryColor)),
                     ),
                   ),
-                  IconButton(
-                      onPressed: () {
-                        if (_tec.text != '') {
-                          selectedList.add(_tec.text);
-                          _tec.clear();
-                        }
-                      },
-                      icon: Icon(
-                        Icons.add_rounded,
-                        color: AppColors.primaryColor,
-                        size: 36,
-                      ))
-                ],
-              ),
-              SizedBox(height: 20),
-              Expanded(
-                child: Obx(
-                  () => Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: selectedList
-                        .map((e) => StudentChip(
-                              name: e.toString(),
-                              onDeleted: () => selectedList.remove(e),
-                            ))
-                        .toList(),
-                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Obx(() => DialogActionButton(
-                      title: '추가(${selectedList.length})',
-                      onPressed: () {
-                        Get.back(result: selectedList);
-                      },
+                IconButton(
+                    onPressed: () {
+                      if (_tec.text != '') {
+                        selectedList.add(_tec.text);
+                        _tec.clear();
+                      }
+                    },
+                    icon: Icon(
+                      Icons.add_rounded,
                       color: AppColors.primaryColor,
-                      titleColor: Colors.white,
-                    )),
-              )
-            ],
-          ),
+                      size: 36,
+                    ))
+              ],
+            ),
+            SizedBox(height: 20),
+            Obx(
+              () => Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: selectedList
+                    .map((e) => StudentChip(
+                          name: e.toString(),
+                          onDeleted: () => selectedList.remove(e),
+                        ))
+                    .toList(),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Obx(() => DialogActionButton(
+                    title: '추가(${selectedList.length})',
+                    onPressed: () {
+                      Get.back(result: selectedList);
+                    },
+                    color: AppColors.primaryColor,
+                    titleColor: Colors.white,
+                  )),
+            )
+          ],
         ),
       ),
     );

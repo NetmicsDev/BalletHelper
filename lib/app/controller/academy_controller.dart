@@ -1,6 +1,8 @@
 import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/branch_model.dart';
+import 'package:ballet_helper/app/data/provider/branch_provider.dart';
+import 'package:ballet_helper/app/data/repository/academy_repository.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
@@ -8,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AcademyController extends GetxController {
+  final _repository = AcademyRepository(Get.find<BranchProvider>());
+
   final _mainController = Get.find<HomeController>();
   bool get isPreview => _mainController.isPreview;
 
@@ -34,7 +38,9 @@ class AcademyController extends GetxController {
   }
 
   getBranchList() async {
-    branchList.addAll(isPreview ? DummyDatas.branchList : []);
+    branchList.addAll(isPreview
+        ? DummyDatas.branchList
+        : (await _repository.getBranchList()));
   }
 
   showBranchInfo(int idx) async {

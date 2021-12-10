@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController {
-  final HomeRepository _repository = HomeRepository(Get.find<HomeProvider>());
+  late final HomeRepository _repository;
   late final bool isPreview;
   late final UserType userType;
 
@@ -24,6 +24,8 @@ class HomeController extends GetxController {
         (storageData['userType'] == 'teacher'
             ? UserType.owner
             : UserType.parent);
+    _repository = HomeRepository(
+        this.isPreview ? HomeProvider() : Get.find<HomeProvider>());
     log('${this.isPreview} ${this.userType}');
   }
 
@@ -77,7 +79,8 @@ class HomeController extends GetxController {
 
   getUserData() {
     if (isPreview) {
-      userData = DummyDatas.teacher;
+      userData =
+          userType == UserType.owner ? DummyDatas.owner : DummyDatas.teacher;
     } else {
       // _repository.getTeachers();
       userData = UserModel.fromJson(storageData['userData']);

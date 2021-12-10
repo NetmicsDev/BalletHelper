@@ -60,9 +60,11 @@ class BottomSheets {
     required String title,
     required List<String> selectedList,
   }) {
-    return Get.bottomSheet(BottomSheetCreate(
-      title: title,
-      selectedList: selectedList,
-    ));
+    return Get.bottomSheet(
+        BottomSheetCreate(
+          title: title,
+          selectedList: selectedList,
+        ),
+        isScrollControlled: true);
   }
 }

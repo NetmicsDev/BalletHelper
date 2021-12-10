@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ballet_helper/app/controller/notice_controller.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
@@ -33,91 +35,95 @@ class NoticePostScreen extends GetView<NoticeController> {
         cancel();
         return Future.value(false);
       },
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          toolbarHeight: 50,
-          title: const Text(
-            '알림장 작성',
-            style: TextStyles.buttonBrightTitleStyle,
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: Get.focusScope?.unfocus,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            elevation: 0,
+            toolbarHeight: 50,
+            title: const Text(
+              '알림장 작성',
+              style: TextStyles.buttonBrightTitleStyle,
+            ),
+            centerTitle: true,
           ),
-          centerTitle: true,
-        ),
-        body: SafeArea(
-          child: SizedBox(
-            width: Get.width,
-            height: Get.height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  color: AppColors.primaryDarkColor,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                          onPressed: cancel,
-                          child: const Text(
-                            '취소',
-                            style: TextStyles.buttonBrightContentStyle,
-                          )),
-                      TextButton(
-                          onPressed: () async {
-                            final bool result = controller.post();
-                            result
-                                ? Get.back()
-                                : Dialogs.alert(
-                                    title: '업로드 불가',
-                                    content: '양식을 모두 채워주세요',
-                                  );
-                          },
-                          child: const Text(
-                            '완료',
-                            style: TextStyles.buttonBrightContentStyle,
-                          )),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                  child: Center(
-                    child: Text(
-                      controller.selectedBranch,
-                      style: TextStyles.buttonDarkContentStyle,
-                    ),
-                  ),
-                ),
-                const Divider(
-                  indent: 16.0,
-                  endIndent: 16.0,
-                  height: 1,
-                ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Column(
+          body: SafeArea(
+            child: SizedBox(
+              width: Get.width,
+              height: Get.height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    color: AppColors.primaryDarkColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextField(
-                          controller: controller.titleInputController,
-                          textInputAction: TextInputAction.next,
-                          decoration: inputDecoration('제목을 입력하세요'),
-                        ),
-                        const Divider(height: 1),
-                        Expanded(
-                          child: TextField(
-                            controller: controller.contentInputController,
-                            maxLines: null,
-                            textInputAction: TextInputAction.newline,
-                            keyboardType: TextInputType.multiline,
-                            decoration: inputDecoration('내용을 입력하세요'),
-                          ),
-                        )
+                        TextButton(
+                            onPressed: cancel,
+                            child: const Text(
+                              '취소',
+                              style: TextStyles.buttonBrightContentStyle,
+                            )),
+                        TextButton(
+                            onPressed: () async {
+                              final bool result = controller.post();
+                              result
+                                  ? Get.back()
+                                  : Dialogs.alert(
+                                      title: '업로드 불가',
+                                      content: '양식을 모두 채워주세요',
+                                    );
+                            },
+                            child: const Text(
+                              '완료',
+                              style: TextStyles.buttonBrightContentStyle,
+                            )),
                       ],
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: 40,
+                    child: Center(
+                      child: Text(
+                        controller.selectedBranch,
+                        style: TextStyles.buttonDarkContentStyle,
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    indent: 16.0,
+                    endIndent: 16.0,
+                    height: 1,
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Column(
+                        children: [
+                          TextField(
+                            controller: controller.titleInputController,
+                            textInputAction: TextInputAction.next,
+                            decoration: inputDecoration('제목을 입력하세요'),
+                          ),
+                          const Divider(height: 1),
+                          Expanded(
+                            child: TextField(
+                              controller: controller.contentInputController,
+                              maxLines: null,
+                              textInputAction: TextInputAction.newline,
+                              keyboardType: TextInputType.multiline,
+                              decoration: inputDecoration('내용을 입력하세요'),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
