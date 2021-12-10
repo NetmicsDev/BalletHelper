@@ -12,8 +12,8 @@ class StudentController extends GetxController {
 
   final _studentList = <StudentModel>[].obs;
   List<StudentModel> get studentList => _studentList;
-  List<String> get branchList => _mainController.userData.branchName;
-  List<String> get classList => _mainController.userData.className;
+  List<String> get branchList => _mainController.userData.branchName!;
+  List<String> get classList => _mainController.userData.className!;
 
   bool get isEdit => studentModel != null;
 

@@ -51,8 +51,7 @@ class TeacherInfoDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 clipBehavior: Clip.hardEdge,
                 child: Image(
-                  image: teacher.profileData ??
-                      AssetImage('assets/images/test_student_avatar.png'),
+                  image: teacher.profileData,
                   fit: BoxFit.cover,
                 ),
               ),

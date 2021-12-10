@@ -14,8 +14,8 @@ class TeacherController extends GetxController {
 
   final _teacherList = <UserModel>[].obs;
   List<UserModel> get teacherList => _teacherList;
-  List<String> get branchList => _mainController.userData.branchName;
-  List<String> get classList => _mainController.userData.className;
+  List<String> get branchList => _mainController.userData.branchName!;
+  List<String> get classList => _mainController.userData.className!;
   List<String> get positionList => DummyDatas.positionList;
 
   bool get isEdit => teacherModel != null;

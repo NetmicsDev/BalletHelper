@@ -135,12 +135,20 @@ class HomeScreen extends GetView<HomeController> {
                   textBaseline: TextBaseline.alphabetic,
                   children: [
                     Text(
-                      controller.branchName ?? '',
+                      controller.branchName is List<String>
+                          ? controller.branchName!.isNotEmpty
+                              ? controller.branchName![0]
+                              : '-'
+                          : controller.branchName,
                       style: TextStyles.brightContentStyle,
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      controller.className ?? '',
+                      controller.className is List<String>
+                          ? controller.className!.isNotEmpty
+                              ? controller.className![0]
+                              : '-'
+                          : controller.className,
                       style: TextStyles.brightContentStyle,
                     ),
                   ],

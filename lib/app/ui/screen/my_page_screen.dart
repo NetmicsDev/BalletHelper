@@ -12,22 +12,24 @@ import 'package:intl/intl.dart';
 class MyPageScreen extends GetView<MyPageController> {
   @override
   Widget build(BuildContext context) {
-    final height = Get.height;
+    final height =
+        Get.height - MediaQuery.of(context).padding.top - kToolbarHeight;
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('내 정보'),
         elevation: 0,
       ),
       body: SafeArea(
-        child: ScrollConfiguration(
-          behavior: ScrollBehavior().copyWith(overscroll: false),
-          child: SingleChildScrollView(
+        child: LayoutBuilder(builder: (context, constraints) {
+          return SingleChildScrollView(
             padding: EdgeInsets.zero,
+            reverse: true,
             child: GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () => Get.focusScope?.unfocus(),
               child: Container(
-                height: height - Get.statusBarHeight - 20,
+                height: height,
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                 child: Column(
@@ -87,8 +89,8 @@ class MyPageScreen extends GetView<MyPageController> {
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        }),
       ),
     );
   }

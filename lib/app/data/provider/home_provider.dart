@@ -1,17 +1,23 @@
+import 'dart:developer';
+
 import 'package:get/get_connect.dart';
+import 'package:get_storage/get_storage.dart';
 
-const host = '59.13.123.48';
-const port = 5001;
+import 'login_provider.dart';
 
-class LoginProvider extends GetConnect {
+class HomeProvider extends GetConnect {
   @override
   void onInit() {
     httpClient.baseUrl = 'http://$host:$port';
     httpClient.defaultContentType = 'application/json; charset=UTF-8';
+
+    httpClient.addRequestModifier<Object?>((request) {
+      request.headers['uid'] = GetStorage().read('login')['uid'];
+      return request;
+    });
   }
 
-  Future<Response> signInTeacher(Map<String, dynamic> data) =>
-      post('/academy/login', data);
+  Future<Response> getTeachersData() => get('/academy/teachers');
 
   // Get request
   // Future<Response> getUser(int id) => get('http://youapi/users/id');

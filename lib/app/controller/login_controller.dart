@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/data/provider/login_provider.dart';
 import 'package:ballet_helper/app/data/repository/login_repository.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
@@ -125,9 +126,12 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     if (result['result']) {
       String uid = result['uid'];
       String userType = result['userType'];
+      Map<String, dynamic> userData =
+          UserModel.fromJson(result['userData']).toJson();
       await GetStorage().write('login', {
         'uid': uid,
         'userType': userType,
+        'userData': userData,
       });
       Get.offAllNamed(Routes.home);
     } else {

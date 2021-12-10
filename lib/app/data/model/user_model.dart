@@ -32,10 +32,14 @@ class UserModel {
     phone = json['phone'];
     email = json['email'];
     profile = json['profile'];
-    branchName = json['branchName'] is String
-        ? [json['branchName']]
-        : json['branchName'];
-    className = json['className'];
+    branchName = json['branch'] == null
+        ? <String>[]
+        : json['branch'] is String
+            ? [json['branch']]
+            : List<String>.from(json['branch']);
+    className = json['classes'] == null
+        ? <String>[]
+        : List<String>.from(json['classes']);
     position = json['position'];
   }
 
@@ -46,13 +50,14 @@ class UserModel {
       'phone': phone,
       'email': email,
       'profile': profile,
-      'branchName': branchName!.length == 1 ? branchName![0] : branchName,
-      'className': className,
+      'branch': branchName!.length == 1 ? branchName![0] : branchName,
+      'classes': className,
       'position': position,
     };
     return data;
   }
 
-  ImageProvider<Object>? get profileData =>
-      profile != null ? ImageUtils.pathToImage(profile!) : null;
+  ImageProvider<Object> get profileData => profile != null
+      ? ImageUtils.pathToImage(profile!)
+      : AssetImage('assets/images/test_owner_avatar.jpg');
 }

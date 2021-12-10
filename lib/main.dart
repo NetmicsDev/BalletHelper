@@ -9,7 +9,8 @@ import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/pages.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
                 SystemUiOverlayStyle(statusBarColor: AppColors.primaryColor),
             color: AppColors.primaryColor,
           )),
-      initialRoute: Routes.login,
+      initialRoute: GetStorage().hasData('login') ? Routes.home : Routes.login,
+      // initialRoute: Routes.login,
       getPages: Pages.pages,
     );
   }
