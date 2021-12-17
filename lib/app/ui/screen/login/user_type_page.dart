@@ -37,7 +37,7 @@ class _UserTypePageState extends State<UserTypePage> {
         const SizedBox(height: 20),
         ..._controller.userTypes
             .map<Widget>((user) => UserTypeButton(
-                  imagePath: '',
+                  imagePath: user['imagePath'],
                   title: user['label'],
                   content: user['content'],
                   size: buttonSize,
@@ -45,7 +45,7 @@ class _UserTypePageState extends State<UserTypePage> {
                 ))
             .toList(),
         UserTypeButton(
-          imagePath: '',
+          imagePath: 'assets/images/preview.png',
           title: Strings.preview,
           content: Strings.previewContent,
           size: buttonSize,

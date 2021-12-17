@@ -11,9 +11,7 @@ class DummyDatas {
   static StudentModel student = StudentModel(
     id: '2',
     name: '아이유',
-    birth: '2018-10-13',
-    phone: '010-1234-5678',
-    profile: 'assets/images/test_student_avatar.png',
+    profile: 'assets/images/아이3.png',
     branchName: '판교점',
     className: 'A반',
   );
@@ -40,8 +38,18 @@ class DummyDatas {
     className: ['A반', 'B반', 'C반'],
   );
 
-  static List<ImageModel> imageList = List.filled(
-      15, ImageModel(id: 0, uri: 'assets/images/test_grid_image.png'));
+  static List<ImageModel> imageList = [
+    ImageModel(uri: 'assets/images/ballet_academy.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy2.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy3.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy4.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy5.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy6.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy7.jpg'),
+    ImageModel(uri: 'assets/images/ballet_academy8.jpg'),
+    ImageModel(uri: 'assets/images/ballet_dancer2.jpg'),
+    ImageModel(uri: 'assets/images/ballet-dancer.jpg'),
+  ];
 
   static List<NoticeModel> noticeList = [
     NoticeModel(
@@ -111,56 +119,56 @@ class DummyDatas {
     StudentModel(
       id: '0',
       name: '김재훈',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이1.png',
       branchName: '판교점',
       className: 'A반',
     ),
     StudentModel(
       id: '1',
       name: '구제연',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이2.png',
       branchName: '판교점',
       className: 'A반',
     ),
     StudentModel(
       id: '2',
       name: '아이유',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이3.png',
       branchName: '판교점',
       className: 'A반',
     ),
     StudentModel(
       id: '3',
       name: '어이유',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이4.png',
       branchName: '판교점',
       className: 'A반',
     ),
     StudentModel(
       id: '4',
       name: '나에유',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이5.png',
       branchName: '판교점',
       className: 'B반',
     ),
     StudentModel(
       id: '5',
       name: '너에유',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이6.png',
       branchName: '판교점',
       className: 'B반',
     ),
     StudentModel(
       id: '6',
       name: '휘발유',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이1.png',
       branchName: '판교점',
       className: 'C반',
     ),
     StudentModel(
       id: '7',
       name: '올리브유',
-      profile: 'assets/images/test_student_avatar.png',
+      profile: 'assets/images/아이2.png',
       branchName: '판교점',
       className: 'C반',
     )

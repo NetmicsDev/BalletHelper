@@ -29,9 +29,10 @@ class HomeController extends GetxController {
     log('${this.isPreview} ${this.userType}');
   }
 
-  final _userData = UserModel().obs;
-  UserModel get userData => _userData.value;
-  set userData(UserModel value) => _userData.value = value;
+  get userData => userType == UserType.parent ? parentData : teacherData;
+  final _teacherData = UserModel().obs;
+  UserModel get teacherData => _teacherData.value;
+  set teacherData(UserModel value) => _teacherData.value = value;
   final _parentData = ParentModel().obs;
   ParentModel get parentData => _parentData.value;
   set parentData(ParentModel value) => _parentData.value = value;
@@ -46,21 +47,21 @@ class HomeController extends GetxController {
 
   get branchName => userType == UserType.parent
       ? parentData.student!.branchName ?? '-'
-      : userData.branchName!;
+      : teacherData.branchName!;
   get className => userType == UserType.parent
       ? parentData.student!.className
-      : userData.className!;
+      : teacherData.className!;
 
   String get userName {
     switch (userType) {
       case UserType.parent:
-        return userData.name!;
+        return parentData.name!;
       case UserType.teacher:
-        return '${userData.name} 쌤';
+        return '${teacherData.name} 쌤';
       case UserType.owner:
-        return '${userData.name} 원장님';
+        return '${teacherData.name} 원장님';
       default:
-        return userData.name!;
+        return teacherData.name!;
     }
   }
 
@@ -79,16 +80,24 @@ class HomeController extends GetxController {
 
   getUserData() {
     if (isPreview) {
-      userData =
+      teacherData =
           userType == UserType.owner ? DummyDatas.owner : DummyDatas.teacher;
     } else {
       // _repository.getTeachers();
-      userData = UserModel.fromJson(storageData['userData']);
-      log(userData.toJson().toString());
+      teacherData = UserModel.fromJson(storageData['userData']);
+      log(teacherData.toJson().toString());
     }
   }
 
-  getParentData() {}
+  getParentData() {
+    if (isPreview) {
+      parentData = DummyDatas.parent;
+    } else {
+      // _repository.getTeachers();
+      teacherData = UserModel.fromJson(storageData['userData']);
+      log(teacherData.toJson().toString());
+    }
+  }
 
   getImageList() {
     imageList.addAll(DummyDatas.imageList);

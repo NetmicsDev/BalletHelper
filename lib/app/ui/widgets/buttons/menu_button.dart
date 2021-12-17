@@ -46,8 +46,11 @@ class MenuButton extends StatelessWidget {
                   style: TextStyles.buttonMenuStyle,
                 ),
                 Image(
-                  image: AssetImage('assets/images/flutter_logo.png'),
-                  width: size / 2,
+                  image: AssetImage(assetPath == ''
+                      ? 'assets/images/flutter_logo.png'
+                      : assetPath),
+                  color: Colors.white,
+                  width: size / 2.2,
                 ),
               ],
             )),

@@ -233,6 +233,7 @@ class AlbumPostScreen extends GetView<AlbumController> {
                         ),
                         leadingBuilder: (student) => CircleAvatar(
                           backgroundImage: student.profileData,
+                          backgroundColor: AppColors.primaryColor,
                         ),
                       );
                       if (result == null) return;

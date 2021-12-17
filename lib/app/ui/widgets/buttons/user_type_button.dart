@@ -34,7 +34,8 @@ class UserTypeButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              'assets/images/test_user_type.png',
+              // 'assets/images/test_user_type.png',
+              imagePath,
               width: _size,
               height: _size,
             ),

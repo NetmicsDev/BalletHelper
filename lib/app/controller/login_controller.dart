@@ -24,16 +24,19 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
   final List<Map<String, dynamic>> userTypes = [
     {
       'type': UserType.parent,
+      'imagePath': 'assets/images/보호자1.png',
       'label': Strings.parent,
       'content': Strings.parentContent,
     },
     {
       'type': UserType.teacher,
+      'imagePath': 'assets/images/선생님.png',
       'label': Strings.teacher,
       'content': Strings.teacherContent,
     },
     {
       'type': UserType.owner,
+      'imagePath': 'assets/images/원장님.png',
       'label': Strings.owner,
       'content': Strings.ownerContent,
     },
