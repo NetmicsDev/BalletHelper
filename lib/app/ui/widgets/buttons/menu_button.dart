@@ -1,4 +1,5 @@
 import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
+import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -31,7 +32,10 @@ class MenuButton extends StatelessWidget {
           try {
             Get.toNamed(routeName);
           } catch (err) {
-            Get.defaultDialog(title: '오류', content: Text('아직 구현이 안된 페이지 입니다'));
+            Dialogs.alert(
+              title: '구현 중',
+              content: '다음 업데이트를 기다려주세요!',
+            );
           }
         },
         child: Container(

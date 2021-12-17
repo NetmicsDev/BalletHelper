@@ -8,6 +8,7 @@ import 'package:ballet_helper/app/ui/theme/styles/text_styles.dart';
 import 'package:ballet_helper/app/ui/values/strings.dart';
 import 'package:ballet_helper/app/ui/widgets/bottomsheets/bottom_sheets.dart';
 import 'package:ballet_helper/app/ui/widgets/buttons/user_type_button.dart';
+import 'package:ballet_helper/app/ui/widgets/dialogs/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/instance_manager.dart';
@@ -41,7 +42,13 @@ class _UserTypePageState extends State<UserTypePage> {
                   title: user['label'],
                   content: user['content'],
                   size: buttonSize,
-                  onClick: () => _controller.toChooseSign(user['type']),
+                  onClick: () {
+                    // _controller.toChooseSign(user['type']);
+                    Dialogs.alert(
+                      title: '구현 중',
+                      content: '다음 업데이트를 기다려주세요!',
+                    );
+                  },
                 ))
             .toList(),
         UserTypeButton(
