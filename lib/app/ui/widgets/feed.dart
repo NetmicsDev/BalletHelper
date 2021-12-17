@@ -35,6 +35,7 @@ class Feed extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircleAvatar(
+                backgroundColor: AppColors.primaryColor,
                 backgroundImage: controller.profile,
                 radius: 25.0,
               ),

@@ -42,21 +42,15 @@ class Bulletin extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: Text(
-                title ?? '알림 제목',
-                style: TextStyles.buttonDarkTitleStyle,
-              ),
-            ),
             SizedBox(
               height: 40,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CircleAvatar(
+                    backgroundColor: AppColors.primaryColor,
                     backgroundImage: profile,
                     radius: 20.0,
                   ),
@@ -95,11 +89,16 @@ class Bulletin extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Text(
-                content ?? '알림 내용',
-                style: TextStyles.buttonDarkContentStyle,
+                title ?? '알림 제목',
+                style: TextStyles.buttonDarkTitleStyle,
+                // textAlign: TextAlign.center,
               ),
+            ),
+            Text(
+              content ?? '알림 내용',
+              style: TextStyles.buttonDarkContentStyle,
             ),
             image != null
                 ? Padding(

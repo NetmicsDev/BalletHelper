@@ -45,16 +45,16 @@ class MenuButton extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  title,
-                  style: TextStyles.buttonMenuStyle,
-                ),
                 Image(
                   image: AssetImage(assetPath == ''
                       ? 'assets/images/flutter_logo.png'
                       : assetPath),
                   color: Colors.white,
                   width: size / 2.2,
+                ),
+                Text(
+                  title,
+                  style: TextStyles.buttonMenuStyle.copyWith(fontSize: 14),
                 ),
               ],
             )),

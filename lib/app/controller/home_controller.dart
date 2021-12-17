@@ -41,16 +41,16 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    userType == UserType.owner ? getUserData() : getParentData();
+    userType == UserType.parent ? getParentData() : getUserData();
     getImageList();
   }
 
   get branchName => userType == UserType.parent
       ? parentData.student!.branchName ?? '-'
-      : teacherData.branchName!;
+      : teacherData.branchName ?? '-';
   get className => userType == UserType.parent
-      ? parentData.student!.className
-      : teacherData.className!;
+      ? parentData.student!.className ?? '-'
+      : teacherData.className ?? '-';
 
   String get userName {
     switch (userType) {

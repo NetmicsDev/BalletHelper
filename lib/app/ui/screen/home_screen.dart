@@ -83,7 +83,8 @@ class HomeScreen extends GetView<HomeController> {
               child: Center(
                   child: Text(
                 userType,
-                style: TextStyles.buttonDarkTitleStyle,
+                style: TextStyles.buttonDarkTitleStyle
+                    .copyWith(color: AppColors.primaryDarkColor),
               ))),
           Expanded(
             child: Column(

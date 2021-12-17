@@ -15,7 +15,8 @@ class MyPageController extends GetxController {
   // 부모님의 경우
   String get studentName => (userData as ParentModel).student!.name!;
   String get birth {
-    final date = (userData as ParentModel).student!.birth!.split('-');
+    final date = (userData as ParentModel).student!.birth?.split('-') ??
+        ['2011', '1', '1'];
     return '${date[0]}년 ${date[1]}월 ${date[2]}일';
   }
 
