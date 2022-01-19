@@ -12,8 +12,8 @@ class StudentChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      side: const BorderSide(color: AppColors.primaryColor),
-      backgroundColor: AppColors.primaryColor,
+      side: BorderSide(color: AppColors.current.primary),
+      backgroundColor: AppColors.current.primary,
       label: Text(name, style: TextStyles.chipBrightStyle),
       labelPadding: onDeleted != null
           ? const EdgeInsets.only(left: 8)

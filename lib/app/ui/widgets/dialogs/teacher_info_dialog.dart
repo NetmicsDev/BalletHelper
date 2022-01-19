@@ -79,7 +79,7 @@ class TeacherInfoDialog extends StatelessWidget {
         ),
         DialogActionButton(
           title: '초대코드 전송',
-          color: AppColors.primaryColor,
+          color: AppColors.current.primary,
           titleColor: Colors.white,
           onPressed: invite,
         ),

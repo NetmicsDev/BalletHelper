@@ -15,10 +15,15 @@ class HomeController extends GetxController {
   late final HomeRepository _repository;
   late final bool isPreview;
   late final UserType userType;
+  late final String academyId;
 
   final storageData = GetStorage().read('login');
 
-  HomeController({bool? isPreview, UserType? userType}) {
+  HomeController({
+    bool? isPreview,
+    UserType? userType,
+    required this.academyId,
+  }) {
     this.isPreview = isPreview ?? false;
     this.userType = userType ??
         (storageData['userType'] == 'teacher'
@@ -26,7 +31,6 @@ class HomeController extends GetxController {
             : UserType.parent);
     _repository = HomeRepository(
         this.isPreview ? HomeProvider() : Get.find<HomeProvider>());
-    log('${this.isPreview} ${this.userType}');
   }
 
   get userData => userType == UserType.parent ? parentData : teacherData;
@@ -100,6 +104,7 @@ class HomeController extends GetxController {
   }
 
   getImageList() {
-    imageList.addAll(DummyDatas.imageList);
+    imageList.addAll(DummyDatas.imageList
+        .where((element) => element.academyId == academyId));
   }
 }

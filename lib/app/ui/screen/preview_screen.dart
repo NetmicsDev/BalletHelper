@@ -1,5 +1,6 @@
 import 'package:ballet_helper/app/controller/home_controller.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
+import 'package:ballet_helper/app/ui/screen/select_screen.dart';
 import 'package:ballet_helper/app/ui/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -15,26 +16,26 @@ class PreviewScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
         elevation: 0,
         toolbarHeight: 40,
         title: Text(
           getTitle(),
-          style:
-              const TextStyle(color: AppColors.primaryDarkColor, fontSize: 16),
+          style: TextStyle(color: AppColors.white, fontSize: 16),
         ),
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: Get.back,
-            icon: const Icon(
+            icon: Icon(
               Icons.close,
               size: 24,
-              color: AppColors.primaryDarkColor,
+              color: AppColors.white,
             ),
           )
         ],
       ),
-      body: HomeScreen(),
+      body: SelectScreen(),
     );
   }
 

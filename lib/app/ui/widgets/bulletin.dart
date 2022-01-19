@@ -50,7 +50,7 @@ class Bulletin extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CircleAvatar(
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: AppColors.current.primary,
                     backgroundImage: profile,
                     radius: 20.0,
                   ),

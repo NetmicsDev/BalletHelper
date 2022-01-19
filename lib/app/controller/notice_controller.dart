@@ -70,7 +70,7 @@ class NoticeController extends GetxController {
       return false;
     }
     final data = NoticeModel(
-      id: noticeModel!.id,
+      academyId: noticeModel!.academyId,
       name: noticeModel!.name,
       profile: noticeModel!.profile,
       dateTime: noticeModel!.dateTime,

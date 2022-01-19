@@ -1,6 +1,9 @@
+import 'package:ballet_helper/app/data/model/academy_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static AcademyTheme current = AcademyTheme.fromMap({});
+
   static const white = Colors.white;
   static const scaffoldBackgroundColor = Colors.white;
 

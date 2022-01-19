@@ -4,7 +4,7 @@ import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
 class NoticeModel {
-  int? id;
+  String? academyId;
   String? name;
   String? profile;
   String? dateTime;
@@ -13,7 +13,7 @@ class NoticeModel {
   String? image;
 
   NoticeModel({
-    this.id,
+    this.academyId,
     this.name,
     this.profile,
     this.dateTime,
@@ -24,7 +24,7 @@ class NoticeModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'academyId': academyId,
       'name': name,
       'profile': profile,
       'dateTime': dateTime,
@@ -36,7 +36,7 @@ class NoticeModel {
 
   factory NoticeModel.fromMap(Map<String, dynamic> map) {
     return NoticeModel(
-      id: map['id'],
+      academyId: map['academyId'],
       name: map['name'],
       profile: map['profile'],
       dateTime: map['dateTime'],

@@ -1,0 +1,76 @@
+/* 리셋 */
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body, html{font-family: 'Recipe', 'Noto Sans KR', 'NanumBarunGothic', 'roboto', sans-serif; line-height: 1.7;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin: 0; padding: 0; border: 0; font-size: 100%; font-weight: 400; vertical-align: baseline; background: 0 0;}
+img{max-width: 100%; vertical-align: top; border: none;}
+a{text-decoration: none; color: #666; vertical-align: baseline; }
+ul, li{list-style: none; text-decoration: none;}
+h1, h2, h3, h4, h5, h6{letter-spacing: -.25px;}
+
+.prb_5{padding: 0 5px;}
+.mt10{margin-top: 10px;}
+.mt20{margin-top: 20px;}
+/* 상단유틸메뉴 */
+.top_util{width: 100%; height: 30px; line-height: 30px; text-align: right; font-size: 13px; background: #343434;}
+.top_util .menu{}
+.top_util .menu li{display: inline-flex; padding: 0 4px;}
+.top_util .menu li a{color: #ccc;}
+.header{width: 100%; height: auto; display: inline-flex; justify-content: space-between;}
+.left_logo{width: 180px;}
+/* 메뉴 */
+.menu_btn{text-align: right; padding: 10px 5px;}
+.menu_bg{width: 100%; height: 100%; position: fixed; top: 0; left: 0; display: none; background: rgba(0,0,0,0.7);}
+.sidebar_menu{display: none; width: 80%; height: 100%; position: fixed; top: 0; right: -50%; background: #fff; border: 1px solid #d0d0d0;}
+.sidebar_wrap{position: relative;}
+.close_btn{width: 25px; height: 25px; margin: 10px;}
+.close_btn > a{display: block; width: 100%; height: 100%;}
+.menu_wrap{width: 100%;}
+.menu_wrap li{position: relative; width: 100%; height: auto; line-height: 50px; background: #efefef; border-top: 1px solid #fff; text-indent: 10px; font-family: 'Gothic A1', sans-serif; font-weight: 600;}
+.menu_wrap li a{color: #666; font-size: 14px; font-weight: 600;}
+/* 서브메뉴 */
+.menu_top{width: 100%; height: 65px; display: flex; align-items: center; justify-content: space-between;}
+.menu_top .menu_logo{width: 150px; margin: auto;}
+.menu_top i{font-size: 22px;}
+.menu_wrap .plus::before{content: ''; position: absolute; top: 15px; right: 10px; width: 17px; height: 17px; background-image: url('../img/plus-solid.png'); background-size: 12px; background-position: center; background-repeat: no-repeat; z-index: 1; }
+.menu_wrap .minus::before{content: ''; position: absolute; top: 15px; right: 10px; width: 17px; height: 17px; background-image: url('../img/minus-solid.png'); background-size: 12px; background-position: center; background-repeat: no-repeat; z-index: 1;}
+.sub_menu li{line-height: 40px; margin: 0; background: #fff; border-bottom: 1px solid #ececec;}
+.sub_menu li:last-child{border-bottom: none;}
+.sub_menu li a{font-size: 13px; color: #666;}
+.sidebar_menu{ font-family:'arial'; }
+.sidebar_menuul{ width:100%; margin:0; padding:0; }
+.sidebar_menuul.menu_wrap li{ position:relative; float:left; width: 100%; font-size: 40px;}
+.sidebar_menuul.menu_wrap li a{ display:block; width: 100%; height: 100%; line-height: 100px; text-indent:30px; color:#333; font-weight:bold;}
+.sidebar_menuul.menu_wrap li a:hover{ background:#eee; }
+.sidebar_menuul.menu_wrap li .sub_menu a{ position:relative; float:left; display:block; width:100%; z-index:999;}
+
+/* 컨텐츠 */
+#contents{width: 100%;}
+.sub_bg1 {background: #efefef; border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8;}
+.sub_bg1 .stle{display: inline-flex; font-size: 12px;}
+.sub_bg1 .stle li{padding-right: 5px;}
+.sub_bg1 .stle li::after{content: '>'; padding-left: 5px;}
+.sub_bg1 .stle li.last_content::after{display: none;}
+.sub_bg1 .stle .home i{margin-right: 2px;}
+.con_tit{padding: 10px 5px; text-align: center;}
+.con_tit .point{color: #1d8cdd;}
+
+.content_img{width: 100%; display: inline-block; text-align: center;}
+
+/* 헬프박스 */
+.sub_helpdesk{width: 100%; height: 100%; display: inline-block; padding: 10px; background: #efefef; border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; box-sizing: border-box;}
+.sub_helpdesk_in{width: 100%; height: 100%; display: inline-block; text-align: center; background: #fff;}
+.sub_helpdesk_in h3{padding: 10px 5px; font-size: 15px;}
+.sub_helpdesk_in .heip_dest_box{width: 100%; padding: 5px 10px 10px;}
+.sub_helpdesk_in .heip_dest_box li{width: 49%; display: inline-block; padding: 5px; margin-bottom: 3px; background: #2b7acc; transition: all .3s; font-size: 13px;}
+.sub_helpdesk_in .heip_dest_box li a{color: #fff;}
+.sub_helpdesk_in .heip_dest_box li:hover{background: #0e0e70;}
+
+/* 고객센터 */
+.sub_callcenter_in{width: 100%; height: 125px; display: inline-flex; justify-content: space-between; text-align: center;}
+.sub_callcenter_in h3{padding: 10px 5px; font-size: 15px;}
+.sub_callcenter_in ul{width: 49%; background: #fff; font-size: 12px;}
+
+#footer_wrap{}
+#footer_wrap .text{width: 100%; height: 35px; display: flex; align-items: center; justify-content: space-evenly; border-bottom: 1px solid #efefef; font-size: 13px;}
+#footer_wrap .text span{}
+#footer_wrap .copyright{display: flex; justify-content: center; padding-bottom: 20px; font-size: 12px;}

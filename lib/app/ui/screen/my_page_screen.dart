@@ -17,6 +17,7 @@ class MyPageScreen extends GetView<MyPageController> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        backgroundColor: AppColors.current.primary,
         title: Text('내 정보'),
         elevation: 0,
       ),
@@ -79,7 +80,7 @@ class MyPageScreen extends GetView<MyPageController> {
                           DialogActionButton(
                             title: '정보 수정',
                             titleColor: Colors.white,
-                            color: AppColors.primaryColor,
+                            color: AppColors.current.primary,
                             onPressed: controller.edit,
                           ),
                         ],
@@ -107,8 +108,8 @@ class MyPageScreen extends GetView<MyPageController> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border:
-                          Border.all(color: AppColors.primaryColor, width: 2),
+                      border: Border.all(
+                          color: AppColors.current.primary, width: 2),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ClipRRect(

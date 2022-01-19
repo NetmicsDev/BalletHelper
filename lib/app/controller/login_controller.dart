@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:ballet_helper/app/controller/app_controller.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/data/provider/login_provider.dart';
 import 'package:ballet_helper/app/data/repository/login_repository.dart';
@@ -16,6 +17,31 @@ import 'package:http/http.dart' as http;
 import 'home_controller.dart';
 
 enum UserType { parent, teacher, owner }
+String userTypeToString(UserType type) {
+  switch (type) {
+    case UserType.owner:
+      return '0';
+    case UserType.teacher:
+      return '1';
+    case UserType.parent:
+      return '2';
+    default:
+      return '2';
+  }
+}
+
+UserType stringToUserType(String type) {
+  switch (type) {
+    case '0':
+      return UserType.owner;
+    case '1':
+      return UserType.teacher;
+    case '2':
+      return UserType.parent;
+    default:
+      return UserType.parent;
+  }
+}
 
 class LoginController extends GetxController with SingleGetTickerProviderMixin {
   final LoginRepository _repository =
@@ -118,9 +144,9 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     );
     if (result == null) return;
     Get.put(
-        HomeController(isPreview: true, userType: userTypes[result]['type']));
+        AppController(isPreview: true, userType: userTypes[result]['type']));
     await Get.toNamed(Routes.preview, arguments: result);
-    Get.delete<HomeController>();
+    Get.delete<AppController>();
   }
 
   signIn({required String email, required String password}) async {

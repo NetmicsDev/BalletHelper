@@ -52,17 +52,18 @@ class _BottomSheetCreateState extends State<BottomSheetCreate> {
                 Expanded(
                   child: TextField(
                     controller: _tec,
-                    cursorColor: AppColors.primaryColor,
-                    style: TextStyle(color: AppColors.primaryDarkColor),
+                    cursorColor: AppColors.current.primary,
+                    style: TextStyle(color: AppColors.current.primaryDark),
                     decoration: InputDecoration(
                       hintText: '반 이름을 입력해주세요',
-                      hintStyle: TextStyle(color: AppColors.primaryDarkColor),
+                      hintStyle:
+                          TextStyle(color: AppColors.current.primaryDark),
                       enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: AppColors.primaryColor)),
+                              BorderSide(color: AppColors.current.primary)),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: AppColors.primaryColor)),
+                              BorderSide(color: AppColors.current.primary)),
                     ),
                   ),
                 ),
@@ -75,7 +76,7 @@ class _BottomSheetCreateState extends State<BottomSheetCreate> {
                     },
                     icon: Icon(
                       Icons.add_rounded,
-                      color: AppColors.primaryColor,
+                      color: AppColors.current.primary,
                       size: 36,
                     ))
               ],
@@ -100,7 +101,7 @@ class _BottomSheetCreateState extends State<BottomSheetCreate> {
                     onPressed: () {
                       Get.back(result: selectedList);
                     },
-                    color: AppColors.primaryColor,
+                    color: AppColors.current.primary,
                     titleColor: Colors.white,
                   )),
             )

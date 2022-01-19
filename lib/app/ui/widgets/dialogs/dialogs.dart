@@ -33,7 +33,7 @@ class Dialogs {
       content: contentWidget,
       actions: [
         DialogActionButton(
-          color: AppColors.primaryColor,
+          color: AppColors.current.primary,
           title: '확인',
           titleColor: Colors.white,
           onPressed: () {
@@ -65,13 +65,13 @@ class Dialogs {
       actions: [
         DialogActionButton(
           title: '취소',
-          titleColor: AppColors.primaryColor,
+          titleColor: AppColors.current.primary,
           onPressed: () {
             Get.back(result: false);
           },
         ),
         DialogActionButton(
-          color: AppColors.primaryColor,
+          color: AppColors.current.primary,
           title: '확인',
           titleColor: Colors.white,
           onPressed: () {

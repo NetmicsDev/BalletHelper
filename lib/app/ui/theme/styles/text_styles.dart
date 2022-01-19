@@ -34,11 +34,11 @@ class TextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static const academyNameStyle = TextStyle(
-    color: AppColors.primaryDarkColor,
-    fontSize: 26,
-    fontWeight: FontWeight.bold,
-  );
+  static TextStyle get academyNameStyle => TextStyle(
+        color: AppColors.current.primaryDark,
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+      );
   static const brightContentStyle = TextStyle(
     color: AppColors.brightTextColor,
     fontSize: 20,
@@ -63,11 +63,11 @@ class TextStyles {
     fontSize: 13,
   );
 
-  static const buttonNavigateStyle = TextStyle(
-    color: AppColors.primaryDarkColor,
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-  );
+  static TextStyle get buttonNavigateStyle => TextStyle(
+        color: AppColors.current.primaryDark,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      );
 
   static const buttonActionStyle = TextStyle(
     fontSize: 16,
@@ -75,11 +75,11 @@ class TextStyles {
     letterSpacing: 2,
   );
 
-  static const chipDarkStyle = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-    color: AppColors.primaryColor,
-  );
+  static TextStyle get chipDarkStyle => TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+        color: AppColors.current.primary,
+      );
   static const chipBrightStyle = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.bold,

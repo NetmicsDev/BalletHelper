@@ -2,19 +2,19 @@ import 'package:ballet_helper/app/utils/image_utils.dart';
 import 'package:flutter/material.dart';
 
 class ImageModel {
-  int? id;
+  String? academyId;
   String? uri;
 
-  ImageModel({this.id, this.uri});
+  ImageModel({this.academyId, this.uri});
 
   ImageModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    academyId = json['academyId'];
     uri = json['uri'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {
-      'id': id,
+      'academyId': academyId,
       'uri': uri,
     };
     return data;

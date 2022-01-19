@@ -11,23 +11,24 @@ import 'package:ballet_helper/app/data/provider/branch_provider.dart';
 import 'package:ballet_helper/app/data/provider/home_provider.dart';
 import 'package:ballet_helper/app/data/provider/login_provider.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
-import 'package:ballet_helper/app/ui/screen/academy_post_screen.dart';
-import 'package:ballet_helper/app/ui/screen/academy_screen.dart';
-import 'package:ballet_helper/app/ui/screen/album_post_screen.dart';
-import 'package:ballet_helper/app/ui/screen/album_screen.dart';
-import 'package:ballet_helper/app/ui/screen/branch_post_screen.dart';
-import 'package:ballet_helper/app/ui/screen/family_screen.dart';
+import 'package:ballet_helper/app/ui/screen/academy/academy_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/academy/academy_screen.dart';
+import 'package:ballet_helper/app/ui/screen/academy/branch_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/album/album_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/album/album_screen.dart';
+import 'package:ballet_helper/app/ui/screen/family/family_screen.dart';
 import 'package:ballet_helper/app/ui/screen/home_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/login_screen.dart';
 import 'package:ballet_helper/app/ui/screen/login/user_type_page.dart';
 import 'package:ballet_helper/app/ui/screen/my_page_screen.dart';
-import 'package:ballet_helper/app/ui/screen/notice_post_screen.dart';
-import 'package:ballet_helper/app/ui/screen/notice_screen.dart';
+import 'package:ballet_helper/app/ui/screen/notice/notice_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/notice/notice_screen.dart';
 import 'package:ballet_helper/app/ui/screen/preview_screen.dart';
-import 'package:ballet_helper/app/ui/screen/student_post_screen.dart';
-import 'package:ballet_helper/app/ui/screen/student_screen.dart';
-import 'package:ballet_helper/app/ui/screen/teacher_post_screen.dart';
-import 'package:ballet_helper/app/ui/screen/teacher_screen.dart';
+import 'package:ballet_helper/app/ui/screen/select_screen.dart';
+import 'package:ballet_helper/app/ui/screen/student/student_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/student/student_screen.dart';
+import 'package:ballet_helper/app/ui/screen/teacher/teacher_post_screen.dart';
+import 'package:ballet_helper/app/ui/screen/teacher/teacher_screen.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/state_manager.dart';
@@ -48,12 +49,21 @@ class Pages {
       transition: Transition.fadeIn,
     ),
     GetPage(
+      name: Routes.select,
+      page: () => SelectScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
       name: Routes.home,
       page: () => HomeScreen(),
       transition: Transition.fadeIn,
       binding: BindingsBuilder(() {
         Get.put(HomeProvider());
-        Get.put(HomeController());
+        bool isPreview = Get.parameters['preview'] == '1';
+        UserType userType = stringToUserType(Get.parameters['type'] ?? '');
+        String academyId = Get.parameters['academy'] ?? '';
+        Get.put(HomeController(
+            isPreview: isPreview, userType: userType, academyId: academyId));
       }),
     ),
     GetPage(

@@ -21,13 +21,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light().copyWith(
-          primaryColor: AppColors.primaryColor,
-          appBarTheme: const AppBarTheme(
-            systemOverlayStyle:
-                SystemUiOverlayStyle(statusBarColor: AppColors.primaryColor),
-            color: AppColors.primaryColor,
-          )),
       // initialRoute: GetStorage().hasData('login') ? Routes.home : Routes.login,
       initialRoute: Routes.login,
       getPages: Pages.pages,

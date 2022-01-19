@@ -14,6 +14,7 @@ import 'package:intl/intl.dart';
 class AlbumController extends GetxController {
   final mainController = Get.find<HomeController>();
   bool get isPreview => mainController.isPreview;
+  String get academyId => mainController.academyId;
 
   @override
   void onInit() {
@@ -124,7 +125,8 @@ class AlbumController extends GetxController {
   }
 
   getDummyAlbumData() {
-    return DummyDatas.albumList;
+    return DummyDatas.albumList
+        .where((element) => element.academyId == academyId);
   }
 
   getAlbumData() {

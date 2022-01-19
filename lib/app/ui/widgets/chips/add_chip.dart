@@ -12,12 +12,12 @@ class AddChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return ActionChip(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      avatar: const Icon(
+      avatar: Icon(
         Icons.add,
-        color: AppColors.primaryColor,
+        color: AppColors.current.primary,
         size: 20,
       ),
-      side: const BorderSide(color: AppColors.primaryColor),
+      side: BorderSide(color: AppColors.current.primary),
       backgroundColor: Colors.white,
       label: Text(
         title,

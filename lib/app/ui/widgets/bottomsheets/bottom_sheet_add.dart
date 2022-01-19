@@ -67,7 +67,7 @@ class _BottomSheetAddState<T> extends State<BottomSheetAdd<T>> {
                     onPressed: () {
                       Get.back(result: selectedList);
                     },
-                    color: AppColors.primaryColor,
+                    color: AppColors.current.primary,
                     titleColor: Colors.white,
                   )),
             )
@@ -83,7 +83,7 @@ class _BottomSheetAddState<T> extends State<BottomSheetAdd<T>> {
       return Container(
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.primaryColor.withOpacity(0.3)
+              ? AppColors.current.primary.withOpacity(0.3)
               : Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
@@ -94,7 +94,7 @@ class _BottomSheetAddState<T> extends State<BottomSheetAdd<T>> {
           trailing: isSelected
               ? Material(
                   elevation: 0,
-                  color: AppColors.primaryColor,
+                  color: AppColors.current.primary,
                   borderRadius: BorderRadius.circular(6),
                   child: SizedBox(width: 12, height: 12),
                 )

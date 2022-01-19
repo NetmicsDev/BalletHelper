@@ -80,7 +80,7 @@ class StudentInfoDialog extends StatelessWidget {
         ),
         DialogActionButton(
           title: '부모님 초대',
-          color: AppColors.primaryColor,
+          color: AppColors.current.primary,
           titleColor: Colors.white,
           onPressed: invite,
         ),

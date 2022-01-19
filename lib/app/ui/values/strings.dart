@@ -8,4 +8,5 @@ class Strings {
   static const String ownerContent = '선생님과 아이들을 관리할 수 있어요';
   static const String preview = '체험하기';
   static const String previewContent = '앱을 먼저 살펴볼래요';
+  static const String academySelect = '학원을 선택해주세요';
 }

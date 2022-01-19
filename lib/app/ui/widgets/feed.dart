@@ -35,7 +35,7 @@ class Feed extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               CircleAvatar(
-                backgroundColor: AppColors.primaryColor,
+                backgroundColor: AppColors.current.primary,
                 backgroundImage: controller.profile,
                 radius: 25.0,
               ),
@@ -133,7 +133,7 @@ class Feed extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
                           color: i == controller.imageIndex
-                              ? AppColors.primaryColor
+                              ? AppColors.current.primary
                               : AppColors.subtitleColor.withOpacity(0.2)),
                     );
                   }).toList(),

@@ -1,5 +1,6 @@
 import 'package:ballet_helper/app/controller/login_controller.dart';
 import 'package:ballet_helper/app/controller/home_controller.dart';
+import 'package:ballet_helper/app/data/dummy_datas.dart';
 import 'package:ballet_helper/app/data/model/parent_model.dart';
 import 'package:ballet_helper/app/data/model/user_model.dart';
 import 'package:ballet_helper/app/routes/routes.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.current.primary,
         toolbarHeight: toolbarHeight,
         elevation: 0,
       ),
@@ -74,17 +76,17 @@ class HomeScreen extends GetView<HomeController> {
     }
     return Container(
       width: Get.width * 0.75,
-      color: AppColors.secondaryColor,
+      color: AppColors.current.secondary,
       child: Column(
         children: [
           Container(
-              color: AppColors.primaryColor,
+              color: AppColors.current.primary,
               height: toolbarHeight + headerHeight,
               child: Center(
                   child: Text(
-                userType,
+                '$userType 메뉴',
                 style: TextStyles.buttonDarkTitleStyle
-                    .copyWith(color: AppColors.primaryDarkColor),
+                    .copyWith(color: AppColors.current.primaryDark),
               ))),
           Expanded(
             child: Column(
@@ -111,10 +113,10 @@ class HomeScreen extends GetView<HomeController> {
   Widget buildHeader({double? height}) {
     final userData = controller.userData;
 
-    late String name;
+    String academyName = DummyDatas.academyNames[controller.academyId]!;
 
     return Container(
-      color: AppColors.primaryColor,
+      color: AppColors.current.primary,
       height: headerHeight,
       child: Stack(
         children: [
@@ -125,7 +127,7 @@ class HomeScreen extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '이화 YSM',
+                  academyName,
                   style: TextStyles.academyNameStyle,
                 ),
                 SizedBox(height: 16.0),
@@ -195,7 +197,7 @@ class HomeScreen extends GetView<HomeController> {
 
   Widget buildButtons() {
     return Container(
-        color: AppColors.secondaryColor,
+        color: AppColors.current.secondary,
         padding: const EdgeInsets.all(10.0),
         child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
